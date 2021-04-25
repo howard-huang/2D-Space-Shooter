@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    private int _playerLives = 3;
+    
+    [SerializeField]
     private float _speed = 3.5f;
 
     [SerializeField]
@@ -15,12 +18,12 @@ public class Player : MonoBehaviour
     private float _canFire = -1.0f;
     
 
-    void Start()
+    private void Start()
     {
         transform.position = new Vector3(0, 0, 0);
     }
 
-    void Update()
+    private void Update()
     {
         Movement();
 
@@ -30,12 +33,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Movement()
+    private void Movement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
        
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0).normalized;             //normalized to stop axes giving a range of values
+        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);             
                                                                                                    //more arcade like & stops faster diag movement
         transform.Translate(direction * _speed * Time.deltaTime);
 
@@ -52,9 +55,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FireLaser()                                                                               //laser instantiate + cooldown
+    private void FireLaser()                                                                       //laser instantiate + cooldown
     {
         _canFire = Time.time + _fireRate;
-            Instantiate(_laserPrefab, transform.position + _laserOffset, Quaternion.identity);
+        Instantiate(_laserPrefab, transform.position + _laserOffset, Quaternion.identity);
+    }
+
+    public void TakeDamage()
+    {
+        _playerLives--;
+
+        if (_playerLives == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
