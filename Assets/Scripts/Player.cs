@@ -11,16 +11,27 @@ public class Player : MonoBehaviour
     private float _speed = 3.5f;
 
     [SerializeField]
+    private GameObject _laserContainer;
+    [SerializeField]
     private GameObject _laserPrefab;
     private Vector3 _laserOffset = new Vector3(0f, 0.8f, 0f);
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
+
+    private SpawnManager _spawnManager;
     
 
     private void Start()
     {
         transform.position = new Vector3(0, 0, 0);
+
+        _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
+        if (_spawnManager == null)
+        {
+            Debug.LogError("Spawn Manager is Null!");
+        }
     }
 
     private void Update()
@@ -39,7 +50,7 @@ public class Player : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
        
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);             
-                                                                                                   //more arcade like & stops faster diag movement
+                                                                                                   
         transform.Translate(direction * _speed * Time.deltaTime);
 
         float _yClamp = Mathf.Clamp(transform.position.y, -5.25f, 0);                              //vertical bounds
@@ -55,10 +66,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FireLaser()                                                                       //laser instantiate + cooldown
+    private void FireLaser()                                                                       
     {
-        _canFire = Time.time + _fireRate;
-        Instantiate(_laserPrefab, transform.position + _laserOffset, Quaternion.identity);
+        Vector3 _laserPos = transform.position + _laserOffset;
+        _canFire = Time.time + _fireRate;                                                           //Cooldown System
+        GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
+        _laser.transform.parent = _laserContainer.transform;                                        //GameObject Nesting
     }
 
     public void TakeDamage()
@@ -67,6 +80,7 @@ public class Player : MonoBehaviour
 
         if (_playerLives == 0)
         {
+            _spawnManager.OnPlayerDeath();
             Destroy(this.gameObject);
         }
     }

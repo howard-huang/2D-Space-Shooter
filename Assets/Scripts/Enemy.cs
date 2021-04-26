@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
         if (transform.position.y < -6.5)
         {
-            float _randXPos = Mathf.Round(Random.Range(-9f, 9f) * 10) / 10;
+            float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             transform.position = new Vector3(_randXPos, 6.5f, 0f);
         }
     }
