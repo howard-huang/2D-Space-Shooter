@@ -6,13 +6,12 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private int _playerLives = 3;
+    private bool _isShieldActive;
     
     [SerializeField]
     private float _speed = 5.0f;
     [SerializeField]
-    private float _speedMultiplier = 1.5f;
-    private bool _isSpeedBoostActive;
-
+    private float _speedMultiplier = 2.0f;
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
@@ -27,6 +26,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _tripleShotPrefab;
     private bool _isTripleShotActive;
+
+    [SerializeField]
+    private GameObject _shieldVisual;
 
     private SpawnManager _spawnManager;
     
@@ -60,15 +62,7 @@ public class Player : MonoBehaviour
        
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         
-        if (_isSpeedBoostActive == true)
-        {
-            transform.Translate(direction * (_speed * _speedMultiplier) * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(direction * _speed * Time.deltaTime);
-        }
-
+        transform.Translate(direction * _speed * Time.deltaTime);     
 
         float _yClamp = Mathf.Clamp(transform.position.y, -4.5f, 2);                               //vertical bounds
         transform.position = new Vector3(transform.position.x, _yClamp, 0);
@@ -114,21 +108,34 @@ public class Player : MonoBehaviour
 
     public void SpeedBoostActive()
     {
-        _isSpeedBoostActive = true;
+        _speed *= _speedMultiplier;
         StartCoroutine(SpeedBoostPowerDownRoutine());
     }
 
     private IEnumerator SpeedBoostPowerDownRoutine()
     {
         yield return new WaitForSeconds(5.0f);
-        _isSpeedBoostActive = false;
+        _speed /= _speedMultiplier;
+    }
+
+    public void ShieldActive()
+    {
+        _isShieldActive = true;
+        _shieldVisual.SetActive(true);
     }
     
     public void TakeDamage()
     {
+        if (_isShieldActive == true)
+        {
+            _isShieldActive = false;
+            _shieldVisual.SetActive(false);
+            return;
+        }
+
         _playerLives--;
 
-        if (_playerLives == 0)
+        if (_playerLives <= 0)
         {
             _spawnManager.OnPlayerDeath();
             Destroy(this.gameObject);

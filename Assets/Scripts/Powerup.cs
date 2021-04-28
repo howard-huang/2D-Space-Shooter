@@ -5,7 +5,7 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 3.0f;
+    private float _travelSpeed = 3.0f;
 
     [SerializeField]
     private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields
@@ -17,7 +17,7 @@ public class Powerup : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        transform.Translate(Vector3.down * _travelSpeed * Time.deltaTime);
 
         if (transform.position.y <= -7)
         {
@@ -42,7 +42,7 @@ public class Powerup : MonoBehaviour
                         player.SpeedBoostActive();
                         break;
                     case 2:
-                        Debug.Log("Shield Active");
+                        player.ShieldActive();
                         break;
                     default:
                         Debug.Log("Default Powerup Value");
