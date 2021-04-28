@@ -8,7 +8,10 @@ public class Player : MonoBehaviour
     private int _playerLives = 3;
     
     [SerializeField]
-    private float _speed = 3.5f;
+    private float _speed = 5.0f;
+    [SerializeField]
+    private float _speedMultiplier = 1.5f;
+    private bool _isSpeedBoostActive;
 
     [SerializeField]
     private float _fireRate = 0.5f;
@@ -55,9 +58,17 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
        
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);             
-                                                                                                   
-        transform.Translate(direction * _speed * Time.deltaTime);
+        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
+        
+        if (_isSpeedBoostActive == true)
+        {
+            transform.Translate(direction * (_speed * _speedMultiplier) * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(direction * _speed * Time.deltaTime);
+        }
+
 
         float _yClamp = Mathf.Clamp(transform.position.y, -4.5f, 2);                               //vertical bounds
         transform.position = new Vector3(transform.position.x, _yClamp, 0);
@@ -99,6 +110,18 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         _isTripleShotActive = false;
+    }
+
+    public void SpeedBoostActive()
+    {
+        _isSpeedBoostActive = true;
+        StartCoroutine(SpeedBoostPowerDownRoutine());
+    }
+
+    private IEnumerator SpeedBoostPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _isSpeedBoostActive = false;
     }
     
     public void TakeDamage()
