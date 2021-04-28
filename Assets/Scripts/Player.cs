@@ -11,13 +11,19 @@ public class Player : MonoBehaviour
     private float _speed = 3.5f;
 
     [SerializeField]
+    private float _fireRate = 0.5f;
+    private float _canFire = -1.0f;
+
+    [SerializeField]
     private GameObject _laserContainer;
+    
     [SerializeField]
     private GameObject _laserPrefab;
     private Vector3 _laserOffset = new Vector3(0f, 1.0f, 0f);
+   
     [SerializeField]
-    private float _fireRate = 0.5f;
-    private float _canFire = -1.0f;
+    private GameObject _tripleShotPrefab;
+    private bool _isTripleShotActive;
 
     private SpawnManager _spawnManager;
     
@@ -53,7 +59,7 @@ public class Player : MonoBehaviour
                                                                                                    
         transform.Translate(direction * _speed * Time.deltaTime);
 
-        float _yClamp = Mathf.Clamp(transform.position.y, -4.5f, 2);                              //vertical bounds
+        float _yClamp = Mathf.Clamp(transform.position.y, -4.5f, 2);                               //vertical bounds
         transform.position = new Vector3(transform.position.x, _yClamp, 0);
                                                                                                    //horizontal wrapping
         if (transform.position.x >= 11.3f)
@@ -70,10 +76,31 @@ public class Player : MonoBehaviour
     {
         Vector3 _laserPos = transform.position + _laserOffset;
         _canFire = Time.time + _fireRate;                                                           //Cooldown System
-        GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
-        _laser.transform.parent = _laserContainer.transform;                                        //GameObject Nesting
+
+        if (_isTripleShotActive)
+        {
+            GameObject _tripleShot = Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+            _tripleShot.transform.parent = _laserContainer.transform;                               //GameObject Nesting
+        }
+        else
+        {
+            GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
+            _laser.transform.parent = _laserContainer.transform;                                    //GameObject Nesting
+        }
     }
 
+    public void TripleShotActive()
+    {
+        _isTripleShotActive = true;
+        StartCoroutine(TripleShotPowerDownRoutine());
+    }
+
+    private IEnumerator TripleShotPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _isTripleShotActive = false;
+    }
+    
     public void TakeDamage()
     {
         _playerLives--;

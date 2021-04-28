@@ -8,15 +8,20 @@ public class SpawnManager : MonoBehaviour
     private GameObject _enemyPrefab;
     [SerializeField]
     private GameObject _enemyContainer;
+    [SerializeField]
+    private GameObject _tripleShotPowerupPrefab;
+    [SerializeField]
+    private GameObject _powerupContainer;
 
     private bool _stopSpawn;
 
     private void Start()
     {
-        StartCoroutine(SpawnRoutine());
+        StartCoroutine(SpawnEnemyRoutine());
+        StartCoroutine(SpawnPowerupRoutine());
     }
 
-    private IEnumerator SpawnRoutine()
+    private IEnumerator SpawnEnemyRoutine()
     {
         while (_stopSpawn == false)
         {
@@ -26,6 +31,19 @@ public class SpawnManager : MonoBehaviour
             GameObject _enemy = Instantiate(_enemyPrefab, _enemySpawnPos, Quaternion.identity);
             _enemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f);
+        }
+    }
+
+    private IEnumerator SpawnPowerupRoutine()
+    {
+        while (_stopSpawn == false)
+        {
+            float _xSpawnPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
+            Vector3 _powerupSpawnPos = new Vector3(_xSpawnPos, 6.5f, 0f);
+
+            GameObject _powerup = Instantiate(_tripleShotPowerupPrefab, _powerupSpawnPos, Quaternion.identity);
+            _powerup.transform.parent = _powerupContainer.transform;
+            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
         }
     }
 
