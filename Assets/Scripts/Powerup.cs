@@ -17,6 +17,11 @@ public class Powerup : MonoBehaviour
 
     private void Update()
     {
+        Movement();
+    }
+
+    private void Movement()
+    {
         transform.Translate(Vector3.down * _travelSpeed * Time.deltaTime);
 
         if (transform.position.y <= -7)

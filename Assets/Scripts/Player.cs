@@ -7,11 +7,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _playerLives = 3;
     private bool _isShieldActive;
-    
+    [SerializeField]
+    private GameObject _shieldVisual;
+
+    [SerializeField]
+    private int _score;
+
     [SerializeField]
     private float _speed = 5.0f;
     [SerializeField]
     private float _speedMultiplier = 2.0f;
+    [SerializeField]
+    private float _speedBoostCooldown = 5.0f;
+
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
@@ -26,11 +34,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _tripleShotPrefab;
     private bool _isTripleShotActive;
-
     [SerializeField]
-    private GameObject _shieldVisual;
+    private float _tripleShotCooldown = 5.0f;
 
     private SpawnManager _spawnManager;
+    private UIManager _uiManager;
     
 
     private void Start()
@@ -38,11 +46,19 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
 
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
 
         if (_spawnManager == null)
         {
             Debug.LogError("Spawn Manager is Null!");
         }
+
+        if (_uiManager == null)
+        {
+            Debug.LogError("UI Manager is Null!");
+        }
+
+        _shieldVisual.SetActive(false);
     }
 
     private void Update()
@@ -77,12 +93,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddScore(int _points)
+    {
+        _score += _points;
+        _uiManager.UpdateScoreUI(_score);
+    }
+
     private void FireLaser()                                                                       
     {
         Vector3 _laserPos = transform.position + _laserOffset;
         _canFire = Time.time + _fireRate;                                                           //Cooldown System
 
-        if (_isTripleShotActive)
+        if (_isTripleShotActive == true)
         {
             GameObject _tripleShot = Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
             _tripleShot.transform.parent = _laserContainer.transform;                               //GameObject Nesting
@@ -102,7 +124,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator TripleShotPowerDownRoutine()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(_tripleShotCooldown);
         _isTripleShotActive = false;
     }
 
@@ -114,7 +136,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator SpeedBoostPowerDownRoutine()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(_speedBoostCooldown);
         _speed /= _speedMultiplier;
     }
 
@@ -134,6 +156,7 @@ public class Player : MonoBehaviour
         }
 
         _playerLives--;
+        _uiManager.UpdateLivesUI(_playerLives);
 
         if (_playerLives <= 0)
         {
