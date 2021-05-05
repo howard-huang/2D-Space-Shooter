@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     private bool _isShieldActive;
     [SerializeField]
     private GameObject _shieldVisual;
+    [SerializeField]
+    private GameObject[] _damageVisuals;
+    [SerializeField]
+    private GameObject _explosionPrefab;
 
     [SerializeField]
     private int _score;
@@ -43,7 +47,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0, -3, 0);
 
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
@@ -158,10 +162,23 @@ public class Player : MonoBehaviour
         _playerLives--;
         _uiManager.UpdateLivesUI(_playerLives);
 
-        if (_playerLives <= 0)
+        switch (_playerLives)
         {
-            _spawnManager.OnPlayerDeath();
-            Destroy(this.gameObject);
-        }
+            default:
+                _damageVisuals[1].SetActive(false);
+                _damageVisuals[0].SetActive(false);
+                break;
+            case 2:
+                _damageVisuals[1].SetActive(true);
+                break;
+            case 1:
+                _damageVisuals[0].SetActive(true);
+                break;
+            case 0:
+                _spawnManager.OnPlayerDeath();
+                Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+                break;
+        }    
     }
 }
