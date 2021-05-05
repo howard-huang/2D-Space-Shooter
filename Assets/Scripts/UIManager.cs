@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -46,13 +45,13 @@ public class UIManager : MonoBehaviour
 
         if (_currentLives == 0)
         {
-            GameOver();
+            UIGameOver();
         }
     }
 
-    private void GameOver()
+    private void UIGameOver()
     {
-        _gameManager.GameOver();
+        _gameManager.GMGameOver();
 
         StartCoroutine(GameOverFlickerRoutine());
         _restartText.gameObject.SetActive(true);

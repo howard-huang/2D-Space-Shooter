@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(_scene.name);
         }
     }
-    public void GameOver()
+    public void GMGameOver()
     {
         _isGameOver = true;
     }

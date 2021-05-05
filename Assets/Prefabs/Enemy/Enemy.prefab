@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3911904819210721787}
   - component: {fileID: 2580672625742949387}
   - component: {fileID: 3392395086167826246}
-  - component: {fileID: 9085355068051258085}
   - component: {fileID: -4593110722333365471}
+  - component: {fileID: 820633827819568766}
+  - component: {fileID: 9085355068051258085}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -105,20 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &9085355068051258085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124781588138122787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d250a30eaf912f4428d37f721e8e3680, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 4
-  _points: 10
 --- !u!60 &-4593110722333365471
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -221,3 +208,37 @@ PolygonCollider2D:
       - {x: 0.37, y: 0.63}
       - {x: 0.35999998, y: 0.62}
       - {x: 0.35999998, y: 0.63}
+--- !u!95 &820633827819568766
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124781588138122787}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 74de37013735a004c87f3b348484ce9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9085355068051258085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124781588138122787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d250a30eaf912f4428d37f721e8e3680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 4
+  _points: 10
+  _splashDamageDelay: 0.2

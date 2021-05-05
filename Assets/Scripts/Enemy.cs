@@ -11,10 +11,27 @@ public class Enemy : MonoBehaviour
     private int _points = 10;
 
     private Player _player;
+    private Animator _anim;
+    private Collider2D _collider2D;
 
     private void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _anim = gameObject.GetComponent<Animator>();
+        _collider2D = gameObject.GetComponent<Collider2D>();
+
+        if (_player == null)
+        {
+            Debug.LogError("Player is Null!");
+        }        
+        if (_anim == null)
+        {
+            Debug.LogError("Animator is Null!");
+        }
+        if (_collider2D == null)
+        {
+            Debug.LogError("Collider2D is Null!");
+        }
     }
 
     private void Update()
@@ -26,7 +43,11 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
-        if (transform.position.y < -6.5)
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion") && transform.position.y < -6.5)
+        {
+            Destroy(this.gameObject);
+        }
+        else if (transform.position.y < -6.5)
         {
             float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             transform.position = new Vector3(_randXPos, 6.5f, 0f);
@@ -38,23 +59,25 @@ public class Enemy : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            if (_player != null)
-            {
-                _player.TakeDamage();
-            }
+            _player.TakeDamage();
+            _anim.SetTrigger("OnEnemyDeath");
+            _collider2D.enabled = false;
 
-            Destroy(this.gameObject);
+            float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
+            Destroy(this.gameObject, _animLength);
         }
         else if (other.tag == "Laser")
         {
             Destroy(other.gameObject);
-            
-            if (_player != null)
-            {
-                _player.AddScore(_points);
-            }
 
-            Destroy(this.gameObject);
+            _player.AddScore(_points);
+            _anim.SetTrigger("OnEnemyDeath");
+            _collider2D.enabled = false;
+
+            float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
+            Destroy(this.gameObject, _animLength);
         }
     }
+
+
 }
