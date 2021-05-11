@@ -13,12 +13,17 @@ public class Enemy : MonoBehaviour
     private Player _player;
     private Animator _anim;
     private Collider2D _collider2D;
+    private AudioSource _audio;
+
+    [SerializeField]
+    private AudioClip _explosionSound;
 
     private void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         _anim = gameObject.GetComponent<Animator>();
         _collider2D = gameObject.GetComponent<Collider2D>();
+        _audio = gameObject.GetComponent<AudioSource>();
 
         if (_player == null)
         {
@@ -26,11 +31,15 @@ public class Enemy : MonoBehaviour
         }        
         if (_anim == null)
         {
-            Debug.LogError("Animator is Null!");
+            Debug.LogError("Enemy Animator is Null!");
         }
         if (_collider2D == null)
         {
-            Debug.LogError("Collider2D is Null!");
+            Debug.LogError("Enemy Collider2D is Null!");
+        }
+        if (_audio == null)
+        {
+            Debug.LogError("Audio Source is Null!");
         }
     }
 
@@ -43,9 +52,9 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
-        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion") && transform.position.y < -6.5)
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion"))
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, _audio.clip.length);
         }
         else if (transform.position.y < -6.5)
         {
@@ -62,9 +71,12 @@ public class Enemy : MonoBehaviour
             _player.TakeDamage();
             _anim.SetTrigger("OnEnemyDeath");
             _collider2D.enabled = false;
+            _audio.clip = _explosionSound;
+            _audio.Play();
 
-            float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
-            Destroy(this.gameObject, _animLength);
+            float _audioLength = _audio.clip.length;
+            
+            Destroy(this.gameObject, _audioLength);
         }
         else if (other.tag == "Laser")
         {
@@ -73,9 +85,12 @@ public class Enemy : MonoBehaviour
             _player.AddScore(_points);
             _anim.SetTrigger("OnEnemyDeath");
             _collider2D.enabled = false;
+            _audio.clip = _explosionSound;
+            _audio.Play();
 
-            float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
-            Destroy(this.gameObject, _animLength);
+            float _audioLength = _audio.clip.length;
+            
+            Destroy(this.gameObject, _audioLength);
         }
     }
 

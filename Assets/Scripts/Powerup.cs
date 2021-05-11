@@ -10,9 +10,14 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields
 
+    [SerializeField]
+    private AudioClip _powerupSound;
+
+    private Vector3 _audioListenerPos;
+
     private void Start()
     {
-
+       _audioListenerPos = GameObject.Find("Main Camera").transform.position;
     }
 
     private void Update()
@@ -54,6 +59,8 @@ public class Powerup : MonoBehaviour
                         break;
                 }
             }
+
+            AudioSource.PlayClipAtPoint(_powerupSound, _audioListenerPos);
 
             Destroy(this.gameObject);
         }

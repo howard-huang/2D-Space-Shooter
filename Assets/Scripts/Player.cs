@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject _laserContainer;
-    
     [SerializeField]
     private GameObject _laserPrefab;
     private Vector3 _laserOffset = new Vector3(0f, 1.0f, 0f);
@@ -43,7 +42,10 @@ public class Player : MonoBehaviour
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
+    private AudioSource _audio;
     
+    [SerializeField]
+    private AudioClip _laserAudio;
 
     private void Start()
     {
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
 
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _audio = GetComponent<AudioSource>();
 
         if (_spawnManager == null)
         {
@@ -60,6 +63,11 @@ public class Player : MonoBehaviour
         if (_uiManager == null)
         {
             Debug.LogError("UI Manager is Null!");
+        }
+
+        if (_audio == null)
+        {
+            Debug.LogError("Player Audio Source is Null!");
         }
 
         _shieldVisual.SetActive(false);
@@ -118,6 +126,8 @@ public class Player : MonoBehaviour
             GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
             _laser.transform.parent = _laserContainer.transform;                                    //GameObject Nesting
         }
+
+        _audio.PlayOneShot(_laserAudio);
     }
 
     public void TripleShotActive()
