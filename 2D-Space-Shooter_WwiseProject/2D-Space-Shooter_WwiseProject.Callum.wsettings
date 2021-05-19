@@ -3,6 +3,8 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{02C02D2E-0C33-4023-9460-C7080EB7ED3D}">
 			<PropertyList>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Callum\Desktop\Git test\2D-Space-Shooter\Assets\2D_Galaxy_Assets\Audio\"/>
+				<Property Name="Event Action List\{021DE0C7-DBE0-4782-B695-5602AEE8DE71}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
@@ -16,6 +18,7 @@
 					</ValueList>
 				</Property>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
+				<Property Name="Interactive Music\x64_{B5DC6F0F-68E9-4C94-A429-8A3B17AFDD8A} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP6c3ZcQCy01AAAAAAAAA8D8AAAAAAAAAAAAAAAAAACJA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="MeterView\MeterMode1Viewpoint0" Type="int32" Value="1"/>

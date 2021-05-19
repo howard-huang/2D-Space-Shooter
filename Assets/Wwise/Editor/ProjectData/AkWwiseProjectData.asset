@@ -49,8 +49,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0e67614c0c75f145840a64f3a1ad51ee
     GuidInternal: 
-    m_lastTime: -8585802744590241955
-    List: []
+    m_lastTime: -8585802024684568254
+    List:
+    - name: Music_Soundbank
+      guid: cf2a90eb7109404cbff4d0b6729875ae
+      id: 3589812408
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_Soundbank
+        ObjectType: 7
+      Path: Default Work Unit\Music_Soundbank
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -59,8 +68,34 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f237a69b013c9f458109fb7f8a86bcad
     GuidInternal: 
-    m_lastTime: -8585802744588670211
-    List: []
+    m_lastTime: -8585802025292103641
+    List:
+    - name: Music
+      guid: d7dcc0d26ba49843804e058c93c7243c
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      Path: Default Work Unit\Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_BGM
+      guid: c7e01d02e0db8247b6955602aee8de71
+      id: 3126765036
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Play_BGM
+        ObjectType: 3
+      Path: Default Work Unit\Music\Play_BGM
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
