@@ -241,8 +241,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 4
   _points: 10
+  _laserPrefab: {fileID: 7119604876145237282, guid: 952664abd6131b043a3b0d28fea98073,
+    type: 3}
   _explosionSound:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 303864f356c39ae4ba1ce15545c1801a,
+      type: 2}
+  _laserSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0531268b3e7ed9d449dc56acdd8598d7,
       type: 2}

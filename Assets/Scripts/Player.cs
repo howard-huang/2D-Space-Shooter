@@ -44,8 +44,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _tripleShotCooldown = 5.0f;
 
+    [Header("Audio")]
     [SerializeField]
     private AK.Wwise.Event _laserAudio;
+    [SerializeField]
+    private AK.Wwise.Event _explosionAudio;
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
@@ -155,6 +158,16 @@ public class Player : MonoBehaviour
     {
         _isShieldActive = true;
         _shieldVisual.SetActive(true);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy Laser")
+        {
+            Destroy(other.gameObject);
+            _explosionAudio.Post(this.gameObject);
+            TakeDamage();
+        }
     }
     
     public void TakeDamage()

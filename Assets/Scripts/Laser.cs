@@ -15,12 +15,19 @@ public class Laser : MonoBehaviour
 
     private void Movement()
     {
-        transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        if (this.tag == "Laser")
+        {
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        }
+        else if (this.tag == "Enemy Laser")
+        {
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        }
     }
 
     private void Destroy()
     {
-        if (transform.position.y > 8)
+        if (transform.position.y > 8 || transform.position.y < -8)
         {
             if (transform.parent != null && transform.parent.tag == "Triple Shot")
             {

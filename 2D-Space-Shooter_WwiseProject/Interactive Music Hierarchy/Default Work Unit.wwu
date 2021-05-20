@@ -87,25 +87,6 @@
 										<MusicTransition Name="Transition" ID="{8C01A9BE-C853-4BEA-9F2E-868CFE694AB3}">
 											<TransitionInfo/>
 										</MusicTransition>
-										<MusicTransition Name="Transition" ID="{61D6067C-93F6-4BC6-A997-2E06A15FEAF2}">
-											<PropertyList>
-												<Property Name="DestinationContextType" Type="int16" Value="1"/>
-												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-												<Property Name="PlayTransitionPreEntry" Type="bool" Value="False"/>
-											</PropertyList>
-											<ReferenceList/>
-											<TransitionInfo>
-												<SourceFadeOut>
-													<MusicFade Name="Source Fade-out" ID="{1CCD9763-1823-4986-B729-16EEF71524C0}">
-														<PropertyList>
-															<Property Name="FadeCurve" Type="int16" Value="5"/>
-															<Property Name="FadeTime" Type="Real64" Value="3"/>
-															<Property Name="FadeType" Type="int16" Value="1"/>
-														</PropertyList>
-													</MusicFade>
-												</SourceFadeOut>
-											</TransitionInfo>
-										</MusicTransition>
 									</ChildrenList>
 									<TransitionInfo/>
 								</MusicTransition>

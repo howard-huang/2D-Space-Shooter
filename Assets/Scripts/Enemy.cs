@@ -12,19 +12,28 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int _points = 10;
 
-    private Player _player;
-    private Animator _anim;
-    private Collider2D _collider2D;
+    [Header("Laser")]
+    [SerializeField]
+    private GameObject _laserPrefab;
+    private Vector3 _laserOffset = new Vector3(0, -1.0f, 0);
+    private GameObject _laserContainer;
 
     [Header("Audio")]
     [SerializeField]
     private AK.Wwise.Event _explosionSound;
+    [SerializeField]
+    private AK.Wwise.Event _laserSound;
+
+    private Player _player;
+    private Animator _anim;
+    private Collider2D _collider2D;
 
     private void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         _anim = gameObject.GetComponent<Animator>();
         _collider2D = gameObject.GetComponent<Collider2D>();
+        _laserContainer = GameObject.Find("LaserContainer");
 
         if (_player == null)
         {
@@ -38,6 +47,12 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("Enemy Collider2D is Null!");
         }
+        if (_laserContainer == null)
+        {
+            Debug.LogError("Laser Container is Null!");
+        }
+
+        StartCoroutine(FireLaserCoroutine());
     }
 
     private void Update()
@@ -57,6 +72,21 @@ public class Enemy : MonoBehaviour
         {
             float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             transform.position = new Vector3(_randXPos, 6.5f, 0f);
+        }
+    }
+
+    private IEnumerator FireLaserCoroutine()
+    {
+        while (true)
+        {
+            Vector3 _laserPos = transform.position + _laserOffset;
+            GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
+            _laserSound.Post(this.gameObject);
+            
+            _laser.tag = "Enemy Laser";
+            _laser.transform.parent = _laserContainer.transform;
+
+            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
         }
     }
 

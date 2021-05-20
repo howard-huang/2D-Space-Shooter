@@ -29,7 +29,7 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value=""/>
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value=""/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
-				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="ONpnZWNS9E+IuS1JR2zL5AGPSkL/////Uc6MdYh8ekG8M+KKnr7AbQGPSkL/////"/>
+				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="Uc6MdYh8ekG8M+KKnr7AbQGP4VL/////ONpnZWNS9E+IuS1JR2zL5AGP4VL/////"/>
 				<Property Name="Interactive Music\x64_{B5DC6F0F-68E9-4C94-A429-8A3B17AFDD8A} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP6c3ZcQCy01AAAAAAAAA8D8AAAAAAAAAAAAAAAAAACBA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
@@ -62,8 +62,8 @@
 				<Property Name="ProjectExplorer\x64_Expanded_1_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_20_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_21_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="19zA0mukmEOATgWMk8ckPPI3ppsBPJ9FgQn7f4qGvK0="/>
+				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value="+HJI9ly2x0S/Gc73kth6mcxKgZ+vHLZFmy8w+Xj3zG0="/>
+				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="19zA0mukmEOATgWMk8ckPNmWLeIVILBEmcT+t0Ob1qHyN6abATyfRYEJ+3+Khryt"/>
 				<Property Name="ProjectExplorer\x64_Expanded_4_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_5_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value=""/>
@@ -101,6 +101,7 @@
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
+				<Property Name="Soundcaster\PreviousSession" Type="string" Value="{69F18948-4FBD-4F9E-9912-FF86F65E7046}"/>
 			</PropertyList>
 		</UserProjectSettings>
 	</UserProjectSettingsInfo>
