@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19878adaba8d29148bb1618f594a7be9, type: 3}
-  m_Name: 021DE0C7-DBE0-4782-B695-5602AEE8DE71
+  m_Name: 9D7BE1C1-3240-4741-B14E-EE411F72AF13
   m_EditorClassIdentifier: 
-  objectName: BGM_Play
-  id: 1093876158
-  guid: 021DE0C7-DBE0-4782-B695-5602AEE8DE71
+  objectName: Powerup_Play
+  id: 2538393448
+  guid: 9D7BE1C1-3240-4741-B14E-EE411F72AF13

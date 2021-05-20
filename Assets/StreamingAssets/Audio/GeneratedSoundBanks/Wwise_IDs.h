@@ -13,7 +13,11 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_BGM = 3126765036U;
+        static const AkUniqueID BGM_PLAY = 1093876158U;
+        static const AkUniqueID BGM_STOP = 2090192256U;
+        static const AkUniqueID EXPLOSION_PLAY = 2090513163U;
+        static const AkUniqueID LASER_PLAY = 3430907247U;
+        static const AkUniqueID POWERUP_PLAY = 2538393448U;
     } // namespace EVENTS
 
     namespace BANKS

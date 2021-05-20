@@ -5,12 +5,64 @@
 			<ChildrenList>
 				<Folder Name="Music" ID="{D2C0DCD7-A46B-4398-804E-058C93C7243C}" ShortID="814849048">
 					<ChildrenList>
-						<Event Name="Play_BGM" ID="{021DE0C7-DBE0-4782-B695-5602AEE8DE71}">
+						<Event Name="BGM_Play" ID="{021DE0C7-DBE0-4782-B695-5602AEE8DE71}">
 							<ChildrenList>
 								<Action Name="" ID="{4428F9B6-13E7-4534-B913-45A1E284D1ED}" ShortID="786686751">
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="BGM" ID="{03FA09D8-2FA3-4235-8FE3-76B14C0EA0C4}" WorkUnitID="{0C53BA21-FB6E-4622-8F28-DE4320CBE403}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="BGM_Stop" ID="{B1C551B4-58F0-40C7-A934-AFA59C22B86D}">
+							<ChildrenList>
+								<Action Name="" ID="{6D5F4BF4-43A3-49CA-81EE-90DBDFC4E8B2}" ShortID="921220347">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM" ID="{03FA09D8-2FA3-4235-8FE3-76B14C0EA0C4}" WorkUnitID="{0C53BA21-FB6E-4622-8F28-DE4320CBE403}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SFX" ID="{E22D96D9-2015-44B0-99C4-FEB7439BD6A1}" ShortID="1050252988">
+					<ChildrenList>
+						<Event Name="Explosion_Play" ID="{324543B4-543C-4C76-ABC3-E766A9EB19E5}">
+							<ChildrenList>
+								<Action Name="" ID="{9EB4ED3D-0C16-4CC4-8C45-DDE0D49C7DBA}" ShortID="778205882">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Explosion" ID="{9EEEB99C-017E-498A-A16E-906A2F80B4DC}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Laser_Play" ID="{FAC8FAAA-AF2E-4F44-9032-4AF0E440107F}">
+							<ChildrenList>
+								<Action Name="" ID="{A1CD8B76-D3C8-4E3A-8A8F-FD93BFCF344E}" ShortID="690693234">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Laser" ID="{82602E96-11D6-414E-AD8B-C47B000CE7F3}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Powerup_Play" ID="{9D7BE1C1-3240-4741-B14E-EE411F72AF13}">
+							<ChildrenList>
+								<Action Name="" ID="{57C278C4-24EC-48D4-ABD0-61C0DB4FF994}" ShortID="978361521">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Powerup" ID="{E65C0F00-802E-4BC8-BE71-554205AA5352}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

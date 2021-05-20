@@ -3,8 +3,12 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{02C02D2E-0C33-4023-9460-C7080EB7ED3D}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Callum\Desktop\Git test\2D-Space-Shooter\Assets\2D_Galaxy_Assets\Audio\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\Assets\2D_Galaxy_Assets\Audio\"/>
 				<Property Name="Event Action List\{021DE0C7-DBE0-4782-B695-5602AEE8DE71}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{324543B4-543C-4C76-ABC3-E766A9EB19E5}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{9D7BE1C1-3240-4741-B14E-EE411F72AF13}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{B1C551B4-58F0-40C7-A934-AFA59C22B86D}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{FAC8FAAA-AF2E-4F44-9032-4AF0E440107F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
@@ -21,9 +25,12 @@
 				<Property Name="Game Profiler\Voice Monitor\LastBus" Type="string" Value="{00000000-0000-0000-0000-000000000000}"/>
 				<Property Name="General\LatestLanguage" Type="int32" Value="684519430"/>
 				<Property Name="General\LatestPlatform" Type="string" Value="Mac"/>
+				<Property Name="GenerateSoundBanks\x64_SelectedLanguages" Type="string" Value=""/>
+				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value=""/>
+				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value=""/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
 				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="ONpnZWNS9E+IuS1JR2zL5AGPSkL/////Uc6MdYh8ekG8M+KKnr7AbQGPSkL/////"/>
-				<Property Name="Interactive Music\x64_{B5DC6F0F-68E9-4C94-A429-8A3B17AFDD8A} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP6c3ZcQCy01AAAAAAAAA8D8AAAAAAAAAAAAAAAAAACJA"/>
+				<Property Name="Interactive Music\x64_{B5DC6F0F-68E9-4C94-A429-8A3B17AFDD8A} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP6c3ZcQCy01AAAAAAAAA8D8AAAAAAAAAAAAAAAAAACBA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="MeterView\MeterMode1Viewpoint0" Type="int32" Value="1"/>
@@ -34,6 +41,7 @@
 				<Property Name="MonitoringManager\GameObjectFilter\GameObjectFilterVersion" Type="int32" Value="1"/>
 				<Property Name="MonitoringManager\GameObjectFilter\GameObjectFiltersEnable" Type="bool" Value="True"/>
 				<Property Name="MonitoringManager\GameObjectFilter\x64_GameObjectFilters" Type="string" Value=""/>
+				<Property Name="Music Transition List\{03FA09D8-2FA3-4235-8FE3-76B14C0EA0C4}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_10_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
 				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{2388DAEA-9775-46C6-A2ED-C5222A397756}"/>

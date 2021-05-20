@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Callum\Desktop\Git test\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Callum\Desktop\Git test\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Callum\Desktop\Git test\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Callum\Desktop\Git test\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,16 +16,41 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3589812408" Language="SFX" Hash="3933966764">
+		<SoundBank Id="3589812408" Language="SFX" Hash="2913454577">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music_Soundbank</ObjectPath>
 			<ShortName>Music_Soundbank</ShortName>
 			<Path>Music_Soundbank.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3126765036" Name="Play_BGM" ObjectPath="\Events\Default Work Unit\Music\Play_BGM" DurationType="Infinite">
+				<Event Id="1093876158" Name="BGM_Play" ObjectPath="\Events\Default Work Unit\Music\BGM_Play" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="611651431" Language="SFX">
 							<ShortName>music_background.wav</ShortName>
 							<Path>SFX\music_background_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2090192256" Name="BGM_Stop" ObjectPath="\Events\Default Work Unit\Music\BGM_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2090513163" Name="Explosion_Play" ObjectPath="\Events\Default Work Unit\SFX\Explosion_Play" DurationType="OneShot" DurationMin="2.395702" DurationMax="3.589498">
+					<IncludedMemoryFiles>
+						<File Id="208601495" Language="SFX">
+							<ShortName>explosion_sound.wav</ShortName>
+							<Path>SFX\explosion_sound_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3430907247" Name="Laser_Play" ObjectPath="\Events\Default Work Unit\SFX\Laser_Play" DurationType="OneShot" DurationMin="0.534192" DurationMax="0.800384">
+					<IncludedMemoryFiles>
+						<File Id="241522478" Language="SFX">
+							<ShortName>laser_shot.wav</ShortName>
+							<Path>SFX\laser_shot_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2538393448" Name="Powerup_Play" ObjectPath="\Events\Default Work Unit\SFX\Powerup_Play" DurationType="OneShot" DurationMin="0.800000" DurationMax="0.897970">
+					<IncludedMemoryFiles>
+						<File Id="459772463" Language="SFX">
+							<ShortName>power_up_sound.wav</ShortName>
+							<Path>SFX\power_up_sound_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

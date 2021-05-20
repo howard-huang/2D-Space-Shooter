@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Health and Damage")]
     [SerializeField]
     private int _playerLives = 3;
     private bool _isShieldActive;
@@ -14,9 +15,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _explosionPrefab;
 
+    [Header("Score")]
     [SerializeField]
     private int _score;
 
+    [Header("Speed")]
     [SerializeField]
     private float _speed = 5.0f;
     [SerializeField]
@@ -24,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speedBoostCooldown = 5.0f;
 
+    [Header("Lasers")]
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
@@ -40,12 +44,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _tripleShotCooldown = 5.0f;
 
+    [SerializeField]
+    private AK.Wwise.Event _laserAudio;
+
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
-    private AudioSource _audio;
-    
-    [SerializeField]
-    private AudioClip _laserAudio;
 
     private void Start()
     {
@@ -53,7 +56,6 @@ public class Player : MonoBehaviour
 
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        _audio = GetComponent<AudioSource>();
 
         if (_spawnManager == null)
         {
@@ -63,11 +65,6 @@ public class Player : MonoBehaviour
         if (_uiManager == null)
         {
             Debug.LogError("UI Manager is Null!");
-        }
-
-        if (_audio == null)
-        {
-            Debug.LogError("Player Audio Source is Null!");
         }
 
         _shieldVisual.SetActive(false);
@@ -127,7 +124,7 @@ public class Player : MonoBehaviour
             _laser.transform.parent = _laserContainer.transform;                                    //GameObject Nesting
         }
 
-        _audio.PlayOneShot(_laserAudio);
+        _laserAudio.Post(this.gameObject);
     }
 
     public void TripleShotActive()
