@@ -1110,12 +1110,11 @@
 								</Effect>
 								<Effect Name="Inside_My_Head" ID="{94B53301-9AA1-468F-8419-92AEDAAE39DF}" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 									<PropertyList>
-										<Property Name="DecayTime" Type="Real32" Value="0.8"/>
 										<Property Name="Density" Type="Real32" Value="82"/>
 										<Property Name="Diffusion" Type="Real32" Value="0"/>
-										<Property Name="DryLevel" Type="Real32" Value="-96"/>
+										<Property Name="DryLevel" Type="Real32" Value="-18"/>
 										<Property Name="ERLevel" Type="Real32" Value="-3"/>
-										<Property Name="ERPattern" Type="int32" Value="24"/>
+										<Property Name="ERPattern" Type="int32" Value="21"/>
 										<Property Name="Filter1Freq" Type="Real32" Value="590"/>
 										<Property Name="Filter1Gain" Type="Real32" Value="-9.5"/>
 										<Property Name="Filter2Freq" Type="Real32" Value="780"/>
@@ -1124,7 +1123,7 @@
 										<Property Name="HFDamping" Type="Real32" Value="0.5"/>
 										<Property Name="PreDelay" Type="Real32" Value="144"/>
 										<Property Name="Quality" Type="int32" Value="4"/>
-										<Property Name="ReverbLevel" Type="Real32" Value="-16"/>
+										<Property Name="ReverbLevel" Type="Real32" Value="-14"/>
 										<Property Name="RoomSize" Type="Real32" Value="100"/>
 										<Property Name="StereoWidth" Type="Real32" Value="0"/>
 									</PropertyList>
@@ -1400,6 +1399,7 @@
 										<Property Name="Diffusion" Type="Real32" Value="53"/>
 										<Property Name="ERLevel" Type="Real32" Value="-15"/>
 										<Property Name="ERPattern" Type="int32" Value="30"/>
+										<Property Name="EnableEarlyReflections" Type="bool" Value="False"/>
 										<Property Name="Filter1Freq" Type="Real32" Value="490"/>
 										<Property Name="Filter1Gain" Type="Real32" Value="-4.5"/>
 										<Property Name="Filter1InsertPos" Type="int32" Value="2"/>

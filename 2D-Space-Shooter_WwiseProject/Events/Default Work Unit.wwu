@@ -51,7 +51,7 @@
 								<Action Name="" ID="{A1CD8B76-D3C8-4E3A-8A8F-FD93BFCF344E}" ShortID="690693234">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Laser" ID="{82602E96-11D6-414E-AD8B-C47B000CE7F3}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+											<ObjectRef Name="Laser_Blend" ID="{7D1C30D3-BF60-4C61-93CB-F950701AB5AA}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

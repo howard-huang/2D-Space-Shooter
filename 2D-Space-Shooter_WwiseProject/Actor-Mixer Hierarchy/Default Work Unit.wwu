@@ -54,55 +54,6 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="Laser" ID="{82602E96-11D6-414E-AD8B-C47B000CE7F3}" ShortID="560408504">
-							<PropertyList>
-								<Property Name="Pitch" Type="int32">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{264A47F5-1C04-4C1B-A78F-D1343810FAD5}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="500"/>
-													<Property Name="Min" Type="Real64" Value="-200"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<Sound Name="laser_shot" ID="{0EEA71A9-EB68-40F0-8D81-A5FBBBD9D1B7}" ShortID="828350382">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="laser_shot" ID="{18813FC7-AB75-4FAD-B276-25D6E005E41C}">
-											<Language>SFX</Language>
-											<AudioFile>laser_shot.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="241522478"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="laser_shot" ID="{18813FC7-AB75-4FAD-B276-25D6E005E41C}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Powerup" ID="{E65C0F00-802E-4BC8-BE71-554205AA5352}" ShortID="171476967">
 							<PropertyList>
 								<Property Name="Pitch" Type="int32">
@@ -155,6 +106,197 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<BlendContainer Name="Laser_Blend" ID="{7D1C30D3-BF60-4C61-93CB-F950701AB5AA}" ShortID="738168371">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Laser_Random" ID="{82602E96-11D6-414E-AD8B-C47B000CE7F3}" ShortID="560408504">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{264A47F5-1C04-4C1B-A78F-D1343810FAD5}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="250"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Player_Laser_1" ID="{6970288C-2ABB-4CCB-8A43-A45EFE614312}" ShortID="889466311">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Player_Laser_1" ID="{F93B5AB1-752F-4599-A941-9106FF87827F}">
+													<Language>SFX</Language>
+													<AudioFile>Player_Laser_1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="82201410"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Player_Laser_1" ID="{F93B5AB1-752F-4599-A941-9106FF87827F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Player_Laser_2" ID="{1C4D2743-1079-4A08-B8CD-96674A68A3DF}" ShortID="800199139">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Player_Laser_2" ID="{60084DC5-58DA-45B9-BCC4-A5A662E52743}">
+													<Language>SFX</Language>
+													<AudioFile>Player_Laser_2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1060362071"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Player_Laser_2" ID="{60084DC5-58DA-45B9-BCC4-A5A662E52743}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Player_Laser_3" ID="{8CE91814-F62C-46D2-9439-87B911ED98E3}" ShortID="702062184">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Player_Laser_3" ID="{AA5CFB5B-8693-4881-A2A6-3586720F75EF}">
+													<Language>SFX</Language>
+													<AudioFile>Player_Laser_3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="745363775"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Player_Laser_3" ID="{AA5CFB5B-8693-4881-A2A6-3586720F75EF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Laser_AltRandom" ID="{643FC028-BE3B-4AA0-9D8E-FD6406407309}" ShortID="670925323">
+									<PropertyList>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{0B0E1529-4F81-4996-ADBC-99E7A838F1B2}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="50"/>
+															<Property Name="Min" Type="Real64" Value="-50"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Inside_My_Head" ID="{94B53301-9AA1-468F-8419-92AEDAAE39DF}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Player_Alt_Laser_1" ID="{480BE47D-B99E-498C-B312-78701155B50D}" ShortID="73115308">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Player_Alt_Laser_1" ID="{561E0868-EDA7-40EF-8BC0-BF6373FC90A8}">
+													<Language>SFX</Language>
+													<AudioFile>Player_Alt_Laser_1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="263161437"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Player_Alt_Laser_1" ID="{561E0868-EDA7-40EF-8BC0-BF6373FC90A8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Player_Alt_Laser_2" ID="{EFB4E706-4374-42CA-9BB7-0B04D6D71553}" ShortID="940908931">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Player_Alt_Laser_2" ID="{C154E9B3-62C5-44C3-B2F0-AD7844E0476A}">
+													<Language>SFX</Language>
+													<AudioFile>Player_Alt_Laser_2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="89020645"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Player_Alt_Laser_2" ID="{C154E9B3-62C5-44C3-B2F0-AD7844E0476A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</BlendContainer>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

@@ -11,12 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="4204904655">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2766873760">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3589812408" Language="SFX" Hash="3590826280">
+		<SoundBank Id="3589812408" Language="SFX" Hash="2115707465">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music_Soundbank</ObjectPath>
 			<ShortName>Music_Soundbank</ShortName>
 			<Path>Music_Soundbank.bnk</Path>
@@ -38,11 +38,27 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3430907247" Name="Laser_Play" ObjectPath="\Events\Default Work Unit\SFX\Laser_Play" DurationType="OneShot" DurationMin="0.534192" DurationMax="0.800384">
+				<Event Id="3430907247" Name="Laser_Play" ObjectPath="\Events\Default Work Unit\SFX\Laser_Play" DurationType="OneShot" DurationMin="1.112828" DurationMax="1.285708">
 					<IncludedMemoryFiles>
-						<File Id="241522478" Language="SFX">
-							<ShortName>laser_shot.wav</ShortName>
-							<Path>SFX\laser_shot_10C4C929.wem</Path>
+						<File Id="82201410" Language="SFX">
+							<ShortName>Player_Laser_1.wav</ShortName>
+							<Path>SFX\Player_Laser_1_10C4C929.wem</Path>
+						</File>
+						<File Id="89020645" Language="SFX">
+							<ShortName>Player_Alt_Laser_2.wav</ShortName>
+							<Path>SFX\Player_Alt_Laser_2_10C4C929.wem</Path>
+						</File>
+						<File Id="263161437" Language="SFX">
+							<ShortName>Player_Alt_Laser_1.wav</ShortName>
+							<Path>SFX\Player_Alt_Laser_1_10C4C929.wem</Path>
+						</File>
+						<File Id="745363775" Language="SFX">
+							<ShortName>Player_Laser_3.wav</ShortName>
+							<Path>SFX\Player_Laser_3_10C4C929.wem</Path>
+						</File>
+						<File Id="1060362071" Language="SFX">
+							<ShortName>Player_Laser_2.wav</ShortName>
+							<Path>SFX\Player_Laser_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

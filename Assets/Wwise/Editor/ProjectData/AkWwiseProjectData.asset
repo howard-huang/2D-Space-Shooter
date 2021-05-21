@@ -68,7 +68,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f237a69b013c9f458109fb7f8a86bcad
     GuidInternal: 
-    m_lastTime: -8585801252102454701
+    m_lastTime: -8585800341966700701
     List:
     - name: BGM_Play
       guid: c7e01d02e0db8247b6955602aee8de71
@@ -124,8 +124,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Laser_Play
       maxAttenuation: 0
-      maxDuration: 0.800384
-      minDuration: 0.534192
+      maxDuration: 1.285708
+      minDuration: 1.112828
     - name: Music
       guid: d7dcc0d26ba49843804e058c93c7243c
       id: 3991942870
