@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0e67614c0c75f145840a64f3a1ad51ee
     GuidInternal: 
-    m_lastTime: -8585797824536754070
+    m_lastTime: -8585797778299149923
     List:
     - name: Music_Soundbank
       guid: cf2a90eb7109404cbff4d0b6729875ae
@@ -77,7 +77,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f237a69b013c9f458109fb7f8a86bcad
     GuidInternal: 
-    m_lastTime: -8585797836630860847
+    m_lastTime: -8585797772812756572
     List:
     - name: BGM
       guid: 601a220418d82d40b2238df4c222e0d6
@@ -197,6 +197,20 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: PlayerSFX_Stop
+      guid: 084c95ea5f4d8d44ac9cf24de520c29c
+      id: 1158098870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: PlayerSFX_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\PlayerSFX_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Powerup_Play
       guid: c1e17b9d40324147b14eee411f72af13
       id: 2538393448
@@ -269,6 +283,38 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: SpeedBoost_Play
+      guid: cb7806352d90c84b8312560f21f62348
+      id: 1600032724
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Thruster
+        ObjectType: 4
+      - ElementName: SpeedBoost_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Thruster\SpeedBoost_Play
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: SpeedBoost_Stop
+      guid: 056977313b942449ba37814564f9e1f5
+      id: 3262461614
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Thruster
+        ObjectType: 4
+      - ElementName: SpeedBoost_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Thruster\SpeedBoost_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Thruster
       guid: fdf2fde7e4806b44a276f8d46fbf8379
       id: 1758897770
@@ -333,8 +379,39 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: c162ab059111784db0d9b444df27282e
     GuidInternal: 
-    m_lastTime: -8585801252098848639
-    List: []
+    m_lastTime: -8585797781278209507
+    List:
+    - name: Thrusters
+      guid: 80592fc964f88347801a1d3d9529d4ce
+      id: 1944582317
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Thrusters
+        ObjectType: 9
+      Path: Default Work Unit\Thrusters
+      values:
+      - name: None
+        guid: f55e8d410629134d98da04160dd49f24
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      - name: SpeedActive
+        guid: 5818ce728ffb3c4e9d70f3c52c7ac742
+        id: 4248879684
+        PathAndIcons:
+        - ElementName: SpeedActive
+          ObjectType: 8
+      - name: SpeedInactive
+        guid: 33ec899e03914041aeeba9f54fee6bad
+        id: 220333237
+        PathAndIcons:
+        - ElementName: SpeedInactive
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:

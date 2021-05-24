@@ -59,13 +59,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AK.Wwise.Event _explosionAudio;
     [SerializeField]
-    private AK.Wwise.Event _thrusterAudio;
+    private AK.Wwise.Event _thrusterAudio, _stopThrusterAudio;
     [SerializeField]
-    private AK.Wwise.Event _stopThrusterAudio;
+    private AK.Wwise.Event _speedAudio, _stopSpeedAudio;
     [SerializeField]
-    private AK.Wwise.Event _shieldAudio;
+    private AK.Wwise.Event _shieldAudio, _stopShieldAudio;
+
     [SerializeField]
-    private AK.Wwise.Event _stopShieldAudio;
+    private AK.Wwise.Event _stopSFX;
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
@@ -189,6 +190,7 @@ public class Player : MonoBehaviour
     {
         _speed *= _speedMultiplier;
         _speedVisual.SetActive(true);
+        _speedAudio.Post(this.gameObject);
         StartCoroutine(SpeedBoostPowerDownRoutine());
     }
 
@@ -197,6 +199,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_speedBoostCooldown);
         _speed /= _speedMultiplier;
         _speedVisual.SetActive(false);
+        _stopSpeedAudio.Post(this.gameObject);
     }
 
     public void ShieldStrength(int _strength)
@@ -268,6 +271,7 @@ public class Player : MonoBehaviour
                 break;
             case 0:
                 _spawnManager.OnPlayerDeath();
+                _stopSFX.Post(this.gameObject);
                 Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 break;

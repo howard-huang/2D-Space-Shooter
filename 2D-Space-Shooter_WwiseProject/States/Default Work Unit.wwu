@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{05AB62C1-1191-4D78-B0D9-B444DF27282E}" SchemaVersion="97">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{05AB62C1-1191-4D78-B0D9-B444DF27282E}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{05AB62C1-1191-4D78-B0D9-B444DF27282E}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Thrusters" ID="{C92F5980-F864-4783-801A-1D3D9529D4CE}">
+					<ChildrenList>
+						<State Name="None" ID="{418D5EF5-2906-4D13-98DA-04160DD49F24}"/>
+						<State Name="SpeedActive" ID="{72CE1858-FB8F-4E3C-9D70-F3C52C7AC742}"/>
+						<State Name="SpeedInactive" ID="{9E89EC33-9103-4140-AEEB-A9F54FEE6BAD}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

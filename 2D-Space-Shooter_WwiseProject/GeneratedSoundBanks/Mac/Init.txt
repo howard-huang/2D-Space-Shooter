@@ -1,3 +1,11 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	1944582317	Thrusters			\Default Work Unit\Thrusters	
+
+State	ID	Name	State Group			Notes
+	220333237	SpeedInactive	Thrusters			
+	748895195	None	Thrusters			
+	4248879684	SpeedActive	Thrusters			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 

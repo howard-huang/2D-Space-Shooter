@@ -94,6 +94,57 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="SpeedBoost_Play" ID="{350678CB-902D-4BC8-8312-560F21F62348}">
+									<ChildrenList>
+										<Action Name="" ID="{B32701A1-DC2D-4D6E-A5E4-7D9FFC3C327A}" ShortID="1011218879">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SpeedActive" ID="{72CE1858-FB8F-4E3C-9D70-F3C52C7AC742}" WorkUnitID="{05AB62C1-1191-4D78-B0D9-B444DF27282E}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{292BBA9D-E9A1-46B2-BB7B-FE4DA923A959}" ShortID="122872005">
+											<PropertyList>
+												<Property Name="FadeInCurve" Type="int16" Value="0"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SpeedBoost_Blend" ID="{26182553-8711-48DA-8741-03C8DC86D5DF}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="SpeedBoost_Stop" ID="{31776905-943B-4924-BA37-814564F9E1F5}">
+									<ChildrenList>
+										<Action Name="" ID="{DABB2B29-CD17-4AB1-8555-F03DE7F8FA84}" ShortID="596117077">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SpeedBoost_Blend" ID="{26182553-8711-48DA-8741-03C8DC86D5DF}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{E3E30AD1-F5CC-4D96-AFDE-284231A8B296}" ShortID="634450332">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SpeedInactive" ID="{9E89EC33-9103-4140-AEEB-A9F54FEE6BAD}" WorkUnitID="{05AB62C1-1191-4D78-B0D9-B444DF27282E}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Lasers" ID="{46BB8C5F-F453-495E-8146-CD1A92C794AF}" ShortID="965359642">
@@ -129,7 +180,7 @@
 										<Action Name="" ID="{6F0845F1-6D9B-43CE-AF4F-137B81889D10}" ShortID="706588479">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Shield_Powerup" ID="{B47FFA68-BD64-4ABD-8BDF-44816CD3A213}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+													<ObjectRef Name="ShieldPowerup" ID="{B47FFA68-BD64-4ABD-8BDF-44816CD3A213}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -143,7 +194,7 @@
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Shield_Powerup" ID="{B47FFA68-BD64-4ABD-8BDF-44816CD3A213}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+													<ObjectRef Name="ShieldPowerup" ID="{B47FFA68-BD64-4ABD-8BDF-44816CD3A213}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -151,6 +202,40 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Event Name="PlayerSFX_Stop" ID="{EA954C08-4D5F-448D-AC9C-F24DE520C29C}">
+							<ChildrenList>
+								<Action Name="" ID="{E179E860-1AE5-4812-84DE-02EA2EB8E655}" ShortID="951753779">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Thruster_Stop" ID="{6B75F255-8015-419B-A5FE-2BBE10F8B8C9}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{EDDFBF12-0344-4BFF-A509-463A6FACC2CB}" ShortID="680498050">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SpeedBoost_Stop" ID="{31776905-943B-4924-BA37-814564F9E1F5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{22C558E4-C5E0-4DDB-856E-9B9AB78E4067}" ShortID="241503460">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Shield_Stop" ID="{656E0F33-5654-455E-9DFA-DB606A68E23B}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

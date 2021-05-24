@@ -18,12 +18,31 @@ namespace AK
         static const AkUniqueID ENEMYLASER_PLAY = 1194956557U;
         static const AkUniqueID EXPLOSION_PLAY = 2090513163U;
         static const AkUniqueID LASER_PLAY = 3430907247U;
+        static const AkUniqueID PLAYERSFX_STOP = 1158098870U;
         static const AkUniqueID POWERUP_PLAY = 2538393448U;
         static const AkUniqueID SHIELD_PLAY = 3556904531U;
         static const AkUniqueID SHIELD_STOP = 2686923321U;
+        static const AkUniqueID SPEEDBOOST_PLAY = 1600032724U;
+        static const AkUniqueID SPEEDBOOST_STOP = 3262461614U;
         static const AkUniqueID THRUSTER_START = 2051128187U;
         static const AkUniqueID THRUSTER_STOP = 2308976345U;
     } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace THRUSTERS
+        {
+            static const AkUniqueID GROUP = 1944582317U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID SPEEDACTIVE = 4248879684U;
+                static const AkUniqueID SPEEDINACTIVE = 220333237U;
+            } // namespace STATE
+        } // namespace THRUSTERS
+
+    } // namespace STATES
 
     namespace BANKS
     {

@@ -11,12 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2766873760">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2884192">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2641024368" Language="SFX" Hash="1116828851">
+		<SoundBank Id="2641024368" Language="SFX" Hash="1563810822">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
 			<ShortName>SFX_Soundbank</ShortName>
 			<Path>SFX_Soundbank.bnk</Path>
@@ -77,6 +77,13 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1158098870" Name="PlayerSFX_Stop" ObjectPath="\Events\Default Work Unit\SFX\PlayerSFX_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionPostEvent>
+						<ActionPostEventEntry Id="2308976345" Name="Thruster_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Stop"/>
+						<ActionPostEventEntry Id="2686923321" Name="Shield_Stop" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Stop"/>
+						<ActionPostEventEntry Id="3262461614" Name="SpeedBoost_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\SpeedBoost_Stop"/>
+					</ActionPostEvent>
+				</Event>
 				<Event Id="2538393448" Name="Powerup_Play" ObjectPath="\Events\Default Work Unit\SFX\Powerup_Play" DurationType="OneShot" DurationMin="0.857125" DurationMax="0.962090">
 					<IncludedMemoryFiles>
 						<File Id="1033750899" Language="SFX">
@@ -106,6 +113,34 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="2686923321" Name="Shield_Stop" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1600032724" Name="SpeedBoost_Play" ObjectPath="\Events\Default Work Unit\SFX\Thruster\SpeedBoost_Play" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="303409644" Language="SFX">
+							<ShortName>Thruster 2.wav</ShortName>
+							<Path>SFX\Thruster 2_10C4C929.wem</Path>
+						</File>
+						<File Id="466473259" Language="SFX">
+							<ShortName>Thruster.wav</ShortName>
+							<Path>SFX\Thruster_10C4C929.wem</Path>
+						</File>
+						<File Id="591146097" Language="SFX">
+							<ShortName>Speed.wav</ShortName>
+							<Path>SFX\Speed_10C4C929.wem</Path>
+						</File>
+						<File Id="891127787" Language="SFX">
+							<ShortName>Thruster 3.wav</ShortName>
+							<Path>SFX\Thruster 3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionSetState>
+						<ActionSetStateEntry Id="4248879684" Name="SpeedActive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedActive"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3262461614" Name="SpeedBoost_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\SpeedBoost_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetState>
+						<ActionSetStateEntry Id="220333237" Name="SpeedInactive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedInactive"/>
+					</ActionSetState>
+				</Event>
 				<Event Id="2051128187" Name="Thruster_Start" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Start" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="303409644" Language="SFX">
@@ -142,6 +177,14 @@
 					<Path>SFX\Shield Start_10C4C929.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
+			<StateGroups>
+				<StateGroup Id="220333237" Name="SpeedInactive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedInactive">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="4248879684" Name="SpeedActive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedActive">
+					<States/>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
 		<SoundBank Id="3589812408" Language="SFX" Hash="1045239252">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music_Soundbank</ObjectPath>
