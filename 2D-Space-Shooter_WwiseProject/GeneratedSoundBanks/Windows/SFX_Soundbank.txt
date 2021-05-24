@@ -1,0 +1,26 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1194956557	EnemyLaser_Play			\Default Work Unit\SFX\Lasers\EnemyLaser_Play	
+	2051128187	Thruster_Start			\Default Work Unit\SFX\Thruster\Thruster_Start	
+	2090513163	Explosion_Play			\Default Work Unit\SFX\Explosion_Play	
+	2308976345	Thruster_Stop			\Default Work Unit\SFX\Thruster\Thruster_Stop	
+	2538393448	Powerup_Play			\Default Work Unit\SFX\Powerup_Play	
+	3430907247	Laser_Play			\Default Work Unit\SFX\Lasers\Laser_Play	
+
+Effect plug-ins	ID	Name	Type				Notes
+	701863527	Inside_My_Head	Wwise RoomVerb			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	82201410	Player_Laser_1	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Player_Laser_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Laser_Blend\Laser_Random\Player_Laser_1		246920
+	89020645	Player_Alt_Laser_2	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Player_Alt_Laser_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Laser_Blend\Laser_AltRandom\Player_Alt_Laser_2		123492
+	182345801	Explosion 2	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Explosion 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Explosion\Explosion 2		288060
+	263161437	Player_Alt_Laser_1	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Player_Alt_Laser_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Laser_Blend\Laser_AltRandom\Player_Alt_Laser_1		123492
+	267553915	Enemy_Laser	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Enemy_Laser_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Enemy_Laser_Blend\Laser_Random\Enemy_Laser		185204
+	303409644	Thruster 2	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Thruster 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Thruster\Thruster 2		576060
+	459772463	power_up_sound	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\power_up_sound_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Powerup\power_up_sound		141184
+	466473259	Thruster	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Thruster_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Thruster\Thruster		576060
+	745363775	Player_Laser_3	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Player_Laser_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Laser_Blend\Laser_Random\Player_Laser_3		246920
+	787072862	Explosion	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Explosion_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Explosion\Explosion		288060
+	881071447	Explosion 3	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Explosion 3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Explosion\Explosion 3		288060
+	891127787	Thruster 3	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Thruster 3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Thruster\Thruster 3		576060
+	1060362071	Player_Laser_2	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\Player_Laser_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Laser_Blend\Laser_Random\Player_Laser_2		246920
+

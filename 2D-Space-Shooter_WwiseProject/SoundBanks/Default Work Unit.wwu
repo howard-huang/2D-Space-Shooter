@@ -6,10 +6,21 @@
 				<SoundBank Name="Music_Soundbank" ID="{EB902ACF-0971-4C40-BFF4-D0B6729875AE}">
 					<ObjectInclusionList>
 						<ObjectRef Name="BGM_Stop" ID="{B1C551B4-58F0-40C7-A934-AFA59C22B86D}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Powerup_Play" ID="{9D7BE1C1-3240-4741-B14E-EE411F72AF13}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="BGM_Play" ID="{021DE0C7-DBE0-4782-B695-5602AEE8DE71}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="SFX_Soundbank" ID="{E398F0E5-64F6-4B09-A956-BBCA5E767A07}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Thruster_Stop" ID="{6B75F255-8015-419B-A5FE-2BBE10F8B8C9}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Thruster" ID="{E7FDF2FD-80E4-446B-A276-F8D46FBF8379}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Powerup_Play" ID="{9D7BE1C1-3240-4741-B14E-EE411F72AF13}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Lasers" ID="{46BB8C5F-F453-495E-8146-CD1A92C794AF}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="EnemyLaser_Play" ID="{AD78125D-D18F-4BED-B32E-B40B618BF6C3}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Explosion_Play" ID="{324543B4-543C-4C76-ABC3-E766A9EB19E5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Laser_Play" ID="{FAC8FAAA-AF2E-4F44-9032-4AF0E440107F}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Thruster_Start" ID="{1AF6CE6A-A890-4F5F-B951-CE733459AD2D}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

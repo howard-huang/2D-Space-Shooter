@@ -21,11 +21,16 @@ public class Player : MonoBehaviour
 
     [Header("Speed")]
     [SerializeField]
-    private float _speed = 5.0f;
+    private float _speed = 4.0f;
     [SerializeField]
     private float _speedMultiplier = 2.0f;
     [SerializeField]
     private float _speedBoostCooldown = 5.0f;
+
+    [SerializeField]
+    private GameObject _thrusterVisual;
+    [SerializeField]
+    private float _thrusterMultiplier = 1.5f;
 
     [Header("Lasers")]
     [SerializeField]
@@ -49,6 +54,10 @@ public class Player : MonoBehaviour
     private AK.Wwise.Event _laserAudio;
     [SerializeField]
     private AK.Wwise.Event _explosionAudio;
+    [SerializeField]
+    private AK.Wwise.Event _thrusterAudio;
+    [SerializeField]
+    private AK.Wwise.Event _stopThrusterAudio;
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
@@ -81,6 +90,8 @@ public class Player : MonoBehaviour
         {
             FireLaser();
         }
+
+        ThrusterCheck();   
     }
 
     private void Movement()
@@ -103,6 +114,32 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
+    }
+
+    private void ThrusterCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            ThrusterOn();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            ThrusterOff();
+        }
+    }
+
+    private void ThrusterOn()
+    {
+        _speed *= _thrusterMultiplier;
+        _thrusterAudio.Post(this.gameObject);
+        _thrusterVisual.SetActive(true);
+    }
+
+    private void ThrusterOff()
+    {
+        _speed /= _thrusterMultiplier;
+        _stopThrusterAudio.Post(this.gameObject);
+        _thrusterVisual.SetActive(false);
     }
 
     public void AddScore(int _points)

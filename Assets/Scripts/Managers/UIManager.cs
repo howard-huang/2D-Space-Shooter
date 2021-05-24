@@ -51,10 +51,8 @@ public class UIManager : MonoBehaviour
 
     private void UIGameOver()
     {
-        _gameManager.GMGameOver();
-
         StartCoroutine(GameOverFlickerRoutine());
-        _restartText.gameObject.SetActive(true);
+        StartCoroutine(RestartGameDisplay());
     }
 
     private IEnumerator GameOverFlickerRoutine()
@@ -66,5 +64,12 @@ public class UIManager : MonoBehaviour
             _gameOverText.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    private IEnumerator RestartGameDisplay()
+    {
+        yield return new WaitForSeconds(3.0f);
+        _restartText.gameObject.SetActive(true);
+        _gameManager.GMGameOver();
     }
 }

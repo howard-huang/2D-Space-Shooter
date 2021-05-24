@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &111093516
 Transform:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &510948478
 Transform:
   m_ObjectHideFlags: 0
@@ -1118,9 +1118,11 @@ MonoBehaviour:
   _explosionPrefab: {fileID: 3313200194650638524, guid: 41b18a71b0dff2a42abebfc474842d2a,
     type: 3}
   _score: 0
-  _speed: 6
+  _speed: 4
   _speedMultiplier: 2
   _speedBoostCooldown: 5
+  _thrusterVisual: {fileID: 510948477}
+  _thrusterMultiplier: 1.5
   _fireRate: 0.5
   _laserContainer: {fileID: 2125374061}
   _laserPrefab: {fileID: 7119604876145237282, guid: 952664abd6131b043a3b0d28fea98073,
@@ -1137,6 +1139,16 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 303864f356c39ae4ba1ce15545c1801a,
+      type: 2}
+  _thrusterAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 95b088cd037cdaa47a966f53400b4333,
+      type: 2}
+  _stopThrusterAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 256b883cf5eacd347b6bb2e6e628c49c,
       type: 2}
 --- !u!60 &882942964
 PolygonCollider2D:
@@ -1273,6 +1285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 926795901}
   - component: {fileID: 926795902}
+  - component: {fileID: 926795903}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1313,6 +1326,31 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 04a24e8cd84927e42b9f5634ed694922,
+      type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &926795903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926795900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620edc9fb99ff0942882127898ec8158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: ae8d9d44
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b314748179c2bf3418f4e544f4075213,
       type: 2}
   decodeBank: 0
   loadAsynchronous: 0
