@@ -33,6 +33,10 @@
 							<Position X="1" Y="0"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Powerup" ID="{E65C0F00-802E-4BC8-BE71-554205AA5352}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Enemy_Laser_Blend" ID="{E287045B-67CA-4930-81F1-93D7BF0FE7D9}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 							<Position X="2" Y="0"/>
 						</Module>

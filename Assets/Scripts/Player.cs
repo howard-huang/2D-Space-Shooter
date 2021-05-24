@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _shieldVisual;
     [SerializeField]
+    private int _shieldStrength;
+    [SerializeField]
     private GameObject[] _damageVisuals;
     [SerializeField]
     private GameObject _explosionPrefab;
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
     private float _speedMultiplier = 2.0f;
     [SerializeField]
     private float _speedBoostCooldown = 5.0f;
+    [SerializeField]
+    private GameObject _speedVisual;
 
     [SerializeField]
     private GameObject _thrusterVisual;
@@ -58,6 +62,10 @@ public class Player : MonoBehaviour
     private AK.Wwise.Event _thrusterAudio;
     [SerializeField]
     private AK.Wwise.Event _stopThrusterAudio;
+    [SerializeField]
+    private AK.Wwise.Event _shieldAudio;
+    [SerializeField]
+    private AK.Wwise.Event _stopShieldAudio;
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
@@ -78,8 +86,6 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("UI Manager is Null!");
         }
-
-        _shieldVisual.SetActive(false);
     }
 
     private void Update()
@@ -91,7 +97,7 @@ public class Player : MonoBehaviour
             FireLaser();
         }
 
-        ThrusterCheck();   
+        ThrusterCheck();
     }
 
     private void Movement()
@@ -182,6 +188,7 @@ public class Player : MonoBehaviour
     public void SpeedBoostActive()
     {
         _speed *= _speedMultiplier;
+        _speedVisual.SetActive(true);
         StartCoroutine(SpeedBoostPowerDownRoutine());
     }
 
@@ -189,12 +196,41 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(_speedBoostCooldown);
         _speed /= _speedMultiplier;
+        _speedVisual.SetActive(false);
     }
 
-    public void ShieldActive()
+    public void ShieldStrength(int _strength)
     {
-        _isShieldActive = true;
-        _shieldVisual.SetActive(true);
+        _stopShieldAudio.Post(this.gameObject);
+
+        _shieldStrength += _strength;
+
+        if (_shieldStrength >= 1)
+        {
+            _shieldAudio.Post(this.gameObject);
+        }
+
+        switch (_shieldStrength)
+        {
+            case 0:
+                _isShieldActive = false;
+                _shieldVisual.SetActive(false);
+                break;
+            case 1:
+                _isShieldActive = true;
+                _shieldVisual.SetActive(true);
+                _shieldVisual.transform.localScale = new Vector3(1, 1, 1);
+                break;
+            case 2:
+                _shieldVisual.transform.localScale = new Vector3(2, 2, 2);
+                break;
+            case 3:
+                _shieldVisual.transform.localScale = new Vector3(3, 3, 3);
+                break;
+            default:
+                _shieldStrength = 3;
+                break;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -211,8 +247,7 @@ public class Player : MonoBehaviour
     {
         if (_isShieldActive == true)
         {
-            _isShieldActive = false;
-            _shieldVisual.SetActive(false);
+            ShieldStrength(-1);
             return;
         }
 

@@ -19,6 +19,8 @@ namespace AK
         static const AkUniqueID EXPLOSION_PLAY = 2090513163U;
         static const AkUniqueID LASER_PLAY = 3430907247U;
         static const AkUniqueID POWERUP_PLAY = 2538393448U;
+        static const AkUniqueID SHIELD_PLAY = 3556904531U;
+        static const AkUniqueID SHIELD_STOP = 2686923321U;
         static const AkUniqueID THRUSTER_START = 2051128187U;
         static const AkUniqueID THRUSTER_STOP = 2308976345U;
     } // namespace EVENTS

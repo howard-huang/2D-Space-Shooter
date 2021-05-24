@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2641024368" Language="SFX" Hash="2911730936">
+		<SoundBank Id="2641024368" Language="SFX" Hash="1116828851">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
 			<ShortName>SFX_Soundbank</ShortName>
 			<Path>SFX_Soundbank.bnk</Path>
@@ -77,14 +77,35 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2538393448" Name="Powerup_Play" ObjectPath="\Events\Default Work Unit\SFX\Powerup_Play" DurationType="OneShot" DurationMin="0.800000" DurationMax="0.897970">
+				<Event Id="2538393448" Name="Powerup_Play" ObjectPath="\Events\Default Work Unit\SFX\Powerup_Play" DurationType="OneShot" DurationMin="0.857125" DurationMax="0.962090">
 					<IncludedMemoryFiles>
-						<File Id="459772463" Language="SFX">
-							<ShortName>power_up_sound.wav</ShortName>
-							<Path>SFX\power_up_sound_10C4C929.wem</Path>
+						<File Id="1033750899" Language="SFX">
+							<ShortName>Powerup.wav</ShortName>
+							<Path>SFX\Powerup_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3556904531" Name="Shield_Play" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Play" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="925780" Language="SFX">
+							<ShortName>Shield Loop.wav</ShortName>
+							<Path>SFX\Shield Loop_10C4C929.wem</Path>
+						</File>
+						<File Id="459604218" Language="SFX">
+							<ShortName>Shield Loop 2.wav</ShortName>
+							<Path>SFX\Shield Loop 2_10C4C929.wem</Path>
+						</File>
+						<File Id="542324158" Language="SFX">
+							<ShortName>Shield Loop 3.wav</ShortName>
+							<Path>SFX\Shield Loop 3_10C4C929.wem</Path>
+						</File>
+						<File Id="621553312" Language="SFX">
+							<ShortName>Shield Start.wav</ShortName>
+							<Path>SFX\Shield Start_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2686923321" Name="Shield_Stop" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2051128187" Name="Thruster_Start" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Start" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="303409644" Language="SFX">
@@ -103,6 +124,24 @@
 				</Event>
 				<Event Id="2308976345" Name="Thruster_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="925780" Language="SFX">
+					<ShortName>Shield Loop.wav</ShortName>
+					<Path>SFX\Shield Loop_10C4C929.wem</Path>
+				</File>
+				<File Id="459604218" Language="SFX">
+					<ShortName>Shield Loop 2.wav</ShortName>
+					<Path>SFX\Shield Loop 2_10C4C929.wem</Path>
+				</File>
+				<File Id="542324158" Language="SFX">
+					<ShortName>Shield Loop 3.wav</ShortName>
+					<Path>SFX\Shield Loop 3_10C4C929.wem</Path>
+				</File>
+				<File Id="621553312" Language="SFX">
+					<ShortName>Shield Start.wav</ShortName>
+					<Path>SFX\Shield Start_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 		<SoundBank Id="3589812408" Language="SFX" Hash="1045239252">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music_Soundbank</ObjectPath>

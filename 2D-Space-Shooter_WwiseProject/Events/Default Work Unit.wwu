@@ -122,6 +122,35 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Shields" ID="{175A5AB2-CDA4-403C-A436-38482A5C1172}" ShortID="612912324">
+							<ChildrenList>
+								<Event Name="Shield_Play" ID="{950F55E4-8724-4F21-B214-2581B87E488E}">
+									<ChildrenList>
+										<Action Name="" ID="{6F0845F1-6D9B-43CE-AF4F-137B81889D10}" ShortID="706588479">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Shield_Powerup" ID="{B47FFA68-BD64-4ABD-8BDF-44816CD3A213}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Shield_Stop" ID="{656E0F33-5654-455E-9DFA-DB606A68E23B}">
+									<ChildrenList>
+										<Action Name="" ID="{828D4982-5D26-4124-B6CE-4C2FC162F82D}" ShortID="202828803">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Shield_Powerup" ID="{B47FFA68-BD64-4ABD-8BDF-44816CD3A213}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
