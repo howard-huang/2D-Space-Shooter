@@ -15,7 +15,10 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Shields" ID="{175A5AB2-CDA4-403C-A436-38482A5C1172}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Thruster_Stop" ID="{6B75F255-8015-419B-A5FE-2BBE10F8B8C9}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="NoAmmo_Play" ID="{FDE4CC27-D09A-4317-A174-6FC2843FD939}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Thruster" ID="{E7FDF2FD-80E4-446B-A276-F8D46FBF8379}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayerSFX_Stop" ID="{EA954C08-4D5F-448D-AC9C-F24DE520C29C}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SFX" ID="{E22D96D9-2015-44B0-99C4-FEB7439BD6A1}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Shield_Stop" ID="{656E0F33-5654-455E-9DFA-DB606A68E23B}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Powerup_Play" ID="{9D7BE1C1-3240-4741-B14E-EE411F72AF13}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Shield_Loop" ID="{865D812C-203A-480A-AFF5-F6BC2A050F3A}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}" Origin="Manual" Filter="7"/>

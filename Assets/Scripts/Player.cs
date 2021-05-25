@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     [Header("Lasers")]
     [SerializeField]
+    private int _ammoCount = 15;
+    [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
 
@@ -56,6 +58,8 @@ public class Player : MonoBehaviour
     [Header("Audio")]
     [SerializeField]
     private AK.Wwise.Event _laserAudio;
+    [SerializeField]
+    private AK.Wwise.Event _noAmmoAudio;
     [SerializeField]
     private AK.Wwise.Event _explosionAudio;
     [SerializeField]
@@ -87,6 +91,9 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("UI Manager is Null!");
         }
+
+        _uiManager.UpdateScoreUI(_score);
+        _uiManager.UpdateAmmoUI(_ammoCount);
     }
 
     private void Update()
@@ -157,22 +164,32 @@ public class Player : MonoBehaviour
 
     private void FireLaser()                                                                       
     {
-        Vector3 _laserPos = transform.position + _laserOffset;
-        _canFire = Time.time + _fireRate;                                                           //Cooldown System
-
-        if (_isTripleShotActive == true)
+        if (_ammoCount > 0)
         {
-            GameObject _tripleShot = Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
-            _tripleShot.transform.parent = _laserContainer.transform;                               //GameObject Nesting
+            Vector3 _laserPos = transform.position + _laserOffset;
+            _canFire = Time.time + _fireRate;                                                           //Cooldown System
+
+            if (_isTripleShotActive == true)
+            {
+                GameObject _tripleShot = Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+                _tripleShot.transform.parent = _laserContainer.transform;                               //GameObject Nesting
+            }
+            else
+            {
+                GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
+                _laser.transform.parent = _laserContainer.transform;                                    //GameObject Nesting
+            }
+
+            _ammoCount--;
+            _uiManager.UpdateAmmoUI(_ammoCount);
+            _laserAudio.Post(this.gameObject);
         }
         else
         {
-            GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
-            _laser.transform.parent = _laserContainer.transform;                                    //GameObject Nesting
+            _canFire = Time.time + _fireRate;                                                           //Cooldown System
+            _noAmmoAudio.Post(this.gameObject);
         }
-
-        _laserAudio.Post(this.gameObject);
-    }
+    }        
 
     public void TripleShotActive()
     {
@@ -222,13 +239,13 @@ public class Player : MonoBehaviour
             case 1:
                 _isShieldActive = true;
                 _shieldVisual.SetActive(true);
-                _shieldVisual.transform.localScale = new Vector3(1, 1, 1);
+                _shieldVisual.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                 break;
             case 2:
-                _shieldVisual.transform.localScale = new Vector3(2, 2, 2);
+                _shieldVisual.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
                 break;
             case 3:
-                _shieldVisual.transform.localScale = new Vector3(3, 3, 3);
+                _shieldVisual.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
                 break;
             default:
                 _shieldStrength = 3;

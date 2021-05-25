@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2641024368" Language="SFX" Hash="1563810822">
+		<SoundBank Id="2641024368" Language="SFX" Hash="1502281182">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
 			<ShortName>SFX_Soundbank</ShortName>
 			<Path>SFX_Soundbank.bnk</Path>
@@ -74,6 +74,14 @@
 						<File Id="1060362071" Language="SFX">
 							<ShortName>Player_Laser_2.wav</ShortName>
 							<Path>SFX\Player_Laser_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3842339375" Name="NoAmmo_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\NoAmmo_Play" DurationType="OneShot" DurationMin="0.312267" DurationMax="0.330835">
+					<IncludedMemoryFiles>
+						<File Id="110736447" Language="SFX">
+							<ShortName>NoAmmo.wav</ShortName>
+							<Path>SFX\NoAmmo_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

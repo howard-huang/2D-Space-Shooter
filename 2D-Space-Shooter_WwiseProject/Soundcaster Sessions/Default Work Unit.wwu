@@ -51,7 +51,7 @@
 					</ModuleList>
 					<RTPCValueList ShowAll="true"/>
 					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="SpeedInactive" ID="{9E89EC33-9103-4140-AEEB-A9F54FEE6BAD}"/>
+						<CurrentStateRef Name="SpeedActive" ID="{72CE1858-FB8F-4E3C-9D70-F3C52C7AC742}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
