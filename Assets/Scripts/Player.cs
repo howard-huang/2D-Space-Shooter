@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _ammoCount = 15;
     [SerializeField]
+    private int _maxAmmo = 30;
+    [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1.0f;
 
@@ -93,7 +95,7 @@ public class Player : MonoBehaviour
         }
 
         _uiManager.UpdateScoreUI(_score);
-        _uiManager.UpdateAmmoUI(_ammoCount);
+        _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
     }
 
     private void Update()
@@ -181,7 +183,7 @@ public class Player : MonoBehaviour
             }
 
             _ammoCount--;
-            _uiManager.UpdateAmmoUI(_ammoCount);
+            _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
             _laserAudio.Post(this.gameObject);
         }
         else
@@ -189,7 +191,19 @@ public class Player : MonoBehaviour
             _canFire = Time.time + _fireRate;                                                           //Cooldown System
             _noAmmoAudio.Post(this.gameObject);
         }
-    }        
+    }   
+    
+    public void AddAmmo(int _ammoPowerupCount)
+    {
+        _ammoCount += _ammoPowerupCount;
+        
+        if (_ammoCount >= _maxAmmo)
+        {
+            _ammoCount = _maxAmmo;
+        }
+
+        _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
+    }
 
     public void TripleShotActive()
     {

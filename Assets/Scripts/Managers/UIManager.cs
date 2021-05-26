@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private Text _ammoText;
+    private int _ammoTotal;
     [SerializeField]
     private GameObject _ammoDisplay;
 
@@ -47,11 +48,12 @@ public class UIManager : MonoBehaviour
         _scoreText.text = "Score: " + _score.ToString();
     }
 
-    public void UpdateAmmoUI(int _ammoCount)
+    public void UpdateAmmoUI(int _ammoCount, int _maxAmmo)
     {
-        _ammoText.text = "Ammo: " + _ammoCount.ToString();
+        _ammoTotal = _ammoCount;
+        _ammoText.text = "Ammo: " + _ammoTotal.ToString() + " / " + _maxAmmo.ToString();
 
-        if (_ammoCount == 0)
+        if (_ammoTotal == 0)
         {
             StartCoroutine(NoAmmoRoutine());
         }
@@ -59,7 +61,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator NoAmmoRoutine()
     {
-        while (true)
+        while (_ammoTotal == 0)
         {
             _ammoDisplay.SetActive(false);
             yield return _flickerTime;

@@ -1164,7 +1164,8 @@ MonoBehaviour:
   _speedVisual: {fileID: 1800859058}
   _thrusterVisual: {fileID: 510948477}
   _thrusterMultiplier: 1.5
-  _ammoCount: 3
+  _ammoCount: 30
+  _maxAmmo: 30
   _fireRate: 0.5
   _laserContainer: {fileID: 2125374061}
   _laserPrefab: {fileID: 7119604876145237282, guid: 952664abd6131b043a3b0d28fea98073,
@@ -1477,10 +1478,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 'Score: 10'
 --- !u!222 &941075104
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2168,6 +2169,7 @@ MonoBehaviour:
   - {fileID: 1793334659272070275, guid: 7e7e8c860e3b9334a93a025e06fbdee1, type: 3}
   - {fileID: 6517925968621595521, guid: 4775c8d16704b8f42a6eccf374109ec1, type: 3}
   - {fileID: 6153615619646865889, guid: 722f56cb0f0b47a4da5b064a2eb2596b, type: 3}
+  - {fileID: 1921647427632157189, guid: bac440438e85f124c9a12287bd74e55b, type: 3}
   _powerupContainer: {fileID: 1009715732}
 --- !u!4 &1632292837
 Transform:

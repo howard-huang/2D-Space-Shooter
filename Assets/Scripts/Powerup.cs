@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField]
     private float _travelSpeed = 3.0f;
 
     [SerializeField]
-    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields
+    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo
 
+    [Header("Powerup Specific Variables")]
+    [SerializeField]
+    private int _shieldStrengthCount;
+
+    [SerializeField]
+    private int _ammoPowerupCount;
+
+    [Header("Audio")]
     [SerializeField]
     private AK.Wwise.Event _powerupSound;
 
@@ -45,7 +54,10 @@ public class Powerup : MonoBehaviour
                         player.SpeedBoostActive();
                         break;
                     case 2:
-                        player.ShieldStrength(1);
+                        player.ShieldStrength(_shieldStrengthCount);
+                        break;
+                    case 3:
+                        player.AddAmmo(_ammoPowerupCount);
                         break;
                     default:
                         Debug.Log("Default Powerup Value");
