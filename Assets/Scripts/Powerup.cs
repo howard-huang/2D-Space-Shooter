@@ -9,7 +9,7 @@ public class Powerup : MonoBehaviour
     private float _travelSpeed = 3.0f;
 
     [SerializeField]
-    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo
+    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health
 
     [Header("Powerup Specific Variables")]
     [SerializeField]
@@ -17,6 +17,9 @@ public class Powerup : MonoBehaviour
 
     [SerializeField]
     private int _ammoPowerupCount;
+
+    [SerializeField]
+    private int _healthPowerupCount;
 
     [Header("Audio")]
     [SerializeField]
@@ -58,6 +61,9 @@ public class Powerup : MonoBehaviour
                         break;
                     case 3:
                         player.AddAmmo(_ammoPowerupCount);
+                        break;
+                    case 4:
+                        player.AddHealth(_healthPowerupCount);
                         break;
                     default:
                         Debug.Log("Default Powerup Value");

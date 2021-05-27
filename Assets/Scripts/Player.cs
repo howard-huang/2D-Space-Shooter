@@ -7,11 +7,15 @@ public class Player : MonoBehaviour
     [Header("Health and Damage")]
     [SerializeField]
     private int _playerLives = 3;
+    [SerializeField]
+    private int _maxLives = 3;
     private bool _isShieldActive;
     [SerializeField]
     private GameObject _shieldVisual;
     [SerializeField]
     private int _shieldStrength;
+    [SerializeField]
+    private int _maxShieldStrength = 3;
     [SerializeField]
     private GameObject[] _damageVisuals;
     [SerializeField]
@@ -196,8 +200,8 @@ public class Player : MonoBehaviour
     public void AddAmmo(int _ammoPowerupCount)
     {
         _ammoCount += _ammoPowerupCount;
-        
-        if (_ammoCount >= _maxAmmo)
+
+        if(_ammoCount >= _maxAmmo)
         {
             _ammoCount = _maxAmmo;
         }
@@ -234,36 +238,49 @@ public class Player : MonoBehaviour
     }
 
     public void ShieldStrength(int _strength)
-    {
-        _stopShieldAudio.Post(this.gameObject);
-
+    {        
         _shieldStrength += _strength;
 
-        if (_shieldStrength >= 1)
+        if (_shieldStrength <= _maxShieldStrength)
         {
-            _shieldAudio.Post(this.gameObject);
-        }
+            _stopShieldAudio.Post(this.gameObject);
+            if (_shieldStrength >= 1)
+            {
+                _shieldAudio.Post(this.gameObject);
+            }
 
-        switch (_shieldStrength)
+            switch (_shieldStrength)
+            {
+                case 0:
+                    _isShieldActive = false;
+                    _shieldVisual.SetActive(false);
+                    break;
+                case 1:
+                    _isShieldActive = true;
+                    _shieldVisual.SetActive(true);
+                    _shieldVisual.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                    break;
+                case 2:
+                    _shieldVisual.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+                    break;
+                case 3:
+                    _shieldVisual.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                    break;
+                default:
+                    _shieldStrength = 3;
+                    break;
+            }
+        }
+    }
+
+    public void AddHealth(int _healthPowerupCount)
+    {
+        if (_playerLives < _maxLives)
         {
-            case 0:
-                _isShieldActive = false;
-                _shieldVisual.SetActive(false);
-                break;
-            case 1:
-                _isShieldActive = true;
-                _shieldVisual.SetActive(true);
-                _shieldVisual.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-                break;
-            case 2:
-                _shieldVisual.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
-                break;
-            case 3:
-                _shieldVisual.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-                break;
-            default:
-                _shieldStrength = 3;
-                break;
+            _playerLives += _healthPowerupCount;
+            DamageVisuals();
+            _uiManager.UpdateLivesUI(_playerLives);
+
         }
     }
 
@@ -286,8 +303,12 @@ public class Player : MonoBehaviour
         }
 
         _playerLives--;
+        DamageVisuals();
         _uiManager.UpdateLivesUI(_playerLives);
+    }
 
+    private void DamageVisuals()
+    {
         switch (_playerLives)
         {
             default:
@@ -296,8 +317,10 @@ public class Player : MonoBehaviour
                 break;
             case 2:
                 _damageVisuals[1].SetActive(true);
+                _damageVisuals[0].SetActive(false);
                 break;
             case 1:
+                _damageVisuals[1].SetActive(true);
                 _damageVisuals[0].SetActive(true);
                 break;
             case 0:
@@ -306,6 +329,6 @@ public class Player : MonoBehaviour
                 Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 break;
-        }    
+        }
     }
 }

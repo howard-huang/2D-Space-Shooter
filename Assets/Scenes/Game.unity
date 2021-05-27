@@ -1150,8 +1150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerLives: 3
+  _maxLives: 3
   _shieldVisual: {fileID: 1248580688}
   _shieldStrength: 0
+  _maxShieldStrength: 3
   _damageVisuals:
   - {fileID: 827605672}
   - {fileID: 107089480}
@@ -2170,6 +2172,7 @@ MonoBehaviour:
   - {fileID: 6517925968621595521, guid: 4775c8d16704b8f42a6eccf374109ec1, type: 3}
   - {fileID: 6153615619646865889, guid: 722f56cb0f0b47a4da5b064a2eb2596b, type: 3}
   - {fileID: 1921647427632157189, guid: bac440438e85f124c9a12287bd74e55b, type: 3}
+  - {fileID: 2240111023439220588, guid: 272038dc2e872ae4394da710b5d8fcfa, type: 3}
   _powerupContainer: {fileID: 1009715732}
 --- !u!4 &1632292837
 Transform:
