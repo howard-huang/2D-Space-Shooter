@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -60,6 +62,11 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive;
     [SerializeField]
     private float _tripleShotCooldown = 5.0f;
+
+    [SerializeField]
+    private GameObject _superShot;
+    [SerializeField]
+    private float _superShotCooldown = 5.0f;
 
     [Header("Audio")]
     [SerializeField]
@@ -221,6 +228,18 @@ public class Player : MonoBehaviour
         _isTripleShotActive = false;
     }
 
+    public void SuperShotActive()
+    {
+        StartCoroutine(SuperShotCoroutine());
+    }
+
+    private IEnumerator SuperShotCoroutine()
+    {
+        _superShot.SetActive(true);
+        yield return new WaitForSeconds(_superShotCooldown);
+        _superShot.SetActive(false);
+    }
+
     public void SpeedBoostActive()
     {
         _speed *= _speedMultiplier;
@@ -278,9 +297,14 @@ public class Player : MonoBehaviour
         if (_playerLives < _maxLives)
         {
             _playerLives += _healthPowerupCount;
+
+            if (_playerLives >= _maxLives)
+            {
+                _playerLives = _maxLives;
+            }
+
             DamageVisuals();
             _uiManager.UpdateLivesUI(_playerLives);
-
         }
     }
 

@@ -105,6 +105,11 @@ public class Enemy : MonoBehaviour
             _player.AddScore(_points);
             EnemyDeath();
         }
+        else if (other.tag == "Super Laser")
+        {
+            _player.AddScore(_points);
+            EnemyDeath();
+        }
     }
 
     private void EnemyDeath()

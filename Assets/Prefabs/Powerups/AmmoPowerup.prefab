@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -550379231
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f8df99cd2f8bd2e4b98fa2e8c5c286bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3236a955e0cff647b693b046ee5647c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1921647427632157189}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86047b3fc61ad8248876521894d6d84f, type: 2}
+  m_Controller: {fileID: 9100000, guid: ab1c2a44b752c634288e2ef59cc0a7c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -165,7 +165,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _travelSpeed: 3
   _powerupID: 3
+  _rarity: 1
+  _shieldStrengthCount: 0
   _ammoPowerupCount: 10
+  _healthPowerupCount: 0
   _powerupSound:
     idInternal: 0
     valueGuidInternal: 

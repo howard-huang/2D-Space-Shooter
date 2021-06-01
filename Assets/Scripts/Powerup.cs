@@ -9,7 +9,11 @@ public class Powerup : MonoBehaviour
     private float _travelSpeed = 3.0f;
 
     [SerializeField]
-    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health
+    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health, 5 = Power Shot,
+
+    [Header("0 = Common, 1 = Uncommon, 2 = Rare")]
+    [SerializeField]
+    private int _rarity;
 
     [Header("Powerup Specific Variables")]
     [SerializeField]
@@ -40,6 +44,11 @@ public class Powerup : MonoBehaviour
         }
     }
 
+    public int GetRarity()
+    {
+        return _rarity;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -64,6 +73,9 @@ public class Powerup : MonoBehaviour
                         break;
                     case 4:
                         player.AddHealth(_healthPowerupCount);
+                        break;
+                    case 5:
+                        player.SuperShotActive();
                         break;
                     default:
                         Debug.Log("Default Powerup Value");
