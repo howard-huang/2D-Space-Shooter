@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else if (transform.position.y < -6.5)
+        else if (transform.position.y < -8.0f)
         {
             float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             transform.position = new Vector3(_randXPos, 6.5f, 0f);
@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
             _player.TakeDamage();
             EnemyDeath();
         }
-        else if (other.tag == "Laser")
+        else if (other.tag == "Laser" || other.tag == "Missile")
         {
             Destroy(other.gameObject);
 

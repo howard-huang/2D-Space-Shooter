@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -56,7 +55,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _laserPrefab;
     private Vector3 _laserOffset = new Vector3(0f, 1.0f, 0f);
-   
+
     [SerializeField]
     private GameObject _tripleShotPrefab;
     private bool _isTripleShotActive;
@@ -67,6 +66,12 @@ public class Player : MonoBehaviour
     private GameObject _superShot;
     [SerializeField]
     private float _superShotCooldown = 5.0f;
+
+    [SerializeField]
+    private GameObject[] _missileHolders;
+    [SerializeField]
+    private GameObject _missilePrefab;
+    private List<GameObject> _activeMissiles = new List<GameObject>();
 
     [Header("Audio")]
     [SerializeField]
@@ -115,7 +120,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            FireLaser();
+            WeaponSelect();
         }
 
         ThrusterCheck();
@@ -125,18 +130,18 @@ public class Player : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-       
+
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
-        
-        transform.Translate(direction * _speed * Time.deltaTime);     
+
+        transform.Translate(direction * _speed * Time.deltaTime);
 
         float _yClamp = Mathf.Clamp(transform.position.y, -4.5f, 2);                               //vertical bounds
         transform.position = new Vector3(transform.position.x, _yClamp, 0);
-                                                                                                   //horizontal wrapping
+        //horizontal wrapping
         if (transform.position.x >= 11.3f)
         {
             transform.position = new Vector3(-11.3f, transform.position.y, 0);
-        }                                                      
+        }
         else if (transform.position.x <= -11.3f)
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
@@ -169,13 +174,46 @@ public class Player : MonoBehaviour
         _thrusterVisual.SetActive(false);
     }
 
+    private void WeaponSelect()
+    {
+        if (_activeMissiles.Count > 0)
+        {
+            FireMissile();
+        }
+        else
+        {
+            FireLaser();
+        }
+    }
+
     public void AddScore(int _points)
     {
         _score += _points;
         _uiManager.UpdateScoreUI(_score);
     }
 
-    private void FireLaser()                                                                       
+    public void MissilesActive()
+    {
+        foreach (GameObject _holder in _missileHolders)
+        {
+            GameObject _missile = Instantiate(_missilePrefab, _holder.transform.position, Quaternion.identity);
+            _activeMissiles.Add(_missile);
+            _missile.transform.parent = _holder.transform;
+        }
+    }
+
+    private void FireMissile()
+    {
+        _canFire = Time.time + _fireRate;                                                           //Cooldown System
+
+        GameObject _missileToFire = _activeMissiles[Random.Range(0, _activeMissiles.Count)];
+        Missile _missile = _missileToFire.GetComponent<Missile>();
+        _activeMissiles.Remove(_missileToFire);
+
+        _missile.Fire();
+    }
+
+    private void FireLaser()
     {
         if (_ammoCount > 0)
         {
@@ -202,13 +240,13 @@ public class Player : MonoBehaviour
             _canFire = Time.time + _fireRate;                                                           //Cooldown System
             _noAmmoAudio.Post(this.gameObject);
         }
-    }   
-    
+    }
+
     public void AddAmmo(int _ammoPowerupCount)
     {
         _ammoCount += _ammoPowerupCount;
 
-        if(_ammoCount >= _maxAmmo)
+        if (_ammoCount >= _maxAmmo)
         {
             _ammoCount = _maxAmmo;
         }
