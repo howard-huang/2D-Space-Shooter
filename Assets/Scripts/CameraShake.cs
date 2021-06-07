@@ -6,6 +6,7 @@ public class CameraShake : MonoBehaviour
 {
     [SerializeField]
     private float _shakeLength = 0.3f;
+
     public void TakeDamage()
     {
         StartCoroutine(CameraShakeRoutine());
