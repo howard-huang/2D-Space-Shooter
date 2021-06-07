@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
+    private CameraShake _cameraShake;
 
     private void Start()
     {
@@ -104,6 +105,7 @@ public class Player : MonoBehaviour
 
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _cameraShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
 
         if (_spawnManager == null)
         {
@@ -113,6 +115,11 @@ public class Player : MonoBehaviour
         if (_uiManager == null)
         {
             Debug.LogError("UI Manager is Null!");
+        }
+
+        if (_cameraShake == null)
+        {
+            Debug.LogError("Camera Shake Script is Null!");
         }
 
         _uiManager.UpdateScoreUI(_score);
@@ -390,6 +397,7 @@ public class Player : MonoBehaviour
             return;
         }
 
+        _cameraShake.TakeDamage();
         _playerLives--;
         DamageVisuals();
         _uiManager.UpdateLivesUI(_playerLives);
