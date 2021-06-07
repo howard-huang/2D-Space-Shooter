@@ -401,6 +401,7 @@ public class Player : MonoBehaviour
         _playerLives--;
         DamageVisuals();
         _uiManager.UpdateLivesUI(_playerLives);
+        _cameraShake.Damage();
     }
 
     private void DamageVisuals()
