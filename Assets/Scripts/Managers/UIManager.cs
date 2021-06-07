@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     private Sprite[] _livesSprites;
 
     [SerializeField]
+    private Slider _thrusterSlider;
+
+    [SerializeField]
     private Text _gameOverText;
     [SerializeField]
     private Text _restartText;
@@ -78,6 +81,11 @@ public class UIManager : MonoBehaviour
         {
             UIGameOver();
         }
+    }
+
+    public void UpdateThrusterUI(float _timeLeft)
+    {
+        _thrusterSlider.value = _timeLeft;
     }
 
     private void UIGameOver()

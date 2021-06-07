@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class Player : MonoBehaviour
     private GameObject _thrusterVisual;
     [SerializeField]
     private float _thrusterMultiplier = 1.5f;
+    private float _thrusterLevel = 5.0f;
+    [SerializeField]
+    private float _thrusterCooldown = 5.0f;
+    private bool _thrusterOn;
 
     [Header("Lasers")]
     [SerializeField]
@@ -112,6 +117,7 @@ public class Player : MonoBehaviour
 
         _uiManager.UpdateScoreUI(_score);
         _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
+        _uiManager.UpdateThrusterUI(_thrusterLevel);
     }
 
     private void Update()
@@ -150,28 +156,48 @@ public class Player : MonoBehaviour
 
     private void ThrusterCheck()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _thrusterLevel > 0)
         {
-            ThrusterOn();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            ThrusterOff();
+            StopCoroutine(ThrusterOff());
+            StartCoroutine(ThrusterOn());
         }
     }
 
-    private void ThrusterOn()
+    private IEnumerator ThrusterOn()
     {
+        _thrusterOn = true;
         _speed *= _thrusterMultiplier;
         _thrusterAudio.Post(this.gameObject);
         _thrusterVisual.SetActive(true);
+
+        while (Input.GetKey(KeyCode.LeftShift) && _thrusterLevel > 0)
+        {
+            yield return null;
+            _thrusterLevel -= Time.deltaTime;
+            _uiManager.UpdateThrusterUI(_thrusterLevel);
+        }
+
+        StartCoroutine(ThrusterOff());
     }
 
-    private void ThrusterOff()
+    private IEnumerator ThrusterOff()
     {
+        _thrusterOn = false;
         _speed /= _thrusterMultiplier;
         _stopThrusterAudio.Post(this.gameObject);
         _thrusterVisual.SetActive(false);
+
+        if (_thrusterOn == false)
+        {
+            yield return new WaitForSeconds(_thrusterCooldown);
+            
+            while (_thrusterLevel < 5 && _thrusterOn == false)
+            {
+                yield return null;
+                _thrusterLevel += Time.deltaTime;
+                _uiManager.UpdateThrusterUI(_thrusterLevel);
+            }
+        }
     }
 
     private void WeaponSelect()
