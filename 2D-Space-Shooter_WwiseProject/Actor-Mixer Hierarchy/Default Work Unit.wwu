@@ -528,6 +528,46 @@
 										</Sound>
 									</ChildrenList>
 								</RandomSequenceContainer>
+								<Sound Name="Super Laser" ID="{41C9E1EA-BDF9-4501-AF14-1482F6BCDE76}" ShortID="313589625">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-14</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+											<ObjectRef Name="SuperLaser_Delay" ID="{E0578B79-EA54-471F-BC84-0A815C38650D}" WorkUnitID="{3D06D38D-50DB-4628-B90D-D25D5C2673C7}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
+											<ObjectRef Name="SuperLaser_Flanger" ID="{4FD101C2-FE3E-4598-BCE8-EAE3BBB5289B}" WorkUnitID="{3D06D38D-50DB-4628-B90D-D25D5C2673C7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Super Laser" ID="{45BBCE48-C449-4E2E-B586-A6C6250C0704}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.00812903072837633"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0227612860394538"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Super Laser.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1068349041"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Super Laser" ID="{45BBCE48-C449-4E2E-B586-A6C6250C0704}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Powerups" ID="{E0EB89AB-2AEF-40DF-9E39-A4BBC73F65BE}" ShortID="643836017">

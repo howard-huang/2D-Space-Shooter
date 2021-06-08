@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0e67614c0c75f145840a64f3a1ad51ee
     GuidInternal: 
-    m_lastTime: -8585797006152457663
+    m_lastTime: -8585784812367016265
     List:
     - name: Music_Soundbank
       guid: cf2a90eb7109404cbff4d0b6729875ae
@@ -77,7 +77,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f237a69b013c9f458109fb7f8a86bcad
     GuidInternal: 
-    m_lastTime: -8585797006275965312
+    m_lastTime: -8585784812366746994
     List:
     - name: BGM
       guid: 601a220418d82d40b2238df4c222e0d6
@@ -331,6 +331,38 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: SuperLaser_Play
+      guid: c7efefd2539c5e499613dafaca2c08c8
+      id: 4208992348
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: SuperLaser_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\SuperLaser_Play
+      maxAttenuation: 0
+      maxDuration: 0.428562
+      minDuration: 0.428562
+    - name: SuperLaser_Stop
+      guid: a54af8d56c60e54c8e7062749f00c2c5
+      id: 2962696902
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: SuperLaser_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\SuperLaser_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Thruster
       guid: fdf2fde7e4806b44a276f8d46fbf8379
       id: 1758897770
@@ -455,5 +487,6 @@ MonoBehaviour:
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music/BGM
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX
+  - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX/Lasers
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

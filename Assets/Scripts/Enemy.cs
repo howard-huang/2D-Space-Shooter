@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private AK.Wwise.Event _laserSound;
 
+    private bool _enemyAlive = true;
+
     private Player _player;
     private Animator _anim;
     private Collider2D _collider2D;
@@ -64,6 +66,7 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
+        //Vertical Bounds
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion") && transform.position.y <= -6.0)
         {
             Destroy(this.gameObject);
@@ -73,14 +76,20 @@ public class Enemy : MonoBehaviour
             float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             transform.position = new Vector3(_randXPos, 6.5f, 0f);
         }
+
+        //Horizontal Bounds
+        if (transform.position.x < -14 || transform.position.x > 14)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private IEnumerator FireLaserCoroutine()
     {
-        while (true)
+        while (_enemyAlive == true)
         {
-            Vector3 _laserPos = transform.position + _laserOffset;
-            GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
+            Vector3 _laserPos = transform.TransformPoint(_laserOffset);
+            GameObject _laser = Instantiate(_laserPrefab, _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
             _laserSound.Post(this.gameObject);
             
             _laser.tag = "Enemy Laser";
@@ -114,6 +123,7 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDeath()
     {
+        _enemyAlive = false;
         _anim.SetTrigger("OnEnemyDeath");
         _collider2D.enabled = false;
         _explosionSound.Post(this.gameObject);

@@ -48,6 +48,14 @@
 							<ObjectRef Name="Explosion" ID="{9EEEB99C-017E-498A-A16E-906A2F80B4DC}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 							<Position X="3" Y="0"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="SuperLaser_Play" ID="{D2EFEFC7-9C53-495E-9613-DAFACA2C08C8}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SuperLaser_Stop" ID="{D5F84AA5-606C-4CE5-8E70-62749F00C2C5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="4" Y="1"/>
+						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true"/>
 					<CurrentStateList ShowAll="true">

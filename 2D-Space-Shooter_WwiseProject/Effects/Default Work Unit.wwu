@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{3D06D38D-50DB-4628-B90D-D25D5C2673C7}" SchemaVersion="97">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{3D06D38D-50DB-4628-B90D-D25D5C2673C7}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{3D06D38D-50DB-4628-B90D-D25D5C2673C7}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="SuperLaser_Delay" ID="{E0578B79-EA54-471F-BC84-0A815C38650D}" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+					<PropertyList>
+						<Property Name="DelayTime" Type="Real32" Value="0.24"/>
+						<Property Name="Feedback" Type="Real32" Value="98.5"/>
+						<Property Name="ProcessLFE" Type="bool" Value="False"/>
+						<Property Name="WetDryMix" Type="Real32" Value="60"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="SuperLaser_Flanger" ID="{4FD101C2-FE3E-4598-BCE8-EAE3BBB5289B}" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
+					<PropertyList>
+						<Property Name="DelayTime" Type="Real32" Value="0.2"/>
+						<Property Name="DryLevel" Type="Real32" Value="0"/>
+						<Property Name="FeedBackLevel" Type="Real32" Value="-0.5"/>
+						<Property Name="FeedForwardLevel" Type="Real32" Value="0.8"/>
+						<Property Name="ModDepth" Type="Real32" Value="100"/>
+						<Property Name="ModFrequency" Type="Real32" Value="20"/>
+						<Property Name="ModPWM" Type="Real32" Value="0"/>
+						<Property Name="ModPhaseMode" Type="int32" Value="2"/>
+						<Property Name="ModSmoothing" Type="Real32" Value="100"/>
+						<Property Name="ModWaveform" Type="int32" Value="3"/>
+					</PropertyList>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>

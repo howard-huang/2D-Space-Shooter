@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _enemyPrefab;
+    private GameObject[] _enemyPrefab; //0 = Standard, 1 = Diagonal Standard
     [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
@@ -14,9 +14,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _powerupContainer;
 
-    private List<GameObject> _common = new List<GameObject>(); //50 - 100
-    private List<GameObject> _uncommon = new List<GameObject>(); //16 - 49
-    private List<GameObject> _rare = new List<GameObject>(); //0 - 15
+    private List<GameObject> _commonPowerup = new List<GameObject>(); //50 - 100
+    private List<GameObject> _uncommonPowerup = new List<GameObject>(); //16 - 49
+    private List<GameObject> _rarePowerup = new List<GameObject>(); //0 - 15
 
     private bool _stopSpawn;
 
@@ -35,13 +35,13 @@ public class SpawnManager : MonoBehaviour
             switch (_rarity)
             {
                 case 0:
-                    _common.Add(obj);
+                    _commonPowerup.Add(obj);
                     break;
                 case 1:
-                    _uncommon.Add(obj);
+                    _uncommonPowerup.Add(obj);
                     break;
                 case 2:
-                    _rare.Add(obj);
+                    _rarePowerup.Add(obj);
                     break;
                 default:
                     Debug.LogError("No Rarity" + obj);
@@ -62,13 +62,64 @@ public class SpawnManager : MonoBehaviour
 
         while (_stopSpawn == false)
         {
-            float _xSpawnPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
-            Vector3 _enemySpawnPos = new Vector3(_xSpawnPos, 6.5f, 0f);
+            int _randomEnemy = Random.Range(0, _enemyPrefab.Length);
+            Vector3 _enemySpawnPos = GetEnemySpawnPos(_randomEnemy);
+            Quaternion _enemyRotation = GetEnemyRotation(_randomEnemy);
 
-            GameObject _enemy = Instantiate(_enemyPrefab, _enemySpawnPos, Quaternion.identity);
+            GameObject _enemy = Instantiate(_enemyPrefab[_randomEnemy], _enemySpawnPos, _enemyRotation);
             _enemy.transform.parent = _enemyContainer.transform;
+
             yield return new WaitForSeconds(5.0f);
         }
+    }
+
+    private Vector3 GetEnemySpawnPos(int _randomEnemy)
+    {
+        float _xSpawnPos;
+        float _ySpawnPos;
+        Vector3 _enemySpawnPos;
+
+        switch (_randomEnemy) //1 = Diagonal Left // 2 = Diagonal Right
+        {
+            case 1:
+                _xSpawnPos = Random.Range(-13, -10);
+                _ySpawnPos = Random.Range(4, 8);
+                _enemySpawnPos = new Vector3(_xSpawnPos, _ySpawnPos, 0f);
+                break;
+
+            case 2:
+                _xSpawnPos = Random.Range(13, 10);
+                _ySpawnPos = Random.Range(4, 8);
+                _enemySpawnPos = new Vector3(_xSpawnPos, _ySpawnPos, 0f);
+                break;
+
+            default:
+                _xSpawnPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
+                _enemySpawnPos = new Vector3(_xSpawnPos, 6.5f, 0f);
+                break;
+        }
+        return _enemySpawnPos;
+    }
+
+    private Quaternion GetEnemyRotation(int _randomEnemy)
+    {
+        Quaternion _enemyRotation;
+
+        switch (_randomEnemy) //1 = Diagonal Left // 2 = Diagonal Right
+        {
+            case 1:
+                _enemyRotation = Quaternion.Euler(0, 0, 75);
+                break;
+
+            case 2:
+                _enemyRotation = Quaternion.Euler(0, 0, -75);
+                break;
+
+            default:
+                _enemyRotation = Quaternion.identity;
+                break;
+        }
+        return _enemyRotation;
     }
 
     private IEnumerator SpawnPowerupRoutine()
@@ -80,7 +131,7 @@ public class SpawnManager : MonoBehaviour
             float _xSpawnPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             Vector3 _powerupSpawnPos = new Vector3(_xSpawnPos, 6.5f, 0f);
 
-            List<GameObject> _currentRarity = GetRarity();
+            List<GameObject> _currentRarity = GetPowerupRarity();
             GameObject _randomPowerup = _currentRarity[Random.Range(0, _currentRarity.Count)];
 
             GameObject _powerup = Instantiate(_randomPowerup, _powerupSpawnPos, Quaternion.identity);
@@ -90,21 +141,21 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private List<GameObject> GetRarity()
+    private List<GameObject> GetPowerupRarity()
     {
         int _currentRarity = Random.Range(0, 100);
 
         if (_currentRarity > 0 && _currentRarity <= 15)
         {
-            return _rare; 
+            return _rarePowerup; 
         }
         else if (_currentRarity > 15 && _currentRarity <= 50)
         {
-            return _uncommon;
+            return _uncommonPowerup;
         }
         else
         {
-            return _common;
+            return _commonPowerup;
         }
     }
 

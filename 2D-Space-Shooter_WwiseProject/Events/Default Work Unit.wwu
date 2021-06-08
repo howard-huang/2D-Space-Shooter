@@ -182,6 +182,33 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="SuperLaser_Play" ID="{D2EFEFC7-9C53-495E-9613-DAFACA2C08C8}">
+									<ChildrenList>
+										<Action Name="" ID="{8981C193-0FA9-45B8-A50E-99C263CEF465}" ShortID="1065984839">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Super Laser" ID="{41C9E1EA-BDF9-4501-AF14-1482F6BCDE76}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="SuperLaser_Stop" ID="{D5F84AA5-606C-4CE5-8E70-62749F00C2C5}">
+									<ChildrenList>
+										<Action Name="" ID="{C4ABA7E7-A355-4E7D-8277-B76339C2B8A8}" ShortID="615836637">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Super Laser" ID="{41C9E1EA-BDF9-4501-AF14-1482F6BCDE76}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Shields" ID="{175A5AB2-CDA4-403C-A436-38482A5C1172}" ShortID="612912324">

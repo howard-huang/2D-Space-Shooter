@@ -11,12 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3774561770">
+		<SoundBank Id="1355168291" Language="SFX" Hash="240964377">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2641024368" Language="SFX" Hash="1502281182">
+		<SoundBank Id="2641024368" Language="SFX" Hash="1798481335">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
 			<ShortName>SFX_Soundbank</ShortName>
 			<Path>SFX_Soundbank.bnk</Path>
@@ -149,6 +149,15 @@
 						<ActionSetStateEntry Id="220333237" Name="SpeedInactive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedInactive"/>
 					</ActionSetState>
 				</Event>
+				<Event Id="4208992348" Name="SuperLaser_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\SuperLaser_Play" DurationType="OneShot" DurationMin="0.428562" DurationMax="0.428562">
+					<IncludedMemoryFiles>
+						<File Id="1068349041" Language="SFX">
+							<ShortName>Super Laser.wav</ShortName>
+							<Path>SFX\Super Laser_01E1AC02.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2962696902" Name="SuperLaser_Stop" ObjectPath="\Events\Default Work Unit\SFX\Lasers\SuperLaser_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2051128187" Name="Thruster_Start" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Start" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="303409644" Language="SFX">

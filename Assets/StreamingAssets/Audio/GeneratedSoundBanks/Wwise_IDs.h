@@ -25,6 +25,8 @@ namespace AK
         static const AkUniqueID SHIELD_STOP = 2686923321U;
         static const AkUniqueID SPEEDBOOST_PLAY = 1600032724U;
         static const AkUniqueID SPEEDBOOST_STOP = 3262461614U;
+        static const AkUniqueID SUPERLASER_PLAY = 4208992348U;
+        static const AkUniqueID SUPERLASER_STOP = 2962696902U;
         static const AkUniqueID THRUSTER_START = 2051128187U;
         static const AkUniqueID THRUSTER_STOP = 2308976345U;
     } // namespace EVENTS

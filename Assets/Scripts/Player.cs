@@ -82,6 +82,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AK.Wwise.Event _laserAudio;
     [SerializeField]
+    private AK.Wwise.Event _superLaserAudio, _stopSuperLaserAudio;
+    [SerializeField]
     private AK.Wwise.Event _noAmmoAudio;
     [SerializeField]
     private AK.Wwise.Event _explosionAudio;
@@ -307,8 +309,10 @@ public class Player : MonoBehaviour
     private IEnumerator SuperShotCoroutine()
     {
         _superShot.SetActive(true);
+        _superLaserAudio.Post(this.gameObject);
         yield return new WaitForSeconds(_superShotCooldown);
         _superShot.SetActive(false);
+        _stopSuperLaserAudio.Post(this.gameObject);
     }
 
     public void SpeedBoostActive()
