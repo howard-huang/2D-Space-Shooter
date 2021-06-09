@@ -17,7 +17,10 @@ namespace AK
         static const AkUniqueID BGM_STOP = 2090192256U;
         static const AkUniqueID ENEMYLASER_PLAY = 1194956557U;
         static const AkUniqueID EXPLOSION_PLAY = 2090513163U;
+        static const AkUniqueID HEALTHPOWERUP_PLAY = 314250078U;
         static const AkUniqueID LASER_PLAY = 3430907247U;
+        static const AkUniqueID MISSILE_PLAY = 1189790860U;
+        static const AkUniqueID MISSILE_STOP = 3159575446U;
         static const AkUniqueID NOAMMO_PLAY = 3842339375U;
         static const AkUniqueID PLAYERSFX_STOP = 1158098870U;
         static const AkUniqueID POWERUP_PLAY = 2538393448U;

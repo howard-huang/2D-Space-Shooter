@@ -20,9 +20,9 @@ public class Enemy : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField]
-    private AK.Wwise.Event _explosionSound;
+    private AK.Wwise.Event _explosionAudio;
     [SerializeField]
-    private AK.Wwise.Event _laserSound;
+    private AK.Wwise.Event _laserAudio;
 
     private bool _enemyAlive = true;
 
@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
         {
             Vector3 _laserPos = transform.TransformPoint(_laserOffset);
             GameObject _laser = Instantiate(_laserPrefab, _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
-            _laserSound.Post(this.gameObject);
+            _laserAudio.Post(this.gameObject);
             
             _laser.tag = "Enemy Laser";
             _laser.transform.parent = _laserContainer.transform;
@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour
         _enemyAlive = false;
         _anim.SetTrigger("OnEnemyDeath");
         _collider2D.enabled = false;
-        _explosionSound.Post(this.gameObject);
+        _explosionAudio.Post(this.gameObject);
 
         float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
         Destroy(this.gameObject, _animLength);

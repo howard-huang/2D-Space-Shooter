@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2641024368" Language="SFX" Hash="1798481335">
+		<SoundBank Id="2641024368" Language="SFX" Hash="2955867610">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
 			<ShortName>SFX_Soundbank</ShortName>
 			<Path>SFX_Soundbank.bnk</Path>
@@ -53,6 +53,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="314250078" Name="HealthPowerup_Play" ObjectPath="\Events\Default Work Unit\SFX\HealthPowerup_Play" DurationType="OneShot" DurationMin="1.665469" DurationMax="1.764503">
+					<IncludedMemoryFiles>
+						<File Id="889010688" Language="SFX">
+							<ShortName>Health Powerup.wav</ShortName>
+							<Path>SFX\Health Powerup_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3430907247" Name="Laser_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\Laser_Play" DurationType="OneShot" DurationMin="1.112828" DurationMax="1.285708">
 					<IncludedMemoryFiles>
 						<File Id="82201410" Language="SFX">
@@ -77,6 +85,27 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1189790860" Name="Missile_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\Missile_Play" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="303409644" Language="SFX">
+							<ShortName>Thruster 2.wav</ShortName>
+							<Path>SFX\Thruster 2_10C4C929.wem</Path>
+						</File>
+						<File Id="466473259" Language="SFX">
+							<ShortName>Thruster.wav</ShortName>
+							<Path>SFX\Thruster_10C4C929.wem</Path>
+						</File>
+						<File Id="891127787" Language="SFX">
+							<ShortName>Thruster 3.wav</ShortName>
+							<Path>SFX\Thruster 3_10C4C929.wem</Path>
+						</File>
+						<File Id="990680189" Language="SFX">
+							<ShortName>Missile_Whistle.wav</ShortName>
+							<Path>SFX\Missile_Whistle_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3159575446" Name="Missile_Stop" ObjectPath="\Events\Default Work Unit\SFX\Lasers\Missile_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3842339375" Name="NoAmmo_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\NoAmmo_Play" DurationType="OneShot" DurationMin="0.312267" DurationMax="0.330835">
 					<IncludedMemoryFiles>
 						<File Id="110736447" Language="SFX">
@@ -153,7 +182,7 @@
 					<IncludedMemoryFiles>
 						<File Id="1068349041" Language="SFX">
 							<ShortName>Super Laser.wav</ShortName>
-							<Path>SFX\Super Laser_01E1AC02.wem</Path>
+							<Path>SFX\Super Laser_18FCA7A1.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

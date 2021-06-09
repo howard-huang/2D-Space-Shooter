@@ -29,6 +29,10 @@
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="HealthPowerup_Play" ID="{ADF2C071-C082-4CD0-88FA-CBAA425278D5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Laser_Blend" ID="{7D1C30D3-BF60-4C61-93CB-F950701AB5AA}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 							<Position X="1" Y="0"/>
 						</Module>

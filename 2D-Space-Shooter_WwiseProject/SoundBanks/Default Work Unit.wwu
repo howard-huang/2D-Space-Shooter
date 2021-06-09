@@ -20,6 +20,7 @@
 						<ObjectRef Name="PlayerSFX_Stop" ID="{EA954C08-4D5F-448D-AC9C-F24DE520C29C}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX" ID="{E22D96D9-2015-44B0-99C4-FEB7439BD6A1}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Shield_Stop" ID="{656E0F33-5654-455E-9DFA-DB606A68E23B}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Missile_Stop" ID="{01D41612-C8BA-461E-866C-E6F62B85B2D6}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Powerup_Play" ID="{9D7BE1C1-3240-4741-B14E-EE411F72AF13}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Shield_Loop" ID="{865D812C-203A-480A-AFF5-F6BC2A050F3A}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SpeedBoost_Stop" ID="{31776905-943B-4924-BA37-814564F9E1F5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
@@ -27,8 +28,10 @@
 						<ObjectRef Name="Lasers" ID="{46BB8C5F-F453-495E-8146-CD1A92C794AF}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="ShieldPowerup" ID="{B47FFA68-BD64-4ABD-8BDF-44816CD3A213}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SpeedBoost_Play" ID="{350678CB-902D-4BC8-8312-560F21F62348}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Missile_Play" ID="{2248A01D-C104-4BEC-9B2A-0344A59259A6}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="EnemyLaser_Play" ID="{AD78125D-D18F-4BED-B32E-B40B618BF6C3}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Explosion_Play" ID="{324543B4-543C-4C76-ABC3-E766A9EB19E5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="HealthPowerup_Play" ID="{ADF2C071-C082-4CD0-88FA-CBAA425278D5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SuperLaser_Stop" ID="{D5F84AA5-606C-4CE5-8E70-62749F00C2C5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Shield_Play" ID="{950F55E4-8724-4F21-B214-2581B87E488E}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Laser_Play" ID="{FAC8FAAA-AF2E-4F44-9032-4AF0E440107F}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>

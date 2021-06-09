@@ -303,6 +303,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 6
   _thrusterPrefab: {fileID: 8181229749750897292}
+  _missileAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: edd705bc6872ff042b6bb2b0316bdf11,
+      type: 2}
+  _stopMissileAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 96ab41c1260536c499e7c1cf82e61d71,
+      type: 2}
 --- !u!95 &4796081847636034200
 Animator:
   serializedVersion: 3

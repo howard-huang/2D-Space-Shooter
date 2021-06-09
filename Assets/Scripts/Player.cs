@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -85,6 +84,8 @@ public class Player : MonoBehaviour
     private AK.Wwise.Event _superLaserAudio, _stopSuperLaserAudio;
     [SerializeField]
     private AK.Wwise.Event _noAmmoAudio;
+    [SerializeField]
+    private AK.Wwise.Event _healthAudio;
     [SerializeField]
     private AK.Wwise.Event _explosionAudio;
     [SerializeField]
@@ -378,6 +379,7 @@ public class Player : MonoBehaviour
                 _playerLives = _maxLives;
             }
 
+            _healthAudio.Post(this.gameObject);
             DamageVisuals();
             _uiManager.UpdateLivesUI(_playerLives);
         }

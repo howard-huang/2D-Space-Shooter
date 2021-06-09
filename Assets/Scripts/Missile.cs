@@ -17,6 +17,9 @@ public class Missile : MonoBehaviour
     [SerializeField]
     private GameObject _thrusterPrefab;
 
+    [SerializeField]
+    private AK.Wwise.Event _missileAudio, _stopMissileAudio;
+
     private void Start()
     {
         _anim = GetComponent<Animator>();
@@ -30,6 +33,7 @@ public class Missile : MonoBehaviour
     public void Fire()
     {
         this.gameObject.transform.parent = null;
+        _missileAudio.Post(this.gameObject);
         _missileActive = true;
     }
 
@@ -79,7 +83,7 @@ public class Missile : MonoBehaviour
             transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }
 
-        if (transform.position.x < -9 || transform.position.x > 9)
+        if (transform.position.x < -12 || transform.position.x > 12)
         {
             TargetLost();
         }
@@ -94,7 +98,7 @@ public class Missile : MonoBehaviour
     {
         if (_targetEnemy == null)
         {
-            TargetLost();
+            _targetFound = false;
         }
         else
         {
@@ -108,8 +112,12 @@ public class Missile : MonoBehaviour
 
     private void TargetLost()
     {
-        _targetFound = false;
-        Destroy(this.gameObject, 5.0f);
+        Destroy(this.gameObject, 1.0f);
+    }
+
+    private void OnDestroy()
+    {
+        _stopMissileAudio.Post(this.gameObject);
     }
 }
 

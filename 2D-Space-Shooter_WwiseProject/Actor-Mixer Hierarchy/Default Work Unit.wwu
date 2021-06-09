@@ -568,6 +568,185 @@
 										<ActiveSource Name="Super Laser" ID="{45BBCE48-C449-4E2E-B586-A6C6250C0704}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<BlendContainer Name="Missile_Blend" ID="{CE57064F-A9F3-41F0-8DBF-6F81B10B72D6}" ShortID="385835493">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Thruster" ID="{B58F2A29-36EB-4312-A6EF-0FA2031A809F}" ShortID="384149317">
+											<PropertyList>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+												<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="2"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Thruster 2" ID="{47162B9F-FF46-4CE1-B758-47F14CDB4469}" ShortID="609788768">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Thruster 2" ID="{13AD9A30-5FF8-48A9-9A5E-2A9CE25D2AAA}">
+															<Language>SFX</Language>
+															<AudioFile>Thruster 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="303409644"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Thruster 2" ID="{13AD9A30-5FF8-48A9-9A5E-2A9CE25D2AAA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Thruster 3" ID="{CE24A243-5847-4165-8546-3EFC09D804BD}" ShortID="280478462">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Thruster 3" ID="{D943D435-A7BC-4D49-9858-C23FB8BDBEF5}">
+															<Language>SFX</Language>
+															<AudioFile>Thruster 3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="891127787"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Thruster 3" ID="{D943D435-A7BC-4D49-9858-C23FB8BDBEF5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Thruster" ID="{A73EC56C-67AE-4513-BF1D-D5147E71CD92}" ShortID="454644239">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Thruster" ID="{928B0D1E-C65F-44A4-80AD-C2C43598728D}">
+															<Language>SFX</Language>
+															<AudioFile>Thruster.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="466473259"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Thruster" ID="{928B0D1E-C65F-44A4-80AD-C2C43598728D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="Thrusters" ID="{C92F5980-F864-4783-801A-1D3D9529D4CE}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="SpeedInactive" ID="{9E89EC33-9103-4140-AEEB-A9F54FEE6BAD}"/>
+														<CustomState Name="" ID="{FCE55D68-3E5A-4191-94C2-1F0C3DD0AB0C}" ShortID="813919521"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="SpeedActive" ID="{72CE1858-FB8F-4E3C-9D70-F3C52C7AC742}"/>
+														<CustomState Name="" ID="{2D429E26-D459-45F0-B802-60FFD343131A}" ShortID="604955150">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</RandomSequenceContainer>
+										<Sound Name="Missile_Whistle" ID="{5D42F468-5D82-4EF3-A489-2EAADE2AD05A}" ShortID="842431716">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5C8FE4B2-2A5B-42D0-B9FF-542B15EE208F}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="250"/>
+																	<Property Name="Min" Type="Real64" Value="-250"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Missile_Whistle" ID="{884E75C9-B3B9-4748-96CB-CA72A7C92313}">
+													<Language>SFX</Language>
+													<AudioFile>Missile_Whistle.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="990680189"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Missile_Whistle" ID="{884E75C9-B3B9-4748-96CB-CA72A7C92313}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</BlendContainer>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Powerups" ID="{E0EB89AB-2AEF-40DF-9E39-A4BBC73F65BE}" ShortID="643836017">
@@ -1062,6 +1241,48 @@
 										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
+								<Sound Name="HealthPowerup" ID="{30DAD1A9-00C7-4B51-9F7B-D26DFF75FEED}" ShortID="439407811">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{9123339C-8715-4BD7-97BC-76E246A92AA3}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="50"/>
+															<Property Name="Min" Type="Real64" Value="-50"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9CCCB60-719E-4B6B-896D-FD806AB97C66}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Health Powerup" ID="{014C25D8-D4BA-4E74-A424-C3973A8F1A75}">
+											<Language>SFX</Language>
+											<AudioFile>Health Powerup.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="889010688"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Health Powerup" ID="{014C25D8-D4BA-4E74-A424-C3973A8F1A75}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

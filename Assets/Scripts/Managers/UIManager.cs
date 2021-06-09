@@ -32,14 +32,21 @@ public class UIManager : MonoBehaviour
     private WaitForSeconds _flickerTime = new WaitForSeconds(0.5f);
 
     private GameManager _gameManager;
+    private AudioManager _audioManager;
 
     private void Start()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         
         if (_gameManager == null)
         {
             Debug.LogError("GameManager is Null!");
+        }
+
+        if (_audioManager == null)
+        {
+            Debug.LogError("AudioManager is Null!");
         }
 
         _gameOverText.gameObject.SetActive(false);
@@ -110,5 +117,6 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         _restartText.gameObject.SetActive(true);
         _gameManager.GMGameOver();
+        _audioManager.AMGameOver();
     }
 }
