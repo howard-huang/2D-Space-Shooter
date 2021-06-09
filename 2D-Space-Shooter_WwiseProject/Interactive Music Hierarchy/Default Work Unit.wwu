@@ -6,6 +6,13 @@
 				<Folder Name="BGM" ID="{3D722EFA-7D2F-428F-813A-9D0146C7A3D6}" ShortID="825391061">
 					<ChildrenList>
 						<MusicPlaylistContainer Name="BGM" ID="{03FA09D8-2FA3-4235-8FE3-76B14C0EA0C4}" ShortID="367004692">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{AA63DFD5-A41F-410B-A314-49424126EB50}"/>

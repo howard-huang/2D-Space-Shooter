@@ -18,6 +18,55 @@
 					<CurrentStateList ShowAll="true"/>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
+				<SoundcasterSession Name="SFX" ID="{A58D0945-4596-4947-927C-9C5B53CE789A}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Thruster_Start" ID="{1AF6CE6A-A890-4F5F-B951-CE733459AD2D}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Thruster_Stop" ID="{6B75F255-8015-419B-A5FE-2BBE10F8B8C9}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="HealthPowerup_Play" ID="{ADF2C071-C082-4CD0-88FA-CBAA425278D5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Laser_Blend" ID="{7D1C30D3-BF60-4C61-93CB-F950701AB5AA}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Powerup" ID="{E65C0F00-802E-4BC8-BE71-554205AA5352}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Laser_Blend" ID="{E287045B-67CA-4930-81F1-93D7BF0FE7D9}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SpeedBoost_Play" ID="{350678CB-902D-4BC8-8312-560F21F62348}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Explosion" ID="{9EEEB99C-017E-498A-A16E-906A2F80B4DC}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SuperLaser_Play" ID="{D2EFEFC7-9C53-495E-9613-DAFACA2C08C8}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SuperLaser_Stop" ID="{D5F84AA5-606C-4CE5-8E70-62749F00C2C5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+							<Position X="4" Y="1"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="SpeedActive" ID="{72CE1858-FB8F-4E3C-9D70-F3C52C7AC742}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundcasterSessions>

@@ -11,17 +11,233 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="4204904655">
+		<SoundBank Id="1355168291" Language="SFX" Hash="245787">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3589812408" Language="SFX" Hash="3590826280">
+		<SoundBank Id="2641024368" Language="SFX" Hash="2955867610">
+			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
+			<ShortName>SFX_Soundbank</ShortName>
+			<Path>SFX_Soundbank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1194956557" Name="EnemyLaser_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\EnemyLaser_Play" DurationType="OneShot" DurationMin="0.834612" DurationMax="0.964271">
+					<IncludedMemoryFiles>
+						<File Id="89020645" Language="SFX">
+							<ShortName>Player_Alt_Laser_2.wav</ShortName>
+							<Path>SFX\Player_Alt_Laser_2_10C4C929.wem</Path>
+						</File>
+						<File Id="263161437" Language="SFX">
+							<ShortName>Player_Alt_Laser_1.wav</ShortName>
+							<Path>SFX\Player_Alt_Laser_1_10C4C929.wem</Path>
+						</File>
+						<File Id="267553915" Language="SFX">
+							<ShortName>Enemy_Laser.wav</ShortName>
+							<Path>SFX\Enemy_Laser_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2090513163" Name="Explosion_Play" ObjectPath="\Events\Default Work Unit\SFX\Explosion_Play" DurationType="OneShot" DurationMin="1.336329" DurationMax="1.783786">
+					<IncludedMemoryFiles>
+						<File Id="182345801" Language="SFX">
+							<ShortName>Explosion 2.wav</ShortName>
+							<Path>SFX\Explosion 2_10C4C929.wem</Path>
+						</File>
+						<File Id="787072862" Language="SFX">
+							<ShortName>Explosion.wav</ShortName>
+							<Path>SFX\Explosion_10C4C929.wem</Path>
+						</File>
+						<File Id="881071447" Language="SFX">
+							<ShortName>Explosion 3.wav</ShortName>
+							<Path>SFX\Explosion 3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="314250078" Name="HealthPowerup_Play" ObjectPath="\Events\Default Work Unit\SFX\HealthPowerup_Play" DurationType="OneShot" DurationMin="1.665469" DurationMax="1.764503">
+					<IncludedMemoryFiles>
+						<File Id="889010688" Language="SFX">
+							<ShortName>Health Powerup.wav</ShortName>
+							<Path>SFX\Health Powerup_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3430907247" Name="Laser_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\Laser_Play" DurationType="OneShot" DurationMin="1.112828" DurationMax="1.285708">
+					<IncludedMemoryFiles>
+						<File Id="82201410" Language="SFX">
+							<ShortName>Player_Laser_1.wav</ShortName>
+							<Path>SFX\Player_Laser_1_10C4C929.wem</Path>
+						</File>
+						<File Id="89020645" Language="SFX">
+							<ShortName>Player_Alt_Laser_2.wav</ShortName>
+							<Path>SFX\Player_Alt_Laser_2_10C4C929.wem</Path>
+						</File>
+						<File Id="263161437" Language="SFX">
+							<ShortName>Player_Alt_Laser_1.wav</ShortName>
+							<Path>SFX\Player_Alt_Laser_1_10C4C929.wem</Path>
+						</File>
+						<File Id="745363775" Language="SFX">
+							<ShortName>Player_Laser_3.wav</ShortName>
+							<Path>SFX\Player_Laser_3_10C4C929.wem</Path>
+						</File>
+						<File Id="1060362071" Language="SFX">
+							<ShortName>Player_Laser_2.wav</ShortName>
+							<Path>SFX\Player_Laser_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1189790860" Name="Missile_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\Missile_Play" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="303409644" Language="SFX">
+							<ShortName>Thruster 2.wav</ShortName>
+							<Path>SFX\Thruster 2_10C4C929.wem</Path>
+						</File>
+						<File Id="466473259" Language="SFX">
+							<ShortName>Thruster.wav</ShortName>
+							<Path>SFX\Thruster_10C4C929.wem</Path>
+						</File>
+						<File Id="891127787" Language="SFX">
+							<ShortName>Thruster 3.wav</ShortName>
+							<Path>SFX\Thruster 3_10C4C929.wem</Path>
+						</File>
+						<File Id="990680189" Language="SFX">
+							<ShortName>Missile_Whistle.wav</ShortName>
+							<Path>SFX\Missile_Whistle_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3159575446" Name="Missile_Stop" ObjectPath="\Events\Default Work Unit\SFX\Lasers\Missile_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="3842339375" Name="NoAmmo_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\NoAmmo_Play" DurationType="OneShot" DurationMin="0.312267" DurationMax="0.330835">
+					<IncludedMemoryFiles>
+						<File Id="110736447" Language="SFX">
+							<ShortName>NoAmmo.wav</ShortName>
+							<Path>SFX\NoAmmo_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1158098870" Name="PlayerSFX_Stop" ObjectPath="\Events\Default Work Unit\SFX\PlayerSFX_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionPostEvent>
+						<ActionPostEventEntry Id="2308976345" Name="Thruster_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Stop"/>
+						<ActionPostEventEntry Id="2686923321" Name="Shield_Stop" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Stop"/>
+						<ActionPostEventEntry Id="3262461614" Name="SpeedBoost_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\SpeedBoost_Stop"/>
+					</ActionPostEvent>
+				</Event>
+				<Event Id="2538393448" Name="Powerup_Play" ObjectPath="\Events\Default Work Unit\SFX\Powerup_Play" DurationType="OneShot" DurationMin="0.857125" DurationMax="0.962090">
+					<IncludedMemoryFiles>
+						<File Id="1033750899" Language="SFX">
+							<ShortName>Powerup.wav</ShortName>
+							<Path>SFX\Powerup_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3556904531" Name="Shield_Play" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Play" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="925780" Language="SFX">
+							<ShortName>Shield Loop.wav</ShortName>
+							<Path>SFX\Shield Loop_10C4C929.wem</Path>
+						</File>
+						<File Id="459604218" Language="SFX">
+							<ShortName>Shield Loop 2.wav</ShortName>
+							<Path>SFX\Shield Loop 2_10C4C929.wem</Path>
+						</File>
+						<File Id="542324158" Language="SFX">
+							<ShortName>Shield Loop 3.wav</ShortName>
+							<Path>SFX\Shield Loop 3_10C4C929.wem</Path>
+						</File>
+						<File Id="621553312" Language="SFX">
+							<ShortName>Shield Start.wav</ShortName>
+							<Path>SFX\Shield Start_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2686923321" Name="Shield_Stop" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1600032724" Name="SpeedBoost_Play" ObjectPath="\Events\Default Work Unit\SFX\Thruster\SpeedBoost_Play" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="303409644" Language="SFX">
+							<ShortName>Thruster 2.wav</ShortName>
+							<Path>SFX\Thruster 2_10C4C929.wem</Path>
+						</File>
+						<File Id="466473259" Language="SFX">
+							<ShortName>Thruster.wav</ShortName>
+							<Path>SFX\Thruster_10C4C929.wem</Path>
+						</File>
+						<File Id="591146097" Language="SFX">
+							<ShortName>Speed.wav</ShortName>
+							<Path>SFX\Speed_10C4C929.wem</Path>
+						</File>
+						<File Id="891127787" Language="SFX">
+							<ShortName>Thruster 3.wav</ShortName>
+							<Path>SFX\Thruster 3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionSetState>
+						<ActionSetStateEntry Id="4248879684" Name="SpeedActive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedActive"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3262461614" Name="SpeedBoost_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\SpeedBoost_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetState>
+						<ActionSetStateEntry Id="220333237" Name="SpeedInactive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedInactive"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="4208992348" Name="SuperLaser_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\SuperLaser_Play" DurationType="OneShot" DurationMin="0.428562" DurationMax="0.428562">
+					<IncludedMemoryFiles>
+						<File Id="1068349041" Language="SFX">
+							<ShortName>Super Laser.wav</ShortName>
+							<Path>SFX\Super Laser_18FCA7A1.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2962696902" Name="SuperLaser_Stop" ObjectPath="\Events\Default Work Unit\SFX\Lasers\SuperLaser_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2051128187" Name="Thruster_Start" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Start" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="303409644" Language="SFX">
+							<ShortName>Thruster 2.wav</ShortName>
+							<Path>SFX\Thruster 2_10C4C929.wem</Path>
+						</File>
+						<File Id="466473259" Language="SFX">
+							<ShortName>Thruster.wav</ShortName>
+							<Path>SFX\Thruster_10C4C929.wem</Path>
+						</File>
+						<File Id="891127787" Language="SFX">
+							<ShortName>Thruster 3.wav</ShortName>
+							<Path>SFX\Thruster 3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2308976345" Name="Thruster_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="925780" Language="SFX">
+					<ShortName>Shield Loop.wav</ShortName>
+					<Path>SFX\Shield Loop_10C4C929.wem</Path>
+				</File>
+				<File Id="459604218" Language="SFX">
+					<ShortName>Shield Loop 2.wav</ShortName>
+					<Path>SFX\Shield Loop 2_10C4C929.wem</Path>
+				</File>
+				<File Id="542324158" Language="SFX">
+					<ShortName>Shield Loop 3.wav</ShortName>
+					<Path>SFX\Shield Loop 3_10C4C929.wem</Path>
+				</File>
+				<File Id="621553312" Language="SFX">
+					<ShortName>Shield Start.wav</ShortName>
+					<Path>SFX\Shield Start_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+			<StateGroups>
+				<StateGroup Id="220333237" Name="SpeedInactive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedInactive">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="4248879684" Name="SpeedActive" ObjectPath="\States\Default Work Unit\Thrusters\SpeedActive">
+					<States/>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+		<SoundBank Id="3589812408" Language="SFX" Hash="1045239252">
 			<ObjectPath>\SoundBanks\Default Work Unit\Music_Soundbank</ObjectPath>
 			<ShortName>Music_Soundbank</ShortName>
 			<Path>Music_Soundbank.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1093876158" Name="BGM_Play" ObjectPath="\Events\Default Work Unit\Music\BGM_Play" DurationType="Infinite">
+				<Event Id="1093876158" Name="BGM_Play" ObjectPath="\Events\Default Work Unit\Music\BGM\BGM_Play" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="611651431" Language="SFX">
 							<ShortName>music_background.wav</ShortName>
@@ -29,31 +245,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2090192256" Name="BGM_Stop" ObjectPath="\Events\Default Work Unit\Music\BGM_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="2090513163" Name="Explosion_Play" ObjectPath="\Events\Default Work Unit\SFX\Explosion_Play" DurationType="OneShot" DurationMin="2.395702" DurationMax="3.589498">
-					<IncludedMemoryFiles>
-						<File Id="208601495" Language="SFX">
-							<ShortName>explosion_sound.wav</ShortName>
-							<Path>SFX\explosion_sound_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3430907247" Name="Laser_Play" ObjectPath="\Events\Default Work Unit\SFX\Laser_Play" DurationType="OneShot" DurationMin="0.534192" DurationMax="0.800384">
-					<IncludedMemoryFiles>
-						<File Id="241522478" Language="SFX">
-							<ShortName>laser_shot.wav</ShortName>
-							<Path>SFX\laser_shot_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2538393448" Name="Powerup_Play" ObjectPath="\Events\Default Work Unit\SFX\Powerup_Play" DurationType="OneShot" DurationMin="0.800000" DurationMax="0.897970">
-					<IncludedMemoryFiles>
-						<File Id="459772463" Language="SFX">
-							<ShortName>power_up_sound.wav</ShortName>
-							<Path>SFX\power_up_sound_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
+				<Event Id="2090192256" Name="BGM_Stop" ObjectPath="\Events\Default Work Unit\Music\BGM\BGM_Stop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 		</SoundBank>
 	</SoundBanks>

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19878adaba8d29148bb1618f594a7be9, type: 3}
+  m_Name: 6B75F255-8015-419B-A5FE-2BBE10F8B8C9
+  m_EditorClassIdentifier: 
+  objectName: Thruster_Stop
+  id: 2308976345
+  guid: 6B75F255-8015-419B-A5FE-2BBE10F8B8C9

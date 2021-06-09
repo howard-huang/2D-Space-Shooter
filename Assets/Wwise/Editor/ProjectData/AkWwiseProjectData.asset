@@ -20,7 +20,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 9a370ff17814da448a1e48167565125b
     GuidInternal: 
-    m_lastTime: -8585801280244854038
+    m_lastTime: -8585801252098828678
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 60cbccd99e716b4b896dfd806ab97c66
     GuidInternal: 
-    m_lastTime: -8585801280245013636
+    m_lastTime: -8585801252098998238
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0e67614c0c75f145840a64f3a1ad51ee
     GuidInternal: 
-    m_lastTime: -8585801280244874002
+    m_lastTime: -8585783970912088942
     List:
     - name: Music_Soundbank
       guid: cf2a90eb7109404cbff4d0b6729875ae
@@ -60,6 +60,15 @@ MonoBehaviour:
       - ElementName: Music_Soundbank
         ObjectType: 7
       Path: Default Work Unit\Music_Soundbank
+    - name: SFX_Soundbank
+      guid: e5f098e3f664094ba956bbca5e767a07
+      id: 2641024368
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Soundbank
+        ObjectType: 7
+      Path: Default Work Unit\SFX_Soundbank
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -68,8 +77,22 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f237a69b013c9f458109fb7f8a86bcad
     GuidInternal: 
-    m_lastTime: -8585801262164123568
+    m_lastTime: -8585783970912278457
     List:
+    - name: BGM
+      guid: 601a220418d82d40b2238df4c222e0d6
+      id: 412724365
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: BGM
+        ObjectType: 4
+      Path: Default Work Unit\Music\BGM
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: BGM_Play
       guid: c7e01d02e0db8247b6955602aee8de71
       id: 1093876158
@@ -78,9 +101,11 @@ MonoBehaviour:
         ObjectType: 12
       - ElementName: Music
         ObjectType: 4
+      - ElementName: BGM
+        ObjectType: 4
       - ElementName: BGM_Play
         ObjectType: 3
-      Path: Default Work Unit\Music\BGM_Play
+      Path: Default Work Unit\Music\BGM\BGM_Play
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -92,12 +117,30 @@ MonoBehaviour:
         ObjectType: 12
       - ElementName: Music
         ObjectType: 4
+      - ElementName: BGM
+        ObjectType: 4
       - ElementName: BGM_Stop
         ObjectType: 3
-      Path: Default Work Unit\Music\BGM_Stop
+      Path: Default Work Unit\Music\BGM\BGM_Stop
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: EnemyLaser_Play
+      guid: 5d1278ad8fd1ed4bb32eb40b618bf6c3
+      id: 1194956557
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: EnemyLaser_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\EnemyLaser_Play
+      maxAttenuation: 0
+      maxDuration: 0.964271
+      minDuration: 0.834612
     - name: Explosion_Play
       guid: b44345323c54764cabc3e766a9eb19e5
       id: 2090513163
@@ -110,8 +153,22 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Explosion_Play
       maxAttenuation: 0
-      maxDuration: 3.589498
-      minDuration: 2.395702
+      maxDuration: 1.783786
+      minDuration: 1.336329
+    - name: HealthPowerup_Play
+      guid: 71c0f2ad82c0d04c88facbaa425278d5
+      id: 314250078
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: HealthPowerup_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\HealthPowerup_Play
+      maxAttenuation: 0
+      maxDuration: 1.764503
+      minDuration: 1.665469
     - name: Laser_Play
       guid: aafac8fa2eaf444f90324af0e440107f
       id: 3430907247
@@ -120,12 +177,60 @@ MonoBehaviour:
         ObjectType: 12
       - ElementName: SFX
         ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
       - ElementName: Laser_Play
         ObjectType: 3
-      Path: Default Work Unit\SFX\Laser_Play
+      Path: Default Work Unit\SFX\Lasers\Laser_Play
       maxAttenuation: 0
-      maxDuration: 0.800384
-      minDuration: 0.534192
+      maxDuration: 1.285708
+      minDuration: 1.112828
+    - name: Lasers
+      guid: 5f8cbb4653f45e498146cd1a92c794af
+      id: 517710169
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      Path: Default Work Unit\SFX\Lasers
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Missile_Play
+      guid: 1da0482204c1ec4b9b2a0344a59259a6
+      id: 1189790860
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: Missile_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\Missile_Play
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Missile_Stop
+      guid: 1216d401bac81e46866ce6f62b85b2d6
+      id: 3159575446
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: Missile_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\Missile_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Music
       guid: d7dcc0d26ba49843804e058c93c7243c
       id: 3991942870
@@ -138,6 +243,36 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: NoAmmo_Play
+      guid: 27cce4fd9ad01743a1746fc2843fd939
+      id: 3842339375
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: NoAmmo_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\NoAmmo_Play
+      maxAttenuation: 0
+      maxDuration: 0.330835
+      minDuration: 0.312267
+    - name: PlayerSFX_Stop
+      guid: 084c95ea5f4d8d44ac9cf24de520c29c
+      id: 1158098870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: PlayerSFX_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\PlayerSFX_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Powerup_Play
       guid: c1e17b9d40324147b14eee411f72af13
       id: 2538393448
@@ -150,8 +285,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\SFX\Powerup_Play
       maxAttenuation: 0
-      maxDuration: 0.89797
-      minDuration: 0.8
+      maxDuration: 0.96209
+      minDuration: 0.857125
     - name: SFX
       guid: d9962de21520b04499c4feb7439bd6a1
       id: 393239870
@@ -164,6 +299,162 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Shield_Play
+      guid: e4550f952487214fb2142581b87e488e
+      id: 3556904531
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Shields
+        ObjectType: 4
+      - ElementName: Shield_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Shields\Shield_Play
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Shield_Stop
+      guid: 330f6e6554565e459dfadb606a68e23b
+      id: 2686923321
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Shields
+        ObjectType: 4
+      - ElementName: Shield_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Shields\Shield_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Shields
+      guid: b25a5a17a4cd3c40a43638482a5c1172
+      id: 289290189
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Shields
+        ObjectType: 4
+      Path: Default Work Unit\SFX\Shields
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: SpeedBoost_Play
+      guid: cb7806352d90c84b8312560f21f62348
+      id: 1600032724
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Thruster
+        ObjectType: 4
+      - ElementName: SpeedBoost_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Thruster\SpeedBoost_Play
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: SpeedBoost_Stop
+      guid: 056977313b942449ba37814564f9e1f5
+      id: 3262461614
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Thruster
+        ObjectType: 4
+      - ElementName: SpeedBoost_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Thruster\SpeedBoost_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: SuperLaser_Play
+      guid: c7efefd2539c5e499613dafaca2c08c8
+      id: 4208992348
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: SuperLaser_Play
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\SuperLaser_Play
+      maxAttenuation: 0
+      maxDuration: 0.428562
+      minDuration: 0.428562
+    - name: SuperLaser_Stop
+      guid: a54af8d56c60e54c8e7062749f00c2c5
+      id: 2962696902
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Lasers
+        ObjectType: 4
+      - ElementName: SuperLaser_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Lasers\SuperLaser_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Thruster
+      guid: fdf2fde7e4806b44a276f8d46fbf8379
+      id: 1758897770
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Thruster
+        ObjectType: 4
+      Path: Default Work Unit\SFX\Thruster
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Thruster_Start
+      guid: 6acef61a90a85f4fb951ce733459ad2d
+      id: 2051128187
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Thruster
+        ObjectType: 4
+      - ElementName: Thruster_Start
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Thruster\Thruster_Start
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Thruster_Stop
+      guid: 55f2756b15809b41a5fe2bbe10f8b8c9
+      id: 2308976345
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 4
+      - ElementName: Thruster
+        ObjectType: 4
+      - ElementName: Thruster_Stop
+        ObjectType: 3
+      Path: Default Work Unit\SFX\Thruster\Thruster_Stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -172,7 +463,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 2cc91d524338304b972b184f50845db3
     GuidInternal: 
-    m_lastTime: -8585801280249084685
+    m_lastTime: -8585801252102443001
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -182,8 +473,39 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: c162ab059111784db0d9b444df27282e
     GuidInternal: 
-    m_lastTime: -8585801280244864039
-    List: []
+    m_lastTime: -8585797781278209507
+    List:
+    - name: Thrusters
+      guid: 80592fc964f88347801a1d3d9529d4ce
+      id: 1944582317
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Thrusters
+        ObjectType: 9
+      Path: Default Work Unit\Thrusters
+      values:
+      - name: None
+        guid: f55e8d410629134d98da04160dd49f24
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      - name: SpeedActive
+        guid: 5818ce728ffb3c4e9d70f3c52c7ac742
+        id: 4248879684
+        PathAndIcons:
+        - ElementName: SpeedActive
+          ObjectType: 8
+      - name: SpeedInactive
+        guid: 33ec899e03914041aeeba9f54fee6bad
+        id: 220333237
+        PathAndIcons:
+        - ElementName: SpeedInactive
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
@@ -192,7 +514,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 3c90769edc0c874085fa44bb35029f95
     GuidInternal: 
-    m_lastTime: -8585801280244864039
+    m_lastTime: -8585801252098838657
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -202,13 +524,15 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 1b1c8d8d1bd45149b3745367340b646c
     GuidInternal: 
-    m_lastTime: -8585801280244854038
+    m_lastTime: -8585801252098838657
     List: []
   ExpandedItems:
   - /2D-Space-Shooter_WwiseProject
   - /2D-Space-Shooter_WwiseProject/Events
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music
+  - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music/BGM
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX
+  - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX/Lasers
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

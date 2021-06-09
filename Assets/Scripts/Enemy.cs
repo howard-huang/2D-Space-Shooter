@@ -20,9 +20,11 @@ public class Enemy : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField]
-    private AK.Wwise.Event _explosionSound;
+    private AK.Wwise.Event _explosionAudio;
     [SerializeField]
-    private AK.Wwise.Event _laserSound;
+    private AK.Wwise.Event _laserAudio;
+
+    private bool _enemyAlive = true;
 
     private Player _player;
     private Animator _anim;
@@ -64,24 +66,31 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
+        //Vertical Bounds
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion") && transform.position.y <= -6.0)
         {
             Destroy(this.gameObject);
         }
-        else if (transform.position.y < -6.5)
+        else if (transform.position.y < -8.0f)
         {
             float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             transform.position = new Vector3(_randXPos, 6.5f, 0f);
+        }
+
+        //Horizontal Bounds
+        if (transform.position.x < -14 || transform.position.x > 14)
+        {
+            Destroy(this.gameObject);
         }
     }
 
     private IEnumerator FireLaserCoroutine()
     {
-        while (true)
+        while (_enemyAlive == true)
         {
-            Vector3 _laserPos = transform.position + _laserOffset;
-            GameObject _laser = Instantiate(_laserPrefab, _laserPos, Quaternion.identity);
-            _laserSound.Post(this.gameObject);
+            Vector3 _laserPos = transform.TransformPoint(_laserOffset);
+            GameObject _laser = Instantiate(_laserPrefab, _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
+            _laserAudio.Post(this.gameObject);
             
             _laser.tag = "Enemy Laser";
             _laser.transform.parent = _laserContainer.transform;
@@ -98,10 +107,15 @@ public class Enemy : MonoBehaviour
             _player.TakeDamage();
             EnemyDeath();
         }
-        else if (other.tag == "Laser")
+        else if (other.tag == "Laser" || other.tag == "Missile")
         {
             Destroy(other.gameObject);
 
+            _player.AddScore(_points);
+            EnemyDeath();
+        }
+        else if (other.tag == "Super Laser")
+        {
             _player.AddScore(_points);
             EnemyDeath();
         }
@@ -109,9 +123,10 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDeath()
     {
+        _enemyAlive = false;
         _anim.SetTrigger("OnEnemyDeath");
         _collider2D.enabled = false;
-        _explosionSound.Post(this.gameObject);
+        _explosionAudio.Post(this.gameObject);
 
         float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
         Destroy(this.gameObject, _animLength);

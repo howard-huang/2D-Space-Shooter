@@ -65,3 +65,6 @@ crashlytics-build.properties
 *.validationcache
 */Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
 
+# Filebase
+*/Assets/GameDevHQ*
+

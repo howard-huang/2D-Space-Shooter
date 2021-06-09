@@ -4,11 +4,11 @@
   <CreatedPicker>true</CreatedPicker>
   <CreateWwiseGlobal>true</CreateWwiseGlobal>
   <CreateWwiseListener>true</CreateWwiseListener>
-  <GenerateSoundBanksAsPreBuildStep>false</GenerateSoundBanksAsPreBuildStep>
+  <GenerateSoundBanksAsPreBuildStep>true</GenerateSoundBanksAsPreBuildStep>
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <SoundbankPath>Audio/GeneratedSoundBanks</SoundbankPath>
   <WwiseInstallationPathMac />
   <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2019.2.11.7512</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../2D-Space-Shooter_WwiseProject/2D-Space-Shooter_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseProjectPath>../../2D-Space-Shooter/2D-Space-Shooter_WwiseProject/2D-Space-Shooter_WwiseProject.wproj</WwiseProjectPath>
 </WwiseSettings>

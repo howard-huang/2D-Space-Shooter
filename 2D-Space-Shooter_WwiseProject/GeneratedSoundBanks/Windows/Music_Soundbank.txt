@@ -1,13 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
-	1093876158	BGM_Play			\Default Work Unit\Music\BGM_Play	
-	2090192256	BGM_Stop			\Default Work Unit\Music\BGM_Stop	
-	2090513163	Explosion_Play			\Default Work Unit\SFX\Explosion_Play	
-	2538393448	Powerup_Play			\Default Work Unit\SFX\Powerup_Play	
-	3430907247	Laser_Play			\Default Work Unit\SFX\Laser_Play	
+	1093876158	BGM_Play			\Default Work Unit\Music\BGM\BGM_Play	
+	2090192256	BGM_Stop			\Default Work Unit\Music\BGM\BGM_Stop	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	208601495	explosion_sound	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\explosion_sound_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Explosion\explosion_sound		579596
-	241522478	laser_shot	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\laser_shot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Laser\laser_shot		125848
-	459772463	power_up_sound	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\power_up_sound_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Powerup\power_up_sound		141184
 	611651431	music_background	C:\Users\Callum\Desktop\GameDevHQ\2D-Space-Shooter\2D-Space-Shooter_WwiseProject\.cache\Windows\SFX\music_background_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\BGM\BGM\music_background\music_background		2335840
 
