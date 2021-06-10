@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private int _enemyID;
+
     [Header("Speed")]
     [SerializeField]
     private float _speed = 4.0f;
+    [SerializeField]
+    private GameObject _thruster;
 
     [Header("Score")]
     [SerializeField]
     private int _points = 10;
+    private bool _waveEnded;
 
     [Header("Laser")]
     [SerializeField]
     private GameObject _laserPrefab;
     private Vector3 _laserOffset = new Vector3(0, -1.0f, 0);
     private GameObject _laserContainer;
+    private bool _canFire = true;
 
     [Header("Audio")]
     [SerializeField]
     private AK.Wwise.Event _explosionAudio;
     [SerializeField]
     private AK.Wwise.Event _laserAudio;
-
-    private bool _enemyAlive = true;
 
     private Player _player;
     private Animator _anim;
@@ -57,6 +61,24 @@ public class Enemy : MonoBehaviour
         StartCoroutine(FireLaserCoroutine());
     }
 
+    public void SetID(int _ID)
+    {
+        _enemyID = _ID;
+
+        switch (_enemyID) //1 = Diag Left, 2 = Diag Right
+        {
+            default:
+                transform.rotation = Quaternion.identity;
+                break;
+            case 1:
+                transform.rotation = Quaternion.Euler(0, 0, 75);
+                break;
+            case 2:
+                transform.rotation = Quaternion.Euler(0, 0, -75);
+                break;
+        }
+    }
+
     private void Update()
     {
         Movement();
@@ -67,11 +89,14 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
         //Vertical Bounds
-        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion") && transform.position.y <= -6.0)
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion") || _waveEnded == true)
         {
-            Destroy(this.gameObject);
+            if (transform.position.y <= -6.0)
+            {
+                Destroy(this.gameObject);
+            }
         }
-        else if (transform.position.y < -8.0f)
+        else if (transform.position.y < -9.0f)
         {
             float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
             transform.position = new Vector3(_randXPos, 6.5f, 0f);
@@ -86,7 +111,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator FireLaserCoroutine()
     {
-        while (_enemyAlive == true)
+        while (_canFire == true)
         {
             Vector3 _laserPos = transform.TransformPoint(_laserOffset);
             GameObject _laser = Instantiate(_laserPrefab, _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
@@ -121,9 +146,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void ClearField()
+    {
+        _speed *= 2;
+        _canFire = false;
+        _thruster.SetActive(true);
+        _waveEnded = true;
+    }
+
     private void EnemyDeath()
     {
-        _enemyAlive = false;
+        _canFire = false;
+        _thruster.SetActive(false);
         _anim.SetTrigger("OnEnemyDeath");
         _collider2D.enabled = false;
         _explosionAudio.Post(this.gameObject);

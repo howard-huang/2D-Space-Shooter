@@ -88,7 +88,7 @@ public class Missile : MonoBehaviour
             TargetLost();
         }
         
-        if (transform.position.y < -5 || transform.position.y > 6)
+        if (transform.position.y < -6 || transform.position.y > 6)
         {
             TargetLost();
         }

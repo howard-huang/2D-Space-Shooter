@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] _enemyPrefab; //0 = Standard, 1 = Diagonal Standard
+    private GameObject[] _enemyPrefab; //0 = Standard, 1 = Diag Left, 2 = Diag Right
     [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
@@ -50,36 +50,97 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public void StartSpawning()
+    public void StartSpawning(int _waveID)
     {
-        StartCoroutine(SpawnEnemyRoutine());
+        _stopSpawn = false;
+        GetWaveInfo(_waveID);
         StartCoroutine(SpawnPowerupRoutine());
     }
 
-    private IEnumerator SpawnEnemyRoutine()
+    public void StopSpawning()
+    {
+        _stopSpawn = true;
+        ClearEnemies();
+    }
+
+    private void GetWaveInfo(int _waveID)
+    {
+        WaitForSeconds _respawnTime = new WaitForSeconds(10);
+        int _enemyPool = _enemyPrefab.Length;
+
+        switch (_waveID)
+        {
+            case 1:
+                _enemyPool = 1;
+                _respawnTime = new WaitForSeconds(5);
+                break;
+            case 2:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(5);
+                break;
+            case 3:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(5);
+                break;
+            case 4:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(3);
+                break;
+            case 5:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(1);
+                break;
+            case 6:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(1);
+                break;
+            case 7:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(5);
+                break;
+            case 8:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(3);
+                break;
+            case 9:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(1);
+                break;
+            case 10:
+                _enemyPool = 3;
+                _respawnTime = new WaitForSeconds(1);
+                break;
+        }
+
+        StartCoroutine(SpawnEnemyRoutine(_respawnTime, _enemyPool));
+    }
+
+    private IEnumerator SpawnEnemyRoutine(WaitForSeconds _respawnTime, int _enemyPool)
     {
         yield return new WaitForSeconds(3.0f);
 
         while (_stopSpawn == false)
         {
-            int _randomEnemy = Random.Range(0, _enemyPrefab.Length);
+            int _randomEnemy = Random.Range(0, _enemyPool);
             Vector3 _enemySpawnPos = GetEnemySpawnPos(_randomEnemy);
-            Quaternion _enemyRotation = GetEnemyRotation(_randomEnemy);
 
-            GameObject _enemy = Instantiate(_enemyPrefab[_randomEnemy], _enemySpawnPos, _enemyRotation);
+            GameObject _enemy = Instantiate(_enemyPrefab[_randomEnemy], _enemySpawnPos, Quaternion.identity);
+
+            Enemy _enemyScript = _enemy.GetComponent<Enemy>();
+            _enemyScript.SetID(_randomEnemy);
             _enemy.transform.parent = _enemyContainer.transform;
 
-            yield return new WaitForSeconds(5.0f);
+            yield return _respawnTime;
         }
     }
 
-    private Vector3 GetEnemySpawnPos(int _randomEnemy)
+    private Vector3 GetEnemySpawnPos(int _enemyID)
     {
         float _xSpawnPos;
         float _ySpawnPos;
         Vector3 _enemySpawnPos;
 
-        switch (_randomEnemy) //1 = Diagonal Left // 2 = Diagonal Right
+        switch (_enemyID) //1 = Diagonal Left // 2 = Diagonal Right
         {
             case 1:
                 _xSpawnPos = Random.Range(-13, -10);
@@ -101,25 +162,14 @@ public class SpawnManager : MonoBehaviour
         return _enemySpawnPos;
     }
 
-    private Quaternion GetEnemyRotation(int _randomEnemy)
+    private void ClearEnemies()
     {
-        Quaternion _enemyRotation;
+        Enemy[] _activeEnemies = _enemyContainer.GetComponentsInChildren<Enemy>();
 
-        switch (_randomEnemy) //1 = Diagonal Left // 2 = Diagonal Right
+        foreach (Enemy _enemy in _activeEnemies)
         {
-            case 1:
-                _enemyRotation = Quaternion.Euler(0, 0, 75);
-                break;
-
-            case 2:
-                _enemyRotation = Quaternion.Euler(0, 0, -75);
-                break;
-
-            default:
-                _enemyRotation = Quaternion.identity;
-                break;
+            _enemy.ClearField();
         }
-        return _enemyRotation;
     }
 
     private IEnumerator SpawnPowerupRoutine()
@@ -163,10 +213,6 @@ public class SpawnManager : MonoBehaviour
     {
         _stopSpawn = true;
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (var item in enemies)
-        {
-            Destroy(item);
-        }
+        ClearEnemies();
     }
 }

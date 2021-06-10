@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
 
         transform.Translate(direction * _speed * Time.deltaTime);
 
-        float _yClamp = Mathf.Clamp(transform.position.y, -4.5f, 2);                               //vertical bounds
+        float _yClamp = Mathf.Clamp(transform.position.y, -3.0f, 2.5f);                               //vertical bounds
         transform.position = new Vector3(transform.position.x, _yClamp, 0);
         //horizontal wrapping
         if (transform.position.x >= 11.3f)

@@ -10,6 +10,14 @@ public class UIManager : MonoBehaviour
     private Text _scoreText;
 
     [SerializeField]
+    private GameObject _waveDisplay;
+    [SerializeField]
+    private Text _waveIDText;
+    [SerializeField]
+    private Text _waveTimerText;
+    private bool _waveEnded;
+
+    [SerializeField]
     private Text _ammoText;
     private int _ammoTotal;
     [SerializeField]
@@ -51,6 +59,38 @@ public class UIManager : MonoBehaviour
 
         _gameOverText.gameObject.SetActive(false);
         _restartText.gameObject.SetActive(false);
+    }
+
+    public void UpdateWaveID(int _waveID)
+    {
+        _waveIDText.text = "Wave " + _waveID.ToString();
+    }
+
+    public void UpdateWaveTime(float _seconds)
+    {
+        float _time = Mathf.RoundToInt(_seconds);
+        _waveTimerText.text = _time.ToString();
+
+        if (_time > 0)
+        {
+            _waveEnded = false;
+        }
+        else
+        {
+            _waveEnded = true;
+            StartCoroutine(WaveFlickerRoutine());
+        }
+    }
+
+    private IEnumerator WaveFlickerRoutine()
+    {
+        while (_waveEnded == true)
+        {
+            _waveDisplay.SetActive(false);
+            yield return _flickerTime;
+            _waveDisplay.SetActive(true);
+            yield return _flickerTime;
+        }
     }
 
     public void UpdateScoreUI(int _score)
