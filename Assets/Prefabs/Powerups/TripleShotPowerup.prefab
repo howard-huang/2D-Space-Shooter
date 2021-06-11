@@ -128,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 3}
+  m_Size: {x: 2.3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &7792725010363681116
 Rigidbody2D:
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _travelSpeed: 3
   _powerupID: 0
+  _rarity: 0
   _shieldStrengthCount: 0
   _ammoPowerupCount: 0
   _healthPowerupCount: 0

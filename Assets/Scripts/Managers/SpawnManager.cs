@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
-    private GameObject[] _powerups; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health, 5 = SuperLaser 6 = Missiles;
+    private GameObject[] _powerups; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health, 5 = SuperLaser, 6 = Missiles, 7 = Stall;
     [SerializeField]
     private GameObject _powerupContainer;
 
@@ -19,6 +19,9 @@ public class SpawnManager : MonoBehaviour
     private List<GameObject> _rarePowerup = new List<GameObject>(); //0 - 15
 
     private bool _stopSpawn;
+
+    [SerializeField]
+    private AK.Wwise.Event _clearEnemyAudio;
 
     private void Start()
     {
@@ -54,7 +57,6 @@ public class SpawnManager : MonoBehaviour
     {
         _stopSpawn = false;
         GetWaveInfo(_waveID);
-        StartCoroutine(SpawnPowerupRoutine());
     }
 
     public void StopSpawning()
@@ -80,39 +82,40 @@ public class SpawnManager : MonoBehaviour
                 break;
             case 3:
                 _enemyPool = 3;
-                _respawnTime = new WaitForSeconds(5);
-                break;
-            case 4:
-                _enemyPool = 3;
                 _respawnTime = new WaitForSeconds(3);
                 break;
+            case 4:
+                _enemyPool = 4;
+                _respawnTime = new WaitForSeconds(5);
+                break;
             case 5:
-                _enemyPool = 3;
-                _respawnTime = new WaitForSeconds(1);
+                _enemyPool = 4;
+                _respawnTime = new WaitForSeconds(3);
                 break;
             case 6:
                 _enemyPool = 3;
                 _respawnTime = new WaitForSeconds(1);
                 break;
             case 7:
-                _enemyPool = 3;
-                _respawnTime = new WaitForSeconds(5);
+                _enemyPool = 4;
+                _respawnTime = new WaitForSeconds(3);
                 break;
             case 8:
-                _enemyPool = 3;
-                _respawnTime = new WaitForSeconds(3);
+                _enemyPool = 4;
+                _respawnTime = new WaitForSeconds(1);
                 break;
             case 9:
                 _enemyPool = 3;
                 _respawnTime = new WaitForSeconds(1);
                 break;
             case 10:
-                _enemyPool = 3;
+                _enemyPool = 4;
                 _respawnTime = new WaitForSeconds(1);
                 break;
         }
 
         StartCoroutine(SpawnEnemyRoutine(_respawnTime, _enemyPool));
+        StartCoroutine(SpawnPowerupRoutine());
     }
 
     private IEnumerator SpawnEnemyRoutine(WaitForSeconds _respawnTime, int _enemyPool)
@@ -166,9 +169,14 @@ public class SpawnManager : MonoBehaviour
     {
         Enemy[] _activeEnemies = _enemyContainer.GetComponentsInChildren<Enemy>();
 
-        foreach (Enemy _enemy in _activeEnemies)
+        if (_activeEnemies != null)
         {
-            _enemy.ClearField();
+            _clearEnemyAudio.Post(this.gameObject);
+
+            foreach (Enemy _enemy in _activeEnemies)
+            {
+                _enemy.ClearField();
+            }
         }
     }
 
@@ -187,7 +195,7 @@ public class SpawnManager : MonoBehaviour
             GameObject _powerup = Instantiate(_randomPowerup, _powerupSpawnPos, Quaternion.identity);
             _powerup.transform.parent = _powerupContainer.transform;
 
-            yield return new WaitForSeconds(Random.Range(5.0f, 10.0f));
+            yield return new WaitForSeconds(Random.Range(4.0f, 7.0f));
         }
     }
 

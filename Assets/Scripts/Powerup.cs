@@ -9,7 +9,7 @@ public class Powerup : MonoBehaviour
     private float _travelSpeed = 3.0f;
 
     [SerializeField]
-    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health, 5 = Power Shot,
+    private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health, 5 = Power Shot, 6 = Missile, 7 = Stall
 
     [Header("0 = Common, 1 = Uncommon, 2 = Rare")]
     [SerializeField]
@@ -79,6 +79,9 @@ public class Powerup : MonoBehaviour
                         break;
                     case 6:
                         player.MissilesActive();
+                        break;
+                    case 7:
+                        player.Stall();
                         break;
                     default:
                         Debug.Log("Default Powerup Value");

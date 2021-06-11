@@ -31,6 +31,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Slider _thrusterSlider;
 
+    private bool _engineStalled;
+    [SerializeField]
+    private GameObject _stallText;
+    [SerializeField]
+    private GameObject _engineFixedText;
+
     [SerializeField]
     private Text _gameOverText;
     [SerializeField]
@@ -116,6 +122,42 @@ public class UIManager : MonoBehaviour
             _ammoDisplay.SetActive(false);
             yield return _flickerTime;
             _ammoDisplay.SetActive(true);
+            yield return _flickerTime;
+        }
+    }
+
+    public void EngineDisplayUI(bool _hasStalled)
+    {
+        _engineStalled = _hasStalled;
+
+        if (_engineStalled == true)
+        {
+            StartCoroutine(StallTextFlickerRoutine());
+        }
+        else if (_engineStalled == false)
+        {
+            StartCoroutine(EngineFixedFlickerRoutine());
+        }
+    }
+
+    private IEnumerator StallTextFlickerRoutine()
+    {
+        while (_engineStalled == true)
+        {
+            _stallText.SetActive(true);
+            yield return _flickerTime;
+            _stallText.SetActive(false);
+            yield return _flickerTime;
+        }
+    }
+
+    private IEnumerator EngineFixedFlickerRoutine()
+    {
+        for (int i = 0; i < 2; i++) //Flickers Twice
+        {
+            _engineFixedText.SetActive(true);
+            yield return _flickerTime;
+            _engineFixedText.SetActive(false);
             yield return _flickerTime;
         }
     }

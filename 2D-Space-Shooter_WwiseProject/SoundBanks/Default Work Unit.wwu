@@ -14,6 +14,7 @@
 				<SoundBank Name="SFX_Soundbank" ID="{E398F0E5-64F6-4B09-A956-BBCA5E767A07}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Shields" ID="{175A5AB2-CDA4-403C-A436-38482A5C1172}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="ClearEnemies_Play" ID="{5FF9B777-EEB5-40B7-9758-EC170D3BD3CA}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Thruster_Stop" ID="{6B75F255-8015-419B-A5FE-2BBE10F8B8C9}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="NoAmmo_Play" ID="{FDE4CC27-D09A-4317-A174-6FC2843FD939}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Thruster" ID="{E7FDF2FD-80E4-446B-A276-F8D46FBF8379}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}" Origin="Manual" Filter="7"/>

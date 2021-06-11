@@ -25,6 +25,11 @@ public class Laser : MonoBehaviour
         }
     }
 
+    public void WaveOver()
+    {
+        _speed *= 2;
+    }
+
     private void Destroy()
     {
         if (transform.position.y > 8 || transform.position.y < -8)

@@ -16,11 +16,19 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2641024368" Language="SFX" Hash="2955867610">
+		<SoundBank Id="2641024368" Language="SFX" Hash="3432986491">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
 			<ShortName>SFX_Soundbank</ShortName>
 			<Path>SFX_Soundbank.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1028921873" Name="ClearEnemies_Play" ObjectPath="\Events\Default Work Unit\SFX\ClearEnemies_Play" DurationType="OneShot" DurationMin="2.721252" DurationMax="3.236132">
+					<IncludedMemoryFiles>
+						<File Id="591146097" Language="SFX">
+							<ShortName>Speed.wav</ShortName>
+							<Path>SFX\Speed_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1194956557" Name="EnemyLaser_Play" ObjectPath="\Events\Default Work Unit\SFX\Lasers\EnemyLaser_Play" DurationType="OneShot" DurationMin="0.834612" DurationMax="0.964271">
 					<IncludedMemoryFiles>
 						<File Id="89020645" Language="SFX">

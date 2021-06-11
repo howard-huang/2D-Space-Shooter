@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -17,22 +18,22 @@ public class Enemy : MonoBehaviour
     private int _points = 10;
     private bool _waveEnded;
 
-    [Header("Laser")]
+    //Weapons
     [SerializeField]
-    private GameObject _laserPrefab;
+    private GameObject _weaponPrefab;
     private Vector3 _laserOffset = new Vector3(0, -1.0f, 0);
     private GameObject _laserContainer;
     private bool _canFire = true;
 
-    [Header("Audio")]
     [SerializeField]
-    private AK.Wwise.Event _explosionAudio;
-    [SerializeField]
-    private AK.Wwise.Event _laserAudio;
+    private AK.Wwise.Event _weaponAudio;
 
     private Player _player;
     private Animator _anim;
     private Collider2D _collider2D;
+
+    [SerializeField]
+    private GameObject _explosionPrefab;
 
     private void Start()
     {
@@ -58,14 +59,14 @@ public class Enemy : MonoBehaviour
             Debug.LogError("Laser Container is Null!");
         }
 
-        StartCoroutine(FireLaserCoroutine());
+        WeaponSelect();
     }
 
     public void SetID(int _ID)
     {
         _enemyID = _ID;
 
-        switch (_enemyID) //1 = Diag Left, 2 = Diag Right
+        switch (_enemyID) //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy;
         {
             default:
                 transform.rotation = Quaternion.identity;
@@ -81,20 +82,35 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        switch (_enemyID)  //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy;
+        {
+            default: 
+                StandardMovement();
+                break;
+            case 3:
+                StartCoroutine(MissileEnemyRoutine());
+                break;
+        }
+
+        MovementBounds();
     }
 
-    private void Movement()
+    private void StandardMovement()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+    }
 
+    private IEnumerator MissileEnemyRoutine() //Insert Code here
+    {
+        yield return new WaitForEndOfFrame();
+    }
+
+    private void MovementBounds()
+    {
         //Vertical Bounds
-        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Explosion") || _waveEnded == true)
+        if (_waveEnded == true && transform.position.y <= -6.0)
         {
-            if (transform.position.y <= -6.0)
-            {
                 Destroy(this.gameObject);
-            }
         }
         else if (transform.position.y < -9.0f)
         {
@@ -109,13 +125,25 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void WeaponSelect()
+    {
+        switch (_enemyID)  //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy;
+        {
+            default:
+                StartCoroutine(FireLaserCoroutine());
+                break;
+            case 3: //Missile Firing will correlate with movement;
+                return;                
+        }
+    }
+
     private IEnumerator FireLaserCoroutine()
     {
         while (_canFire == true)
         {
             Vector3 _laserPos = transform.TransformPoint(_laserOffset);
-            GameObject _laser = Instantiate(_laserPrefab, _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
-            _laserAudio.Post(this.gameObject);
+            GameObject _laser = Instantiate(_weaponPrefab, _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
+            _weaponAudio.Post(this.gameObject);
             
             _laser.tag = "Enemy Laser";
             _laser.transform.parent = _laserContainer.transform;
@@ -152,19 +180,21 @@ public class Enemy : MonoBehaviour
         _canFire = false;
         _thruster.SetActive(true);
         _waveEnded = true;
+
+        foreach (Laser _laser in _laserContainer.GetComponentsInChildren<Laser>())
+        {
+            if (_laser.tag == "EnemyLaser")
+            {
+                _laser.WaveOver();
+            }
+        }
     }
 
-    private void EnemyDeath()
+    private void EnemyDeath() 
     {
         _canFire = false;
         _thruster.SetActive(false);
-        _anim.SetTrigger("OnEnemyDeath");
-        _collider2D.enabled = false;
-        _explosionAudio.Post(this.gameObject);
-
-        float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
-        Destroy(this.gameObject, _animLength);
+        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
-
-
 }

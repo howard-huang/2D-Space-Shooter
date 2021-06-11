@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
     private float _speedBoostCooldown = 5.0f;
     [SerializeField]
     private GameObject _speedVisual;
+    private bool _hasStalled;
+    [SerializeField]
+    private float _stallTime = 5.0f;
 
     [SerializeField]
     private GameObject _thrusterVisual;
@@ -132,14 +135,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if (_hasStalled == false)
+        {
+            Movement();
+            ThrusterCheck();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             WeaponSelect();
         }
-
-        ThrusterCheck();
     }
 
     private void Movement()
@@ -162,6 +167,20 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
+    }
+
+    public void Stall()
+    {
+        StartCoroutine(StallPowerDownRoutine());
+    }
+
+    private IEnumerator StallPowerDownRoutine()
+    {
+        _hasStalled = true;
+        _uiManager.EngineDisplayUI(_hasStalled);
+        yield return new WaitForSeconds(_stallTime);
+        _hasStalled = false;
+        _uiManager.EngineDisplayUI(_hasStalled);
     }
 
     private void ThrusterCheck()

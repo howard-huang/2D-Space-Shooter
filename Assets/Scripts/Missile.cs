@@ -78,10 +78,7 @@ public class Missile : MonoBehaviour
 
     private void Movement()
     {
-        if (_missileActive == true)
-        {
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
-        }
+        transform.Translate(Vector3.up * _speed * Time.deltaTime);
 
         if (transform.position.x < -12 || transform.position.x > 12)
         {

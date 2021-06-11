@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 2580672625742949387}
   - component: {fileID: 3392395086167826246}
   - component: {fileID: -4593110722333365471}
-  - component: {fileID: 820633827819568766}
   - component: {fileID: -644875235383171151}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Standard Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,25 +208,6 @@ PolygonCollider2D:
       - {x: 0.37, y: 0.63}
       - {x: 0.35999998, y: 0.62}
       - {x: 0.35999998, y: 0.63}
---- !u!95 &820633827819568766
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124781588138122787}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74de37013735a004c87f3b348484ce9e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-644875235383171151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,18 +223,15 @@ MonoBehaviour:
   _speed: 4
   _thruster: {fileID: 6700347693889996763}
   _points: 10
-  _laserPrefab: {fileID: 7119604876145237282, guid: 952664abd6131b043a3b0d28fea98073,
+  _weaponPrefab: {fileID: 7119604876145237282, guid: 952664abd6131b043a3b0d28fea98073,
     type: 3}
-  _explosionAudio:
+  _weaponAudio:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 303864f356c39ae4ba1ce15545c1801a,
+    WwiseObjectReference: {fileID: 11400000, guid: 0531268b3e7ed9d449dc56acdd8598d7,
       type: 2}
-  _laserAudio:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 7fab714b1d618bf42b52847f8d10bb34,
-      type: 2}
+  _explosionPrefab: {fileID: 3313200194650638524, guid: 41b18a71b0dff2a42abebfc474842d2a,
+    type: 3}
 --- !u!1 &6700347693889996763
 GameObject:
   m_ObjectHideFlags: 0
