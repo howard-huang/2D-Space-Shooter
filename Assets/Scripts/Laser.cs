@@ -7,6 +7,21 @@ public class Laser : MonoBehaviour
     [SerializeField]
     private float _speed = 8.0f;
 
+    [SerializeField]
+    private AK.Wwise.Event[] _laserAudio; //0 = Player Laser, 1 = Enemy Laser;
+
+    private void Start()
+    {
+        if (this.tag == "Laser")
+        {
+            _laserAudio[0].Post(this.gameObject);
+        }
+        else if (this.tag == "Enemy Laser")
+        {
+            _laserAudio[1].Post(this.gameObject);
+        }
+    }
+
     private void Update()
     {
         Movement();

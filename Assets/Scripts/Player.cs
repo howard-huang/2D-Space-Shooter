@@ -82,8 +82,6 @@ public class Player : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField]
-    private AK.Wwise.Event _laserAudio;
-    [SerializeField]
     private AK.Wwise.Event _superLaserAudio, _stopSuperLaserAudio;
     [SerializeField]
     private AK.Wwise.Event _noAmmoAudio;
@@ -288,7 +286,6 @@ public class Player : MonoBehaviour
 
             _ammoCount--;
             _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
-            _laserAudio.Post(this.gameObject);
         }
         else
         {
@@ -406,7 +403,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy Laser")
+        if (other.tag == "Enemy Laser" || other.tag == "Enemy Missile")
         {
             Destroy(other.gameObject);
             _explosionAudio.Post(this.gameObject);

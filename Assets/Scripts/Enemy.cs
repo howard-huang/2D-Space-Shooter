@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
     private int _enemyID;
 
     [Header("Speed")]
@@ -18,22 +19,25 @@ public class Enemy : MonoBehaviour
     private int _points = 10;
     private bool _waveEnded;
 
-    //Weapons
     [SerializeField]
-    private GameObject _weaponPrefab;
-    private Vector3 _laserOffset = new Vector3(0, -1.0f, 0);
+    private GameObject[] _weaponPrefab; //0 = Laser, 1 = Missile Left, 2 = Missile Right
     private GameObject _laserContainer;
     private bool _canFire = true;
 
-    [SerializeField]
-    private AK.Wwise.Event _weaponAudio;
+    private GameObject _activeLaser = null;
+    List<GameObject> _activeMissiles = new List<GameObject>();
 
     private Player _player;
     private Animator _anim;
     private Collider2D _collider2D;
+    private SpriteRenderer _spriteRenderer;
 
     [SerializeField]
     private GameObject _explosionPrefab;
+
+    [Header("Audio")]
+    [SerializeField]
+    private AK.Wwise.Event _speedBoostAudio;
 
     private void Start()
     {
@@ -59,25 +63,36 @@ public class Enemy : MonoBehaviour
             Debug.LogError("Laser Container is Null!");
         }
 
-        WeaponSelect();
+        IDBehaviors();
     }
 
     public void SetID(int _ID)
     {
         _enemyID = _ID;
+    }
 
+    private void IDBehaviors()
+    {
         switch (_enemyID) //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy;
         {
             default:
                 transform.rotation = Quaternion.identity;
+                StartCoroutine(FireLaserCoroutine());
                 break;
             case 1:
                 transform.rotation = Quaternion.Euler(0, 0, 75);
+                StartCoroutine(FireLaserCoroutine());
                 break;
             case 2:
                 transform.rotation = Quaternion.Euler(0, 0, -75);
+                StartCoroutine(FireLaserCoroutine());
+                break;
+            case 3:
+                StartCoroutine(MissileEnemyRoutine());
                 break;
         }
+
+        WeaponAssign();
     }
 
     private void Update()
@@ -86,13 +101,11 @@ public class Enemy : MonoBehaviour
         {
             default: 
                 StandardMovement();
+                MovementBounds();
                 break;
             case 3:
-                StartCoroutine(MissileEnemyRoutine());
-                break;
+                return;
         }
-
-        MovementBounds();
     }
 
     private void StandardMovement()
@@ -102,7 +115,64 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator MissileEnemyRoutine() //Insert Code here
     {
+        while(transform.position.y > 3)
+        {
+            yield return new WaitForEndOfFrame();
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        }
+
         yield return new WaitForEndOfFrame();
+
+        while (_activeMissiles.Count > 0)
+        {
+            string _missileFired = FireMissile();
+
+            Vector3 _rotateDirection = BarrelRoll(_missileFired);
+
+            float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
+            float _rotateTime = Time.time + _animLength;
+
+            while (Time.time < _rotateTime)
+            {
+                transform.Translate(_rotateDirection * _speed * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
+
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        StartCoroutine(EndMissileEnemyRoutine());
+    }
+
+    private Vector3 BarrelRoll(string _missileFired)
+    {
+        if (_missileFired == "Left Missile")
+        {
+            _anim.SetTrigger("Enemy_Rotate_Right");
+            return Vector3.right;
+        }
+        else if (_missileFired == "Right Missile")
+        {
+            _anim.SetTrigger("Enemy_Rotate_Left");
+            return Vector3.left;
+        }
+        else
+        {
+            Debug.Log("No Missile Fired");
+            return Vector3.down;
+        }
+    }
+
+    private IEnumerator EndMissileEnemyRoutine()
+    {
+        _thruster.SetActive(true);
+        _speedBoostAudio.Post(this.gameObject);
+
+        while (true)
+        {
+            transform.Translate(Vector3.down * (_speed * 2.0f) * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private void MovementBounds()
@@ -125,15 +195,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void WeaponSelect()
+    private void WeaponAssign()
     {
-        switch (_enemyID)  //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy;
+        foreach (GameObject _weapon in _weaponPrefab)
         {
-            default:
-                StartCoroutine(FireLaserCoroutine());
-                break;
-            case 3: //Missile Firing will correlate with movement;
-                return;                
+            if (_weapon.tag == "Enemy Laser")
+            {
+                _activeLaser = _weapon;
+            }
+            else if (_weapon.tag == "Enemy Missile")
+            {
+                _activeMissiles.Add(_weapon);
+            }
         }
     }
 
@@ -141,15 +214,27 @@ public class Enemy : MonoBehaviour
     {
         while (_canFire == true)
         {
+            Vector3 _laserOffset = new Vector3(0, -1.0f, 0);
             Vector3 _laserPos = transform.TransformPoint(_laserOffset);
-            GameObject _laser = Instantiate(_weaponPrefab, _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
-            _weaponAudio.Post(this.gameObject);
+            GameObject _laser = Instantiate(_weaponPrefab[0], _laserPos, this.transform.rotation);          //Follows Rotation of Enemy
             
             _laser.tag = "Enemy Laser";
             _laser.transform.parent = _laserContainer.transform;
 
             yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
         }
+    }
+
+    private string FireMissile()
+    {
+        GameObject _missileToFire = _activeMissiles[Random.Range(0, _activeMissiles.Count)];
+        Missile _missile = _missileToFire.GetComponent<Missile>();
+        string _missileName = _missileToFire.name;
+        _activeMissiles.Remove(_missileToFire);
+
+        _missileToFire.SetActive(true);
+        _missile.Fire();
+        return _missileName;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -195,6 +280,7 @@ public class Enemy : MonoBehaviour
         _canFire = false;
         _thruster.SetActive(false);
         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        this.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }
 }
