@@ -168,6 +168,7 @@ public class UIManager : MonoBehaviour
 
         if (_currentLives == 0)
         {
+            StopAllCoroutines();
             UIGameOver();
         }
     }

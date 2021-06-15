@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
+{ 
     [SerializeField]
     private int _enemyID;
 
@@ -24,20 +24,23 @@ public class Enemy : MonoBehaviour
     private GameObject _laserContainer;
     private bool _canFire = true;
 
-    private GameObject _activeLaser = null;
     List<GameObject> _activeMissiles = new List<GameObject>();
 
     private Player _player;
     private Animator _anim;
     private Collider2D _collider2D;
-    private SpriteRenderer _spriteRenderer;
 
+    [SerializeField]
+    private GameObject _shieldVisual;
+    private bool _shieldActive;
     [SerializeField]
     private GameObject _explosionPrefab;
 
     [Header("Audio")]
     [SerializeField]
     private AK.Wwise.Event _speedBoostAudio;
+    [SerializeField]
+    private AK.Wwise.Event _shieldAudio, _stopShieldAudio;
 
     private void Start()
     {
@@ -78,6 +81,7 @@ public class Enemy : MonoBehaviour
             default:
                 transform.rotation = Quaternion.identity;
                 StartCoroutine(FireLaserCoroutine());
+                AddShieldChance();
                 break;
             case 1:
                 transform.rotation = Quaternion.Euler(0, 0, 75);
@@ -113,7 +117,7 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
     }
 
-    private IEnumerator MissileEnemyRoutine() //Insert Code here
+    private IEnumerator MissileEnemyRoutine()
     {
         while(transform.position.y > 3)
         {
@@ -168,11 +172,13 @@ public class Enemy : MonoBehaviour
         _thruster.SetActive(true);
         _speedBoostAudio.Post(this.gameObject);
 
-        while (true)
+        while (transform.position.y > 6)
         {
             transform.Translate(Vector3.down * (_speed * 2.0f) * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
+
+        Destroy(this.gameObject);
     }
 
     private void MovementBounds()
@@ -184,8 +190,8 @@ public class Enemy : MonoBehaviour
         }
         else if (transform.position.y < -9.0f)
         {
-            float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
-            transform.position = new Vector3(_randXPos, 6.5f, 0f);
+                float _randXPos = Mathf.Round(Random.Range(-9.0f, 9.0f) * 10) / 10;
+                transform.position = new Vector3(_randXPos, 6.5f, 0f);
         }
 
         //Horizontal Bounds
@@ -199,11 +205,7 @@ public class Enemy : MonoBehaviour
     {
         foreach (GameObject _weapon in _weaponPrefab)
         {
-            if (_weapon.tag == "Enemy Laser")
-            {
-                _activeLaser = _weapon;
-            }
-            else if (_weapon.tag == "Enemy Missile")
+            if (_weapon.tag == "Enemy Missile")
             {
                 _activeMissiles.Add(_weapon);
             }
@@ -275,12 +277,34 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void AddShieldChance()
+    {
+        int _chance = Random.Range(0, 5);
+
+        if (_chance == 0)
+        {
+            _shieldVisual.SetActive(true);
+            _shieldActive = true;
+            _shieldAudio.Post(this.gameObject);
+        }
+    }
+
     private void EnemyDeath() 
     {
-        _canFire = false;
-        _thruster.SetActive(false);
-        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-        this.gameObject.SetActive(false);
-        Destroy(this.gameObject);
+        if (_shieldActive == true)
+        {
+            _shieldVisual.SetActive(false);
+            _shieldActive = false;
+            _stopShieldAudio.Post(this.gameObject);
+            return;
+        }
+        else
+        {
+            _canFire = false;
+            _thruster.SetActive(false);
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
     }
 }

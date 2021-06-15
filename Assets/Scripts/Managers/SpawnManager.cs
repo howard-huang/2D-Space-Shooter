@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] _enemyPrefab; //0 = Standard, 1 = Diag Left, 2 = Diag Right
+    private GameObject[] _enemyPrefabs; //0 = Standard, 1 = Diag Left, 2 = Diag Right
     [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
@@ -25,31 +25,35 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        AssignRarity();
+        AssignPowerupRarity();
     }
 
-    private void AssignRarity()
+    private void AssignPowerupRarity()
     {
         foreach (GameObject obj in _powerups)
         {
             Powerup _script = obj.GetComponent<Powerup>();
-            int _rarity = _script.GetRarity();
-
-            switch (_rarity)
+            
+            if (_script != null)
             {
-                case 0:
-                    _commonPowerup.Add(obj);
-                    break;
-                case 1:
-                    _uncommonPowerup.Add(obj);
-                    break;
-                case 2:
-                    _rarePowerup.Add(obj);
-                    break;
-                default:
-                    Debug.LogError("No Rarity" + obj);
-                    break;
-            }          
+                int _rarity = _script.GetRarity();
+
+                switch (_rarity)
+                {
+                    case 0:
+                        _commonPowerup.Add(obj);
+                        break;
+                    case 1:
+                        _uncommonPowerup.Add(obj);
+                        break;
+                    case 2:
+                        _rarePowerup.Add(obj);
+                        break;
+                    default:
+                        Debug.LogError("No Rarity" + obj);
+                        break;
+                }
+            }
         }
     }
 
@@ -68,66 +72,77 @@ public class SpawnManager : MonoBehaviour
     private void GetWaveInfo(int _waveID)
     {
         WaitForSeconds _respawnTime = new WaitForSeconds(10);
-        int _enemyPool = _enemyPrefab.Length;
+        int _minEnemyPool = 0;
+        int _maxEnemyPool = _enemyPrefabs.Length;
 
         switch (_waveID)
         {
             case 1:
-                _enemyPool = 1;
+                _minEnemyPool = 0;
+                _maxEnemyPool = 1;
                 _respawnTime = new WaitForSeconds(5);
                 break;
             case 2:
-                _enemyPool = 3;
+                _minEnemyPool = 0;
+                _maxEnemyPool = 3;
                 _respawnTime = new WaitForSeconds(5);
                 break;
             case 3:
-                _enemyPool = 3;
+                _minEnemyPool = 1;
+                _maxEnemyPool = 3;
                 _respawnTime = new WaitForSeconds(3);
                 break;
             case 4:
-                _enemyPool = 4;
+                _minEnemyPool = 1;
+                _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(5);
                 break;
             case 5:
-                _enemyPool = 4;
+                _minEnemyPool = 0;
+                _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(3);
                 break;
             case 6:
-                _enemyPool = 3;
+                _minEnemyPool = 0;
+                _maxEnemyPool = 3;
                 _respawnTime = new WaitForSeconds(1);
                 break;
             case 7:
-                _enemyPool = 4;
+                _minEnemyPool = 0;
+                _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(3);
                 break;
             case 8:
-                _enemyPool = 4;
+                _minEnemyPool = 1;
+                _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(1);
                 break;
             case 9:
-                _enemyPool = 3;
+                _minEnemyPool = 0;
+                _maxEnemyPool = 3;
                 _respawnTime = new WaitForSeconds(1);
                 break;
             case 10:
-                _enemyPool = 4;
+                _minEnemyPool = 0;
+                _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(1);
                 break;
         }
 
-        StartCoroutine(SpawnEnemyRoutine(_respawnTime, _enemyPool));
+        StartCoroutine(SpawnEnemyRoutine(_respawnTime, _minEnemyPool, _maxEnemyPool));
         StartCoroutine(SpawnPowerupRoutine());
     }
 
-    private IEnumerator SpawnEnemyRoutine(WaitForSeconds _respawnTime, int _enemyPool)
+    private IEnumerator SpawnEnemyRoutine(WaitForSeconds _respawnTime, int _minEnemyPool, int _maxEnemyPool)
     {
         yield return new WaitForSeconds(3.0f);
 
         while (_stopSpawn == false)
         {
-            int _randomEnemy = Random.Range(0, _enemyPool);
+            int _randomEnemy = Random.Range(_minEnemyPool, _maxEnemyPool);
             Vector3 _enemySpawnPos = GetEnemySpawnPos(_randomEnemy);
 
-            GameObject _enemy = Instantiate(_enemyPrefab[_randomEnemy], _enemySpawnPos, Quaternion.identity);
+            GameObject _enemy = Instantiate(_enemyPrefabs[_randomEnemy], _enemySpawnPos, Quaternion.identity);
 
             Enemy _enemyScript = _enemy.GetComponent<Enemy>();
             _enemyScript.SetID(_randomEnemy);
