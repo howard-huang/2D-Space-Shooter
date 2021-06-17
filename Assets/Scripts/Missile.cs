@@ -113,8 +113,11 @@ public class Missile : MonoBehaviour
 
     private IEnumerator PlayerEvadeTime()
     {
-        yield return new WaitForSeconds(3.0f);
-        _targetToTrack = null;
+        while (_targetToTrack != null)
+        {
+            yield return new WaitForSeconds(3.0f);
+            _targetToTrack = null;
+        }
     }
 
     private void TargetLost()

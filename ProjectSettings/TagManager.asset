@@ -12,6 +12,7 @@ TagManager:
   - Super Laser
   - Missile
   - Enemy Missile
+  - Rear Laser
   layers:
   - Default
   - TransparentFX

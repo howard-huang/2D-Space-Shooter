@@ -547,6 +547,6 @@ MonoBehaviour:
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music/BGM
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX
-  - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX/Lasers
+  - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX/Shields
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

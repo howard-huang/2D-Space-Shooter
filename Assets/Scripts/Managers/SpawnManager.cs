@@ -89,43 +89,43 @@ public class SpawnManager : MonoBehaviour
                 break;
             case 3:
                 _minEnemyPool = 1;
-                _maxEnemyPool = 3;
-                _respawnTime = new WaitForSeconds(3);
-                break;
-            case 4:
-                _minEnemyPool = 1;
                 _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(5);
                 break;
-            case 5:
+            case 4:
                 _minEnemyPool = 0;
                 _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(3);
+                break;
+            case 5:
+                _minEnemyPool = 1;
+                _maxEnemyPool = 5;
+                _respawnTime = new WaitForSeconds(5);
                 break;
             case 6:
                 _minEnemyPool = 0;
                 _maxEnemyPool = 3;
-                _respawnTime = new WaitForSeconds(1);
+                _respawnTime = new WaitForSeconds(3);
                 break;
             case 7:
+                _minEnemyPool = 1;
+                _maxEnemyPool = 6;
+                _respawnTime = new WaitForSeconds(5);
+                break;
+            case 8:
+                _minEnemyPool = 4;
+                _maxEnemyPool = 6;
+                _respawnTime = new WaitForSeconds(5);
+                break;
+            case 9:
                 _minEnemyPool = 0;
                 _maxEnemyPool = 4;
                 _respawnTime = new WaitForSeconds(3);
                 break;
-            case 8:
-                _minEnemyPool = 1;
-                _maxEnemyPool = 4;
-                _respawnTime = new WaitForSeconds(1);
-                break;
-            case 9:
-                _minEnemyPool = 0;
-                _maxEnemyPool = 3;
-                _respawnTime = new WaitForSeconds(1);
-                break;
             case 10:
                 _minEnemyPool = 0;
-                _maxEnemyPool = 4;
-                _respawnTime = new WaitForSeconds(1);
+                _maxEnemyPool = 6;
+                _respawnTime = new WaitForSeconds(3);
                 break;
         }
 

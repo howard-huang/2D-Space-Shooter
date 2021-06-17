@@ -16,7 +16,7 @@ public class Laser : MonoBehaviour
         {
             _laserAudio[0].Post(this.gameObject);
         }
-        else if (this.tag == "Enemy Laser")
+        else if (this.tag == "Enemy Laser" || this.tag == "Rear Laser")
         {
             _laserAudio[1].Post(this.gameObject);
         }
@@ -30,7 +30,7 @@ public class Laser : MonoBehaviour
 
     private void Movement()
     {
-        if (this.tag == "Laser")
+        if (this.tag == "Laser" || this.tag == "Rear Laser")
         {
             transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }

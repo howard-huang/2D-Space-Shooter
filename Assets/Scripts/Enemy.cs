@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -76,7 +77,7 @@ public class Enemy : MonoBehaviour
 
     private void IDBehaviors()
     {
-        switch (_enemyID) //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy;
+        switch (_enemyID) //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy, 4 = Ramming Enemy, 5 = Rear Fire;
         {
             default:
                 transform.rotation = Quaternion.identity;
@@ -94,6 +95,12 @@ public class Enemy : MonoBehaviour
             case 3:
                 StartCoroutine(MissileEnemyRoutine());
                 break;
+            case 4:
+                StartCoroutine(RammingBehaviorRoutine());
+                break;
+            case 5:
+                StartCoroutine(RearLaserCoroutine());
+                break;
         }
 
         WeaponAssign();
@@ -101,14 +108,22 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        switch (_enemyID)  //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy;
+        switch (_enemyID)  //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy, 4 = Ramming Enemy, 5 = Rear Fire;
         {
             default: 
                 StandardMovement();
-                MovementBounds();
+                MovementBounds(true);
                 break;
             case 3:
                 return;
+            case 4:
+                StandardMovement();
+                MovementBounds(false);
+                break;
+            case 5:
+                StandardMovement();
+                MovementBounds(false);
+                break;
         }
     }
 
@@ -172,7 +187,7 @@ public class Enemy : MonoBehaviour
         _thruster.SetActive(true);
         _speedBoostAudio.Post(this.gameObject);
 
-        while (transform.position.y > 6)
+        while (transform.position.y > -6)
         {
             transform.Translate(Vector3.down * (_speed * 2.0f) * Time.deltaTime);
             yield return new WaitForEndOfFrame();
@@ -181,10 +196,26 @@ public class Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void MovementBounds()
+    private IEnumerator RammingBehaviorRoutine()
+    {
+        while (transform.position.y > _player.transform.position.y)
+        {
+            if (_player != null)
+            {
+                Vector3 _targetDirection = this.transform.position - _player.transform.position;
+                Quaternion _targetRotation = Quaternion.LookRotation(transform.forward, _targetDirection);
+                float _rotateSpeed = _speed * Time.deltaTime;
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, _rotateSpeed);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+
+    private void MovementBounds(bool _canRespawn)
     {
         //Vertical Bounds
-        if (_waveEnded == true && transform.position.y <= -6.0)
+        if ((_waveEnded == true || _canRespawn == false) && transform.position.y <= -6.0)
         {
                 Destroy(this.gameObject);
         }
@@ -227,6 +258,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private IEnumerator RearLaserCoroutine()
+    {
+        while (transform.position.y > _player.transform.position.y)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        while (_canFire == true)
+        {
+            GameObject _laser = Instantiate(_weaponPrefab[1], transform.position, Quaternion.identity);
+            _laser.transform.parent = _laserContainer.transform;
+
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
     private string FireMissile()
     {
         GameObject _missileToFire = _activeMissiles[Random.Range(0, _activeMissiles.Count)];
@@ -245,19 +292,26 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Player")
         {
             _player.TakeDamage();
-            EnemyDeath();
+            
+            if (_enemyID == 4)
+            {
+                Instantiate(_explosionPrefab, other.transform.position, Quaternion.identity);
+                return;
+            }
+            else
+            {
+                Damage();
+            }
         }
         else if (other.tag == "Laser" || other.tag == "Missile")
         {
             Destroy(other.gameObject);
 
-            _player.AddScore(_points);
-            EnemyDeath();
+            Damage();
         }
         else if (other.tag == "Super Laser")
         {
-            _player.AddScore(_points);
-            EnemyDeath();
+            Damage();
         }
     }
 
@@ -266,6 +320,7 @@ public class Enemy : MonoBehaviour
         _speed *= 2;
         _canFire = false;
         _thruster.SetActive(true);
+        _stopShieldAudio.Post(this.gameObject);
         _waveEnded = true;
 
         foreach (Laser _laser in _laserContainer.GetComponentsInChildren<Laser>())
@@ -279,7 +334,7 @@ public class Enemy : MonoBehaviour
 
     private void AddShieldChance()
     {
-        int _chance = Random.Range(0, 5);
+        int _chance = Random.Range(0, 3);
 
         if (_chance == 0)
         {
@@ -289,10 +344,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void EnemyDeath() 
+    private void Damage() 
     {
         if (_shieldActive == true)
         {
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             _shieldVisual.SetActive(false);
             _shieldActive = false;
             _stopShieldAudio.Post(this.gameObject);
@@ -300,11 +356,18 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            _canFire = false;
-            _thruster.SetActive(false);
-            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            this.gameObject.SetActive(false);
-            Destroy(this.gameObject);
+            EnemyDeath();
         }
+    }
+
+    private void EnemyDeath()
+    {
+        _player.AddScore(_points);
+
+        _canFire = false;
+        _thruster.SetActive(false);
+        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);     
     }
 }
