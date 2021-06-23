@@ -143,6 +143,11 @@ public class Player : MonoBehaviour
         {
             WeaponSelect();
         }
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            CollectPowerups();
+        }
     }
 
     private void Movement()
@@ -346,6 +351,11 @@ public class Player : MonoBehaviour
         _speed /= _speedMultiplier;
         _speedVisual.SetActive(false);
         _stopSpeedAudio.Post(this.gameObject);
+    }
+
+    private void CollectPowerups()
+    {
+        Debug.Log("Collecting");
     }
 
     public void ShieldStrength(int _strength)

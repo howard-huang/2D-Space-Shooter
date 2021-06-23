@@ -87,11 +87,20 @@ public class Powerup : MonoBehaviour
                         Debug.Log("Default Powerup Value");
                         break;
                 }
+
+                _powerupSound.Post(this.gameObject);
+                Destroy(this.gameObject);
             }
+            
+        }
+        else
+        {
+            other.gameObject.TryGetComponent<Laser>(out Laser _laser);
 
-            _powerupSound.Post(this.gameObject);
-
-            Destroy(this.gameObject);
+            if (_laser != null)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
