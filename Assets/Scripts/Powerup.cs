@@ -7,6 +7,7 @@ public class Powerup : MonoBehaviour
     [Header("General")]
     [SerializeField]
     private float _travelSpeed = 3.0f;
+    private bool _changeDirection;
 
     [SerializeField]
     private int _powerupID; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health, 5 = Power Shot, 6 = Missile, 7 = Stall
@@ -29,14 +30,33 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private AK.Wwise.Event _powerupSound;
 
+    private Player _player;
+
+    private void Start()
+    {
+        _player = GameObject.Find("Player").GetComponent<Player>();
+
+        if (_player == null)
+        {
+            Debug.LogError("Player is Null!");
+        }
+    }
+
     private void Update()
     {
         Movement();
     }
 
     private void Movement()
-    {
-        transform.Translate(Vector3.down * _travelSpeed * Time.deltaTime);
+    {        
+        if (_changeDirection == true && _player != null)
+        {
+            transform.Translate((_player.transform.position - this.transform.position) * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector3.down * _travelSpeed * Time.deltaTime);
+        }
 
         if (transform.position.y <= -7)
         {
@@ -47,6 +67,11 @@ public class Powerup : MonoBehaviour
     public int GetRarity()
     {
         return _rarity;
+    }
+
+    public void MagnetActive(bool _magnetActive)
+    {
+        _changeDirection = _magnetActive;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

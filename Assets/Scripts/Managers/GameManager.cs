@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void GMGameOver()
     {
+        StopAllCoroutines();
         _isGameOver = true;
     }
 }

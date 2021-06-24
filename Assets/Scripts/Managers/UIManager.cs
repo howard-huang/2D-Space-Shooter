@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private Slider _thrusterSlider;
+    [SerializeField]
+    private Slider _magnetSlider;
 
     private bool _engineStalled;
     [SerializeField]
@@ -178,8 +180,14 @@ public class UIManager : MonoBehaviour
         _thrusterSlider.value = _timeLeft;
     }
 
+    public void UpdateMagnetUI(float _timeLeft)
+    {
+        _magnetSlider.value = _timeLeft;
+    }
+
     private void UIGameOver()
     {
+        StartCoroutine(WaveFlickerRoutine());
         StartCoroutine(GameOverFlickerRoutine());
         StartCoroutine(RestartGameDisplay());
     }

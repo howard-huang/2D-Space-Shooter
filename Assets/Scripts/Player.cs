@@ -82,9 +82,9 @@ public class Player : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField]
-    private AK.Wwise.Event _superLaserAudio, _stopSuperLaserAudio;
-    [SerializeField]
     private AK.Wwise.Event _noAmmoAudio;
+    [SerializeField]
+    private AK.Wwise.Event _superLaserAudio, _stopSuperLaserAudio;
     [SerializeField]
     private AK.Wwise.Event _healthAudio;
     [SerializeField]
@@ -98,6 +98,13 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private AK.Wwise.Event _stopSFX;
+
+    [Header("Misc")]
+    [SerializeField]
+    private GameObject _powerupContainer;
+    private float _magnetLevel = 3.0f;
+    private float _magnetCooldown = 7.0f;
+    private bool _magnetOn;
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
@@ -129,10 +136,13 @@ public class Player : MonoBehaviour
         _uiManager.UpdateScoreUI(_score);
         _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
         _uiManager.UpdateThrusterUI(_thrusterLevel);
+        _uiManager.UpdateMagnetUI(_magnetLevel);
     }
 
     private void Update()
     {
+        MagnetCheck();
+
         if (_hasStalled == false)
         {
             Movement();
@@ -142,11 +152,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             WeaponSelect();
-        }
-
-        if (Input.GetKey(KeyCode.C))
-        {
-            CollectPowerups();
         }
     }
 
@@ -219,16 +224,13 @@ public class Player : MonoBehaviour
         _stopThrusterAudio.Post(this.gameObject);
         _thrusterVisual.SetActive(false);
 
-        if (_thrusterOn == false)
-        {
-            yield return new WaitForSeconds(_thrusterCooldown);
+        yield return new WaitForSeconds(_thrusterCooldown);
             
-            while (_thrusterLevel < 5 && _thrusterOn == false)
-            {
-                yield return null;
-                _thrusterLevel += Time.deltaTime;
-                _uiManager.UpdateThrusterUI(_thrusterLevel);
-            }
+        while (_thrusterLevel < 5 && _thrusterOn == false)
+        {
+            yield return null;
+            _thrusterLevel += Time.deltaTime;
+            _uiManager.UpdateThrusterUI(_thrusterLevel);
         }
     }
 
@@ -353,9 +355,59 @@ public class Player : MonoBehaviour
         _stopSpeedAudio.Post(this.gameObject);
     }
 
-    private void CollectPowerups()
+    private void MagnetCheck()
     {
-        Debug.Log("Collecting");
+        if (Input.GetKeyDown(KeyCode.C) && _magnetLevel > 0)
+        {
+            StopCoroutine(MagnetOff());
+            StartCoroutine(MagnetOn());
+        }
+    }
+
+    private IEnumerator MagnetOn()
+    {
+        _magnetOn = true;
+        
+        Powerup[] _powerups = _powerupContainer.GetComponentsInChildren<Powerup>();
+
+        while (Input.GetKey(KeyCode.C) && _magnetLevel > 0)
+        {
+            yield return null;
+            _magnetLevel -= Time.deltaTime;
+            _uiManager.UpdateMagnetUI(_magnetLevel);
+
+            foreach (Powerup _powerup in _powerups)
+            {
+                if (_powerup != null)
+                {
+                    _powerup.MagnetActive(true);
+                }
+            }
+        }
+
+        foreach (Powerup _powerup in _powerups)
+        {
+            if (_powerup != null)
+            {
+                _powerup.MagnetActive(false);
+            }
+        }
+
+        StartCoroutine(MagnetOff());
+    }
+
+    private IEnumerator MagnetOff()
+    {
+        _magnetOn = false;
+
+        yield return new WaitForSeconds(_magnetCooldown);
+
+        while (_magnetLevel < 3 && _magnetOn == false)
+        {
+            yield return null;
+            _magnetLevel += Time.deltaTime;
+            _uiManager.UpdateMagnetUI(_magnetLevel);
+        }
     }
 
     public void ShieldStrength(int _strength)
