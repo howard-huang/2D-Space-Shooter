@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
     private void IDBehaviors()
     {
-        switch (_enemyID) //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy, 4 = Ramming Enemy, 5 = Rear Fire;
+        switch (_enemyID) //1 = Diag Left, 2 = Diag Right, 3,4,5 = Dodge 6 = Missile Enemy, 7 = Ramming Enemy, 8 = Rear Fire;
         {
             default:
                 transform.rotation = Quaternion.identity;
@@ -93,12 +93,27 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(FireLaserCoroutine());
                 break;
             case 3:
-                StartCoroutine(MissileEnemyRoutine());
+                transform.rotation = Quaternion.identity;
+                StartCoroutine(FireLaserCoroutine());
+                StartCoroutine(DetectLaserRoutine());
                 break;
             case 4:
-                StartCoroutine(RammingBehaviorRoutine());
+                transform.rotation = Quaternion.Euler(0, 0, 75);
+                StartCoroutine(FireLaserCoroutine());
+                StartCoroutine(DetectLaserRoutine());
                 break;
             case 5:
+                transform.rotation = Quaternion.Euler(0, 0, -75);
+                StartCoroutine(FireLaserCoroutine());
+                StartCoroutine(DetectLaserRoutine());
+                break;
+            case 6:
+                StartCoroutine(MissileEnemyRoutine());
+                break;
+            case 7:
+                StartCoroutine(RammingBehaviorRoutine());
+                break;
+            case 8:
                 StartCoroutine(RearLaserCoroutine());
                 break;
         }
@@ -108,19 +123,19 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        switch (_enemyID)  //1 = Diag Left, 2 = Diag Right, 3 = Missile Enemy, 4 = Ramming Enemy, 5 = Rear Fire;
+        switch (_enemyID)  //1 = Diag Left, 2 = Diag Right, 3,4,5 = Dodge 6 = Missile Enemy, 7 = Ramming Enemy, 8 = Rear Fire;
         {
             default: 
                 StandardMovement();
                 MovementBounds(true);
                 break;
-            case 3:
+            case 6:
                 return;
-            case 4:
+            case 7:
                 StandardMovement();
                 MovementBounds(false);
                 break;
-            case 5:
+            case 8:
                 StandardMovement();
                 MovementBounds(false);
                 break;
@@ -130,6 +145,45 @@ public class Enemy : MonoBehaviour
     private void StandardMovement()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+    }
+
+    private IEnumerator DetectLaserRoutine()
+    {
+        while (_canFire == true)
+        {
+            bool _rayDetected = false;
+
+            while (_rayDetected == false)
+            {
+                Vector3 _rayOffset = new Vector3(0, -2, 0);
+                RaycastHit2D _hit = Physics2D.CircleCast((transform.position + _rayOffset), 1.2f, Vector3.down);
+
+                if (_hit.collider != null)
+                {
+                    if (_hit.collider.tag == "Laser" || _hit.collider.tag == "Missile")
+                    {
+                        Dodge();
+                        _rayDetected = true;
+                    }
+                }
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(3);
+        }
+    }
+
+    private void Dodge()
+    {
+        int _rotateDirection = Random.Range(0, 2); //0 = Left, 1 = Right;
+
+        if (_rotateDirection == 0)
+        {
+            StartCoroutine(BarrelRoll(0)); //Left
+        }
+        else if (_rotateDirection == 1)
+        {
+            StartCoroutine(BarrelRoll(1)); //Right
+        }
     }
 
     private IEnumerator MissileEnemyRoutine()
@@ -146,39 +200,42 @@ public class Enemy : MonoBehaviour
         {
             string _missileFired = FireMissile();
 
-            Vector3 _rotateDirection = BarrelRoll(_missileFired);
-
-            float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
-            float _rotateTime = Time.time + _animLength;
-
-            while (Time.time < _rotateTime)
+            if (_missileFired == "Left Missile")
             {
-                transform.Translate(_rotateDirection * _speed * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
+                StartCoroutine(BarrelRoll(1)); // Right
             }
-
+            else if (_missileFired == "Right Missile")
+            {
+                StartCoroutine(BarrelRoll(0)); //Left
+            }
             yield return new WaitForSeconds(1.0f);
         }
 
         StartCoroutine(EndMissileEnemyRoutine());
     }
 
-    private Vector3 BarrelRoll(string _missileFired)
+    private IEnumerator BarrelRoll(int _directionToMove)
     {
-        if (_missileFired == "Left Missile")
+        Vector3 _direction = new Vector3();
+       
+        if (_directionToMove == 0)
         {
-            _anim.SetTrigger("Enemy_Rotate_Right");
-            return Vector3.right;
-        }
-        else if (_missileFired == "Right Missile")
-        {
+            _direction = Vector3.left;
             _anim.SetTrigger("Enemy_Rotate_Left");
-            return Vector3.left;
         }
-        else
+        else if (_directionToMove == 1)
         {
-            Debug.Log("No Missile Fired");
-            return Vector3.down;
+            _direction = Vector3.right;
+            _anim.SetTrigger("Enemy_Rotate_Right");
+        }
+
+        float _animLength = _anim.GetCurrentAnimatorStateInfo(0).length;
+        float _rotateTime = Time.time + _animLength;
+
+        while (Time.time < _rotateTime)
+        {
+            transform.Translate(_direction * _speed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
         }
     }
 

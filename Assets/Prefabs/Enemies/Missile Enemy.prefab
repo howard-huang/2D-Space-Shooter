@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d250a30eaf912f4428d37f721e8e3680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyID: 3
+  _enemyID: 6
   _speed: 4
   _thruster: {fileID: 7686787652550699733}
   _points: 30

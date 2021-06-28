@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] _enemyPrefabs; //0 = Standard, 1 = Diag Left, 2 = Diag Right
+    private GameObject[] _enemyPrefabs; //1 = Diag Left, 2 = Diag Right, 3,4,5 = Dodge 6 = Missile Enemy, 7 = Ramming Enemy, 8 = Rear Fire;
     [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
@@ -73,59 +73,62 @@ public class SpawnManager : MonoBehaviour
     {
         WaitForSeconds _respawnTime = new WaitForSeconds(10);
         int _minEnemyPool = 0;
-        int _maxEnemyPool = _enemyPrefabs.Length;
+        int _maxEnemyPool = _enemyPrefabs.Length; //Int = Exclusive
 
         switch (_waveID)
         {
             case 1:
                 _minEnemyPool = 0;
                 _maxEnemyPool = 1;
-                _respawnTime = new WaitForSeconds(5);
+                _respawnTime = new WaitForSeconds(5);   //Standard Enemy every 5 sec
                 break;
             case 2:
                 _minEnemyPool = 0;
                 _maxEnemyPool = 3;
-                _respawnTime = new WaitForSeconds(5);
+                _respawnTime = new WaitForSeconds(5);   //Standard + Rotation every 5 sec
                 break;
             case 3:
                 _minEnemyPool = 1;
                 _maxEnemyPool = 4;
-                _respawnTime = new WaitForSeconds(5);
+                _respawnTime = new WaitForSeconds(5);   //St Rotate + Dodge every 5 sec
                 break;
             case 4:
                 _minEnemyPool = 0;
-                _maxEnemyPool = 4;
-                _respawnTime = new WaitForSeconds(3);
+                _maxEnemyPool = 6;
+                _respawnTime = new WaitForSeconds(5);   //Standard + Dodge variations every 5 sec
                 break;
             case 5:
-                _minEnemyPool = 1;
-                _maxEnemyPool = 5;
-                _respawnTime = new WaitForSeconds(5);
+                _minEnemyPool = 3;
+                _maxEnemyPool = 7;
+                _respawnTime = new WaitForSeconds(5);   //Dodgers + Missile every 5 sec
                 break;
             case 6:
                 _minEnemyPool = 0;
-                _maxEnemyPool = 3;
-                _respawnTime = new WaitForSeconds(3);
+                _maxEnemyPool = 6;
+                _respawnTime = new WaitForSeconds(3);   //Standard + Dodge every 3 sec
                 break;
             case 7:
-                _minEnemyPool = 1;
-                _maxEnemyPool = 6;
-                _respawnTime = new WaitForSeconds(5);
+                _minEnemyPool = 3;
+                _maxEnemyPool = 8;
+                _respawnTime = new WaitForSeconds(5);   //Dodge thru Rammer every 5 sec
                 break;
             case 8:
-                _minEnemyPool = 4;
-                _maxEnemyPool = 6;
-                _respawnTime = new WaitForSeconds(5);
+                _minEnemyPool = 6;
+                _maxEnemyPool = 9;
+                _respawnTime = new WaitForSeconds(5);   //Missile Ram and RearFire every 5 sec
                 break;
             case 9:
                 _minEnemyPool = 0;
-                _maxEnemyPool = 4;
-                _respawnTime = new WaitForSeconds(3);
+                _maxEnemyPool = 6;
+                _respawnTime = new WaitForSeconds(3);   //Standard + Dodge every 3 sec
                 break;
             case 10:
                 _minEnemyPool = 0;
-                _maxEnemyPool = 6;
-                _respawnTime = new WaitForSeconds(3);
+                _maxEnemyPool = 9;
+                _respawnTime = new WaitForSeconds(5);   //All of them every 5 sec
+                break;
+            case 11:
+                //Boss!
                 break;
         }
 
@@ -158,15 +161,17 @@ public class SpawnManager : MonoBehaviour
         float _ySpawnPos;
         Vector3 _enemySpawnPos;
 
-        switch (_enemyID) //1 = Diagonal Left // 2 = Diagonal Right
+        switch (_enemyID) //1 & 4  = Diagonal Left // 2 & 5 = Diagonal Right
         {
             case 1:
+            case 4:
                 _xSpawnPos = Random.Range(-13, -10);
                 _ySpawnPos = Random.Range(4, 8);
                 _enemySpawnPos = new Vector3(_xSpawnPos, _ySpawnPos, 0f);
                 break;
 
             case 2:
+            case 5:
                 _xSpawnPos = Random.Range(13, 10);
                 _ySpawnPos = Random.Range(4, 8);
                 _enemySpawnPos = new Vector3(_xSpawnPos, _ySpawnPos, 0f);
