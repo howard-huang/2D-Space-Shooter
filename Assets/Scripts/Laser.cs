@@ -16,7 +16,7 @@ public class Laser : MonoBehaviour
         {
             _laserAudio[0].Post(this.gameObject);
         }
-        else if (this.tag == "Enemy Laser" || this.tag == "Rear Laser")
+        else
         {
             _laserAudio[1].Post(this.gameObject);
         }
@@ -34,7 +34,7 @@ public class Laser : MonoBehaviour
         {
             transform.Translate(Vector3.up * _speed * Time.deltaTime);
         }
-        else if (this.tag == "Enemy Laser")
+        else
         {
             transform.Translate(Vector3.down * _speed * Time.deltaTime);
         }
@@ -47,9 +47,21 @@ public class Laser : MonoBehaviour
 
     private void Destroy()
     {
-        if (transform.position.y > 8 || transform.position.y < -8)
+        if (transform.position.y > 12 || transform.position.y < -8)
         {
-            if (transform.parent != null && transform.parent.tag == "Triple Shot")
+            if (transform.parent != null && transform.parent.tag != "LaserContainer")
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+        if (transform.position.x > 16 || transform.position.x < -16)
+        {
+            if (transform.parent != null && transform.parent.tag != "LaserContainer")
             {
                 Destroy(transform.parent.gameObject);
             }
