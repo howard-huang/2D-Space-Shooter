@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    private int _health;
+    [SerializeField]
+    private int _baseHealth = 60;
+
     [SerializeField]
     private float _speed = 2.0f;
 
@@ -16,22 +20,6 @@ public class Boss : MonoBehaviour
     private Vector3 _rightPos = new Vector3(16f, 4f, 0f);
     private Vector3 _rightRot = new Vector3(0f, 0f, -90f);
 
-    private bool _canFire;
-
-    [SerializeField]
-    private GameObject _largeTurrets;
-    [SerializeField]
-    private GameObject _largeLaserPrefab;
-    [SerializeField]
-    private WaitForSeconds _largeLaserFireRate = new WaitForSeconds(2f);
-
-    [SerializeField]
-    private GameObject _standardTurrets;
-    [SerializeField]
-    private GameObject _standardLaserPrefab;
-    [SerializeField]
-    private WaitForSeconds _standardLaserFireRate = new WaitForSeconds(5f);
-
     [SerializeField]
     private GameObject _mineHolders;
     [SerializeField]
@@ -40,9 +28,40 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private GameObject _laserContainer;
 
+    private List<Turret> _allTurrets = new List<Turret>();
+
+    private UIManager _uiManager;
+
     private void Start()
     {
+        _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+
+        if (_uiManager == null)
+        {
+            Debug.LogError("UI Manager is Null!");
+        }
+
+        _health += _baseHealth;
+        GetTurretScripts();
         StartCoroutine(FirstMovementRoutine());
+    }
+
+    private void GetTurretScripts()
+    {
+        foreach (Transform _transform in transform.GetComponentsInChildren<Transform>())
+        {
+            if (_transform.tag == "Turret" || _transform.tag == "Large Turret")
+            {
+                Turret _script = _transform.GetComponent<Turret>();
+
+                if (_script != null)
+                {
+                    _allTurrets.Add(_script);
+                }
+            }
+        }
+
+        GetTurretHealth();
     }
 
     private IEnumerator FirstMovementRoutine()
@@ -66,13 +85,18 @@ public class Boss : MonoBehaviour
         }
 
         StateSelector();
+
+        foreach (Turret _turret in _allTurrets)
+        {
+            _turret.SetActive();
+        }
     }
 
     private void StateSelector()
     {
-        StopAllCoroutines();
+        StopTurrets();
         int _randomState = Random.Range(0, 3);
-        string _sideToFire = null;
+        int _sideToFire = 0;
 
         switch (_randomState)
         {
@@ -81,24 +105,20 @@ public class Boss : MonoBehaviour
                 break;
             case 1:
                 StartCoroutine(LeftToRightRoutine());
-                _sideToFire = "left";
+                _sideToFire = 1;
                 break;
             case 2:
                 StartCoroutine(RightToLeftRoutine());
-                _sideToFire = "right";
+                _sideToFire = 2;
                 break;
         }
-
-        StartCoroutine(FireLargeTurrets());
-        StartCoroutine(FireStandardTurrets(_sideToFire));
+        StartTurrets(_sideToFire);
     }
 
     private IEnumerator DownwardsRoutine()
     {
         transform.position = _centrePos;
         transform.rotation = Quaternion.Euler(_centreRot);
-
-        _canFire = true;
 
         while (transform.position.y > 4f)
         {
@@ -115,7 +135,6 @@ public class Boss : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        _canFire = false;
         StateSelector();
     }
 
@@ -123,8 +142,6 @@ public class Boss : MonoBehaviour
     {
         transform.position = _leftPos;
         transform.rotation = Quaternion.Euler(_leftRot);
-
-        _canFire = true;
 
         float _mineTime = Random.Range(Time.time, Time.time + 5f);
 
@@ -142,7 +159,6 @@ public class Boss : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        _canFire = false;
         StateSelector();
     }
 
@@ -150,8 +166,6 @@ public class Boss : MonoBehaviour
     {
         transform.position = _rightPos;
         transform.rotation = Quaternion.Euler(_rightRot);
-
-        _canFire = true;
 
         while (transform.position.x > 0)
         {
@@ -167,7 +181,6 @@ public class Boss : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        _canFire = false;
         StateSelector();
     }
 
@@ -202,62 +215,45 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private IEnumerator FireStandardTurrets(string _side)
+    private void StartTurrets(int _sideToFire)
     {
-        GameObject _parent = null;
-        switch (_side)
+        foreach (Turret _turret in _allTurrets)
         {
-            case "left":
-                _parent = GameObject.Find("Left Turret Holder");
-                break;
-            case "right":
-                _parent = GameObject.Find("Right Turret Holder");
-                break;
-            default:
-                _parent = _standardTurrets;
-                break;
+            _turret.TurretControl(true, _sideToFire);
         }
-
-        while (_canFire == true)
+    }
+    
+    private void StopTurrets()
+    {
+        foreach (Turret _turret in _allTurrets)
         {
-            Transform[] _availableTurrets = _parent.GetComponentsInChildren<Transform>();
-
-            if (_availableTurrets != null)
-            {
-                foreach (Transform _turret in _availableTurrets)
-                {
-                    if (_turret.tag == "Turret")
-                    { 
-                        GameObject _laser =Instantiate(_standardLaserPrefab, _turret.position, _turret.rotation);
-                        _laser.transform.parent = _laserContainer.transform;
-                    }
-                }
-            }
-            yield return _standardLaserFireRate;
+            _turret.TurretControl(false, 0);
         }
     }
 
-    private IEnumerator FireLargeTurrets()
+    private void GetTurretHealth()
     {
-        while (_canFire == true)
+        foreach (Turret _turret in _allTurrets)
         {
-            Transform[] _availableTurrets = _largeTurrets.GetComponentsInChildren<Transform>();
+            int _turretHealth = _turret.GetHealth();
+            _health += _turretHealth;
+        }
+    }
 
-            if (_availableTurrets != null)
-            {
-                foreach (Transform _turret in _availableTurrets)
-                {
-                    if (_turret.tag == "Turret")
-                    {
-                        Vector3 _laserOffset = new Vector3(0, -1.75f, 0);
-                        Vector3 _laserPos = _turret.transform.TransformPoint(_laserOffset);
+    public void TurretDamage(int _damageTaken)
+    {
+        UpdateHealth(_damageTaken);
+    }
 
-                        GameObject _laser = Instantiate(_largeLaserPrefab, _laserPos, _turret.rotation);
-                        _laser.transform.parent = _laserContainer.transform;
-                    }
-                }
-            }
-            yield return _largeLaserFireRate;
+    private void UpdateHealth(int _damageTaken)
+    {
+        _health -= _damageTaken;
+        _uiManager.UpdateBossUI(_health);
+
+        if (_health == 0)
+        {
+            StopAllCoroutines();
+            Debug.Log("Boss Defeated");
         }
     }
 }

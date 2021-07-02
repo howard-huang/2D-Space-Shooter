@@ -465,7 +465,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy Laser" || other.tag == "Enemy Missile" || other.tag == "Rear Laser")
+        if (other.tag == "Enemy Laser" || other.tag == "Enemy Missile" || other.tag == "Rear Laser" || other.tag == "Mine")
         {
             Destroy(other.gameObject);
             _explosionAudio.Post(this.gameObject);

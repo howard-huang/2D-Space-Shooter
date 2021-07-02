@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8670610748089015618}
   - component: {fileID: 6365368231820866265}
   - component: {fileID: 2473194300078783346}
+  - component: {fileID: 4439098057511139043}
   m_Layer: 0
   m_Name: Standard Laser
   m_TagString: Enemy Laser
@@ -81,6 +82,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13806748, y: 0.28465497}
   m_EdgeRadius: 0
+--- !u!114 &4439098057511139043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472567299357848346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401f08ecbc92661419329d99ce0d0083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 8
+  _laserAudio:
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0531268b3e7ed9d449dc56acdd8598d7,
+      type: 2}
+  - idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7fab714b1d618bf42b52847f8d10bb34,
+      type: 2}
 --- !u!1001 &770870062035950083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +198,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6520769700437623244, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
+    - {fileID: 7952616445390063310, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
+    - {fileID: 5402300322859699380, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
 --- !u!4 &7178825352317161186 stripped
 Transform:
@@ -276,6 +301,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6520769700437623244, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
+    - {fileID: 7952616445390063310, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
+    - {fileID: 5402300322859699380, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 952664abd6131b043a3b0d28fea98073, type: 3}
 --- !u!4 &5780377819538957451 stripped
 Transform:

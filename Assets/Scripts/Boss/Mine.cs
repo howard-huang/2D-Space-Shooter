@@ -17,10 +17,43 @@ public class Mine : MonoBehaviour
         {
             Debug.LogError("Boss is Null!");
         }
+
+        StartCoroutine(Disperse());
     }
 
     private void Update()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        Destroy();
+    }
+
+    private IEnumerator Disperse()
+    {
+        float _cooldownTime = Time.time + Random.Range(0.5f, 2.5f);
+        Vector3 _direction = transform.position - _boss.transform.position;
+
+        while (Time.time < _cooldownTime)
+        {
+            transform.Translate(_direction * _speed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        while (true)
+        {
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private void Destroy()
+    {
+        if (transform.position.y > 12 || transform.position.y < -8)
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (transform.position.x > 16 || transform.position.x < -16)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

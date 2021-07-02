@@ -18,6 +18,11 @@ public class UIManager : MonoBehaviour
     private bool _waveEnded;
 
     [SerializeField]
+    private GameObject _bossDisplay;
+    [SerializeField]
+    private Slider _bossSlider;
+
+    [SerializeField]
     private Text _ammoText;
     private int _ammoTotal;
     [SerializeField]
@@ -72,6 +77,12 @@ public class UIManager : MonoBehaviour
     public void UpdateWaveID(int _waveID)
     {
         _waveIDText.text = "Wave " + _waveID.ToString();
+
+        if (_waveID == 11)
+        {
+            _waveDisplay.SetActive(false);
+            _bossDisplay.SetActive(true);
+        }
     }
 
     public void UpdateWaveTime(float _seconds)
@@ -183,6 +194,11 @@ public class UIManager : MonoBehaviour
     public void UpdateMagnetUI(float _timeLeft)
     {
         _magnetSlider.value = _timeLeft;
+    }
+
+    public void UpdateBossUI(int _bossHealth)
+    {
+        _bossSlider.value = _bossHealth;
     }
 
     private void UIGameOver()
