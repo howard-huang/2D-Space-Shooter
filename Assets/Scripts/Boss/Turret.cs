@@ -11,7 +11,6 @@ public class Turret : MonoBehaviour
     private bool _isActive = true;
     private bool _canFire;
 
-
     [SerializeField]
     private GameObject _largeLaserPrefab;
     [SerializeField]
@@ -26,19 +25,40 @@ public class Turret : MonoBehaviour
     private GameObject _explosionPrefab;
     [SerializeField]
     private GameObject _smokePrefab;
+    [SerializeField]
+    private GameObject _damageVisualContainer;
+
+    private Quaternion _targetRotation;
+    private float _xClamp;
+    private float _yClamp;
 
     [SerializeField]
-    private GameObject _laserContainer;
-
     private Boss _boss;
+
+    private Player _player;
+    private Transform _laserContainer;
 
     private void Start()
     {
-        _boss = GameObject.Find("Boss").GetComponent<Boss>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        _laserContainer = GameObject.Find("LaserContainer").GetComponent<Transform>();
 
-        if (_boss == null)
+        if (_player == null)
         {
-            Debug.LogError("Boss is Null!");
+            Debug.LogError("Player is Null!");
+        }
+
+        if (_laserContainer == null)
+        {
+            Debug.LogError("Laser Container is Null!");
+        }
+    }
+
+    private void Update()
+    {
+        if (_player != null)
+        {
+            TrackTarget();
         }
     }
 
@@ -56,12 +76,44 @@ public class Turret : MonoBehaviour
     {
         if (_canFire == true)
         {
-            StartCoroutine(FireLargeTurrets());
+            StartCoroutine(RotateTurret());
             SideSelection(_sideToFire);
+            StartCoroutine(FireLargeTurrets());
         }
         else if (_canFire == false)
         {
             StopAllCoroutines();
+        }
+    }
+
+    private void TrackTarget()
+    {
+        Vector3 _targetDirection = _boss.transform.position - _player.transform.position;
+
+        if (this.tag == "Large Turret")
+        {
+            _xClamp = Mathf.Clamp(_targetDirection.x, -1f, 1f);
+            _yClamp = Mathf.Clamp(_targetDirection.y, -3f, 3f);
+        }
+        else
+        {
+            _xClamp = Mathf.Clamp(_targetDirection.x, -1f, 1f);
+            _yClamp = Mathf.Clamp(_targetDirection.y, -1f, 1f);
+        }
+
+        Vector3 _clampedTarget = new Vector3(_xClamp, _yClamp, 0f);
+        _targetRotation = Quaternion.LookRotation(_boss.transform.forward, _clampedTarget);
+    }
+
+    private IEnumerator RotateTurret()
+    {
+        while (_isActive)
+        {
+            float _rotateSpeed = 0.5f * Time.deltaTime;
+
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, _targetRotation, _rotateSpeed);
+
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -94,7 +146,7 @@ public class Turret : MonoBehaviour
             while (_isActive)
             {
                 GameObject _laser = Instantiate(_standardLaserPrefab, transform.position, transform.rotation);
-                _laser.transform.parent = _laserContainer.transform;
+                _laser.transform.parent = _laserContainer;
 
                 yield return _standardLaserFireRate;
             }
@@ -111,7 +163,7 @@ public class Turret : MonoBehaviour
                 Vector3 _laserPos = transform.TransformPoint(_laserOffset);
 
                 GameObject _laser = Instantiate(_largeLaserPrefab, _laserPos, transform.rotation);
-                _laser.transform.parent = _laserContainer.transform;
+                _laser.transform.parent = _laserContainer;
 
                 yield return _largeLaserFireRate;
             }
@@ -127,6 +179,10 @@ public class Turret : MonoBehaviour
                 Damage(10);
                 Destroy(other.gameObject);
             }
+            else if (other.tag == "Super Laser")
+            {
+                Damage(10);
+            }
         }
     }
 
@@ -139,15 +195,20 @@ public class Turret : MonoBehaviour
         {
             DestroyedVisuals();
             _isActive = false;
+            _boss.RemoveTurretFromList(this.gameObject);
         }
     }
 
     private void DestroyedVisuals()
     {
         GameObject _explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-        _explosion.transform.parent = this.transform;
-
-        GameObject _smoke = Instantiate(_smokePrefab, transform.position, Quaternion.Inverse(transform.rotation));
+       
+        GameObject _smoke = Instantiate(_smokePrefab, transform.position, _boss.transform.rotation);
         _smoke.transform.parent = this.transform;
+    }
+
+    public void StopTurrets()
+    {
+        StopAllCoroutines();
     }
 }

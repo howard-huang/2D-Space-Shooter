@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2641024368" Language="SFX" Hash="3432986491">
+		<SoundBank Id="2641024368" Language="SFX" Hash="2907389779">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX_Soundbank</ObjectPath>
 			<ShortName>SFX_Soundbank</ShortName>
 			<Path>SFX_Soundbank.bnk</Path>
@@ -126,6 +126,8 @@
 					<ActionPostEvent>
 						<ActionPostEventEntry Id="2308976345" Name="Thruster_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\Thruster_Stop"/>
 						<ActionPostEventEntry Id="2686923321" Name="Shield_Stop" ObjectPath="\Events\Default Work Unit\SFX\Shields\Shield_Stop"/>
+						<ActionPostEventEntry Id="2962696902" Name="SuperLaser_Stop" ObjectPath="\Events\Default Work Unit\SFX\Lasers\SuperLaser_Stop"/>
+						<ActionPostEventEntry Id="3159575446" Name="Missile_Stop" ObjectPath="\Events\Default Work Unit\SFX\Lasers\Missile_Stop"/>
 						<ActionPostEventEntry Id="3262461614" Name="SpeedBoost_Stop" ObjectPath="\Events\Default Work Unit\SFX\Thruster\SpeedBoost_Stop"/>
 					</ActionPostEvent>
 				</Event>

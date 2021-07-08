@@ -11,7 +11,7 @@ public class Mine : MonoBehaviour
 
     private void Start()
     {
-        _boss = GameObject.Find("Boss").GetComponent<Boss>();
+        _boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
 
         if (_boss == null)
         {

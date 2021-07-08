@@ -50,6 +50,12 @@ public class Missile : MonoBehaviour
                     _targets.Add(_enemy);
                 }
             }
+
+            GameObject[] _turrets = GameObject.FindGameObjectsWithTag("Turret");
+            foreach (GameObject _turret in _turrets)
+            {
+                _targets.Add(_turret);
+            }
         }
         else if (this.tag == "Enemy Missile")
         {

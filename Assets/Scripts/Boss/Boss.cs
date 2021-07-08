@@ -25,20 +25,32 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private GameObject _minePrefab;
 
-    [SerializeField]
-    private GameObject _laserContainer;
 
     private List<Turret> _allTurrets = new List<Turret>();
 
     private UIManager _uiManager;
+    private Player _player;
+    private Transform _laserContainer;
 
     private void Start()
     {
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        _laserContainer = GameObject.Find("LaserContainer").GetComponent<Transform>();
 
         if (_uiManager == null)
         {
             Debug.LogError("UI Manager is Null!");
+        }
+
+        if (_player == null)
+        {
+            Debug.LogError("Player is Null!");
+        }
+
+        if (_laserContainer == null)
+        {
+            Debug.LogError("Laser Container is Null!");
         }
 
         _health += _baseHealth;
@@ -209,7 +221,7 @@ public class Boss : MonoBehaviour
                 if (_mineHolder.tag == "Mine Holder")
                 {
                     GameObject _mine = Instantiate(_minePrefab, _mineHolder.position, Quaternion.identity);
-                    _mine.transform.parent = _laserContainer.transform;
+                    _mine.transform.parent = _laserContainer;
                 }
             }
         }
@@ -222,7 +234,7 @@ public class Boss : MonoBehaviour
             _turret.TurretControl(true, _sideToFire);
         }
     }
-    
+
     private void StopTurrets()
     {
         foreach (Turret _turret in _allTurrets)
@@ -245,15 +257,36 @@ public class Boss : MonoBehaviour
         UpdateHealth(_damageTaken);
     }
 
+    public void RemoveTurretFromList(GameObject _turretObj)
+    {
+        Turret _turret = _turretObj.GetComponent<Turret>();
+        _allTurrets.Remove(_turret);
+    }
+
     private void UpdateHealth(int _damageTaken)
     {
         _health -= _damageTaken;
         _uiManager.UpdateBossUI(_health);
 
-        if (_health == 0)
+        if (_health == 60)
+        {
+            Debug.Log("Starting final phase");
+        }
+        else if (_health == 0)
         {
             StopAllCoroutines();
             Debug.Log("Boss Defeated");
         }
+    }
+
+    public void Clear()
+    {
+        StopAllCoroutines();
+        foreach (Turret _turret in _allTurrets)
+        {
+            _turret.StopTurrets();
+        }
+
+        Debug.Log("You Lose");
     }
 }

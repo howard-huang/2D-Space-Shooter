@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject[] _enemyPrefabs; //1 = Diag Left, 2 = Diag Right, 3,4,5 = Dodge 6 = Missile Enemy, 7 = Ramming Enemy, 8 = Rear Fire;
     [SerializeField]
+    private GameObject _bossPrefab;
+    [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
     private GameObject[] _powerups; //0 = Triple Shot, 1 = Speed, 2 = Shields, 3 = Ammo, 4 = Health, 5 = SuperLaser, 6 = Missiles, 7 = Stall;
@@ -128,11 +130,15 @@ public class SpawnManager : MonoBehaviour
                 _respawnTime = new WaitForSeconds(5);   //All of them every 5 sec
                 break;
             case 11:
-                //Boss!
+                SpawnBoss();    
                 break;
         }
 
-        StartCoroutine(SpawnEnemyRoutine(_respawnTime, _minEnemyPool, _maxEnemyPool));
+        if (_waveID <= 10)
+        {
+            StartCoroutine(SpawnEnemyRoutine(_respawnTime, _minEnemyPool, _maxEnemyPool));
+        }
+
         StartCoroutine(SpawnPowerupRoutine());
     }
 
@@ -183,6 +189,21 @@ public class SpawnManager : MonoBehaviour
                 break;
         }
         return _enemySpawnPos;
+    }
+
+    private void SpawnBoss()
+    {
+        Instantiate(_bossPrefab, transform.position, Quaternion.identity);
+    }
+
+    private void StopBoss()
+    {
+        Boss _boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
+
+        if (_boss != null)
+        {
+            _boss.Clear();
+        }
     }
 
     private void ClearEnemies()
@@ -242,5 +263,6 @@ public class SpawnManager : MonoBehaviour
         _stopSpawn = true;
 
         ClearEnemies();
+        StopBoss();
     }
 }

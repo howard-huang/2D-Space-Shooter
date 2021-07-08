@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private bool _isGameOver;
 
+    [SerializeField]
     private int _waveID = 0;
     private float _waveTime = 20;
 
@@ -37,16 +38,14 @@ public class GameManager : MonoBehaviour
         _waveID++;
         _waveTime += 10;
 
-        if (_waveID > 10)
-        {
-            Debug.Log("You Win!");
-            return;
-        }
-
         _uiManager.UpdateWaveID(_waveID);
         _spawnManager.StartSpawning(_waveID);
-        _uiManager.UpdateWaveTime(_waveTime);
-        StartCoroutine(WaveCountdown(_waveTime));
+
+        if (_waveID <= 10)
+        {
+            _uiManager.UpdateWaveTime(_waveTime);
+            StartCoroutine(WaveCountdown(_waveTime));
+        }
     }
 
     private IEnumerator WaveCountdown(float _time)

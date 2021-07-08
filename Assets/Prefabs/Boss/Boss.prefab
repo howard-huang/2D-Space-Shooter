@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593518017271359108}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 8385645229289209255}
   m_Father: {fileID: 201332435351113024}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &752745320111736844
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658513179788735965}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.8, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -224,7 +224,8 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 1704426333074799914, guid: 6b47850ff533839498e2e87d69f6ca65,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
 --- !u!1 &2014535460399531242
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3870945821505336210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72, y: 2.325, z: 0}
+  m_LocalPosition: {x: -2.36, y: -0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2501331789750975025}
@@ -360,8 +361,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 7.2, y: 4.7999997, z: 7.2, w: 4.7999997}
-    pivot: {x: 0.5025, y: 0.4725}
-    oldSize: {x: 19.2, y: 10.8}
+    pivot: {x: 0.5275, y: 0.5025}
+    oldSize: {x: 10.8, y: 19.2}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -418,7 +419,8 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 5790520960329028960, guid: 745932ff08c7b2d43aa943b2c4229c6b,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
 --- !u!1 &4317390733198227296
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4317390733198227296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72, y: 2.325, z: 0}
+  m_LocalPosition: {x: 2.34, y: -0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6725741958880002689}
@@ -492,12 +494,12 @@ SpriteRenderer:
   m_SortingLayerID: -550379231
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d9463721a6db6d84f8ecf4983cd0fad3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d150845f7b99307418fb7ad90a1a03b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 10.8, y: 19.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -518,10 +520,10 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4975, y: 0.5275}
-    oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 19.2, y: 10.8}
+    border: {x: 7.2, y: 4.7999997, z: 7.2, w: 4.7999997}
+    pivot: {x: 0.5275, y: 0.5025}
+    oldSize: {x: 10.8, y: 19.2}
+    newSize: {x: 10.8, y: 19.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -577,7 +579,8 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 5790520960329028960, guid: 745932ff08c7b2d43aa943b2c4229c6b,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
 --- !u!1 &4680990422919016687
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +710,7 @@ Transform:
   - {fileID: 5056186063409558790}
   - {fileID: 201332435351113024}
   - {fileID: 6751124666530151772}
+  - {fileID: 3551911132596882068}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1034,7 +1038,6 @@ MonoBehaviour:
   _mineHolders: {fileID: 6798690554813280219}
   _minePrefab: {fileID: 5959388326879272480, guid: a508c8ea8e08e4b4fb452701782f85ec,
     type: 3}
-  _laserContainer: {fileID: 0}
 --- !u!1 &5728543857694955313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5994090945953834061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.075, y: 0.285, z: 0}
+  m_LocalPosition: {x: -0.29, y: -1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2501331789750975025}
@@ -1225,8 +1228,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 7.2, y: 4.7999997, z: 7.2, w: 4.7999997}
-    pivot: {x: 0.5025, y: 0.4725}
-    oldSize: {x: 19.2, y: 10.8}
+    pivot: {x: 0.5275, y: 0.5025}
+    oldSize: {x: 10.8, y: 19.2}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1283,7 +1286,8 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 5790520960329028960, guid: 745932ff08c7b2d43aa943b2c4229c6b,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
 --- !u!1 &6244350797282592036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6244350797282592036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.075, y: 0.285, z: 0}
+  m_LocalPosition: {x: 0.31, y: -1.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6725741958880002689}
@@ -1357,12 +1361,12 @@ SpriteRenderer:
   m_SortingLayerID: -550379231
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d9463721a6db6d84f8ecf4983cd0fad3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d150845f7b99307418fb7ad90a1a03b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 10.8, y: 19.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1383,10 +1387,10 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4975, y: 0.5275}
-    oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 19.2, y: 10.8}
+    border: {x: 7.2, y: 4.7999997, z: 7.2, w: 4.7999997}
+    pivot: {x: 0.5275, y: 0.5025}
+    oldSize: {x: 10.8, y: 19.2}
+    newSize: {x: 10.8, y: 19.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1442,7 +1446,8 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 5790520960329028960, guid: 745932ff08c7b2d43aa943b2c4229c6b,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
 --- !u!1 &6410824781101548855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1626,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6945265230247038273}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1630,7 +1635,7 @@ Transform:
   - {fileID: 1808373178791872958}
   m_Father: {fileID: 201332435351113024}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &7553861039786349318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1663,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7553861039786349318}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1790,7 +1795,8 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 1704426333074799914, guid: 6b47850ff533839498e2e87d69f6ca65,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
 --- !u!1 &7844578192487733603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,7 +1825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7844578192487733603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.075, y: 1.32, z: 0}
+  m_LocalPosition: {x: 1.29, y: -1.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6725741958880002689}
@@ -1864,12 +1870,12 @@ SpriteRenderer:
   m_SortingLayerID: -550379231
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d9463721a6db6d84f8ecf4983cd0fad3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d150845f7b99307418fb7ad90a1a03b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 10.8, y: 19.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1890,10 +1896,10 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4975, y: 0.5275}
-    oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 19.2, y: 10.8}
+    border: {x: 7.2, y: 4.7999997, z: 7.2, w: 4.7999997}
+    pivot: {x: 0.5275, y: 0.5025}
+    oldSize: {x: 10.8, y: 19.2}
+    newSize: {x: 10.8, y: 19.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1949,7 +1955,38 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 5790520960329028960, guid: 745932ff08c7b2d43aa943b2c4229c6b,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
+--- !u!1 &8034076696631254827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3551911132596882068}
+  m_Layer: 0
+  m_Name: DamageVisualHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3551911132596882068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034076696631254827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 764180887758133250}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8266832740353056333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8717810881319873912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.075, y: 1.32, z: 0}
+  m_LocalPosition: {x: -1.32, y: -1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2501331789750975025}
@@ -2110,8 +2147,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 7.2, y: 4.7999997, z: 7.2, w: 4.7999997}
-    pivot: {x: 0.5025, y: 0.4725}
-    oldSize: {x: 19.2, y: 10.8}
+    pivot: {x: 0.5275, y: 0.5025}
+    oldSize: {x: 10.8, y: 19.2}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2168,7 +2205,8 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 5790520960329028960, guid: 745932ff08c7b2d43aa943b2c4229c6b,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
 --- !u!1 &8765479331904250824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,4 +2366,5 @@ MonoBehaviour:
     type: 3}
   _smokePrefab: {fileID: 1704426333074799914, guid: 6b47850ff533839498e2e87d69f6ca65,
     type: 3}
-  _laserContainer: {fileID: 0}
+  _damageVisualContainer: {fileID: 8034076696631254827}
+  _boss: {fileID: 1056356682300643171}
