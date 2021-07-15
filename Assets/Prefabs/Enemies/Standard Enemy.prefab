@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyID: 0
-  _speed: 4
+  _speed: 3
   _thruster: {fileID: 6700347693889996763}
   _points: 10
   _weaponPrefab:

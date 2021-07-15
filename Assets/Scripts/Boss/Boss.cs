@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     private int _health;
     [SerializeField]
     private int _baseHealth = 60;
+    private Collider2D _collider;
 
     [SerializeField]
     private float _speed = 2.0f;
@@ -20,15 +21,29 @@ public class Boss : MonoBehaviour
     private Vector3 _rightPos = new Vector3(16f, 4f, 0f);
     private Vector3 _rightRot = new Vector3(0f, 0f, -90f);
 
+    [Header("Weapons")]
     [SerializeField]
     private GameObject _mineHolders;
     [SerializeField]
     private GameObject _minePrefab;
 
+    [SerializeField]
+    private GameObject _gatlingLaser;
+
+    [Header("Damage Visuals")]
+    [SerializeField]
+    private GameObject _baseShieldVisual;
+    [SerializeField]
+    private GameObject _turretShieldVisual;
+    [SerializeField]
+    private Transform[] _explosionPoints;
+    [SerializeField]
+    private GameObject _explosionPrefab;
 
     private List<Turret> _allTurrets = new List<Turret>();
 
     private UIManager _uiManager;
+    private GameManager _gameManager;
     private Player _player;
     private Transform _laserContainer;
 
@@ -37,6 +52,7 @@ public class Boss : MonoBehaviour
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         _laserContainer = GameObject.Find("LaserContainer").GetComponent<Transform>();
+        _collider = GetComponent<PolygonCollider2D>();
 
         if (_uiManager == null)
         {
@@ -53,6 +69,13 @@ public class Boss : MonoBehaviour
             Debug.LogError("Laser Container is Null!");
         }
 
+        if (_collider == null)
+        {
+            Debug.LogError("Collider is Null!");
+        }
+
+        _collider.enabled = false;
+        _baseShieldVisual.SetActive(true);
         _health += _baseHealth;
         GetTurretScripts();
         StartCoroutine(FirstMovementRoutine());
@@ -96,6 +119,8 @@ public class Boss : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        _baseShieldVisual.SetActive(false);
+        _turretShieldVisual.SetActive(true);
         StateSelector();
 
         foreach (Turret _turret in _allTurrets)
@@ -270,12 +295,39 @@ public class Boss : MonoBehaviour
 
         if (_health == 60)
         {
-            Debug.Log("Starting final phase");
+            _collider.enabled = true;
+            _turretShieldVisual.SetActive(false);
+            StartCoroutine(GatlingFireRoutine());
         }
         else if (_health == 0)
         {
             StopAllCoroutines();
-            Debug.Log("Boss Defeated");
+            StartCoroutine(DestructionRoutine());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (_collider.isActiveAndEnabled)
+        {
+            if (other.tag == "Laser" || other.tag == "Missile")
+            {
+                UpdateHealth(10);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Super Laser")
+            {
+                UpdateHealth(1);
+            }
+        }
+    }
+
+    private IEnumerator GatlingFireRoutine()
+    {
+        while (_health > 0)
+        {
+            Instantiate(_gatlingLaser, transform.position, transform.rotation);
+            yield return new WaitForSeconds(Random.Range(7, 10));
         }
     }
 
@@ -288,5 +340,19 @@ public class Boss : MonoBehaviour
         }
 
         Debug.Log("You Lose");
+    }
+
+    private IEnumerator DestructionRoutine()
+    {
+        foreach (Transform _transform in _explosionPoints)
+        {
+            Instantiate(_explosionPrefab, _transform.position, Quaternion.identity);
+        }
+
+        _gameManager.GMGameWon();
+        
+        yield return new WaitForSeconds(1);
+
+        Destroy(this.gameObject);
     }
 }

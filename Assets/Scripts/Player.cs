@@ -256,9 +256,12 @@ public class Player : MonoBehaviour
     {
         foreach (GameObject _holder in _missileHolders)
         {
-            GameObject _missile = Instantiate(_missilePrefab, _holder.transform.position, Quaternion.identity);
-            _activeMissiles.Add(_missile);
-            _missile.transform.parent = _holder.transform;
+            if (_holder.GetComponentInChildren<Missile>() == null)
+            {
+                GameObject _missile = Instantiate(_missilePrefab, _holder.transform.position, Quaternion.identity);
+                _activeMissiles.Add(_missile);
+                _missile.transform.parent = _holder.transform;
+            }
         }
     }
 
@@ -443,6 +446,10 @@ public class Player : MonoBehaviour
                     _shieldStrength = 3;
                     break;
             }
+        }
+        else if (_shieldStrength > _maxShieldStrength)
+        {
+            _shieldStrength = _maxShieldStrength;
         }
     }
 

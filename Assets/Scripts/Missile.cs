@@ -17,6 +17,8 @@ public class Missile : MonoBehaviour
 
     [SerializeField]
     private AK.Wwise.Event _missileAudio, _stopMissileAudio;
+    [SerializeField]
+    private AK.Wwise.Event _explosionAudio;
 
     private void Start()
     {
@@ -54,7 +56,17 @@ public class Missile : MonoBehaviour
             GameObject[] _turrets = GameObject.FindGameObjectsWithTag("Turret");
             foreach (GameObject _turret in _turrets)
             {
-                _targets.Add(_turret);
+                int _turretHealth = _turret.GetComponent<Turret>().GetHealth();
+                if (_turretHealth > 0)
+                {
+                    _targets.Add(_turret);
+                }
+            }
+
+            GameObject _boss = GameObject.FindGameObjectWithTag("Boss");
+            if (_boss == true && _boss.GetComponent<PolygonCollider2D>().isActiveAndEnabled)
+            {
+                _targets.Add(_boss);
             }
         }
         else if (this.tag == "Enemy Missile")
@@ -129,6 +141,16 @@ public class Missile : MonoBehaviour
     private void TargetLost()
     {
         Destroy(this.gameObject, 1.0f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Laser" || other.tag == "Missile" || other.tag == "Super Laser")
+        {
+            _explosionAudio.Post(this.gameObject);
+            Destroy(this.gameObject);
+        }
+
     }
 
     private void OnDestroy()

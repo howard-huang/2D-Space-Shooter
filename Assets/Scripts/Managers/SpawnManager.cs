@@ -198,10 +198,9 @@ public class SpawnManager : MonoBehaviour
 
     private void StopBoss()
     {
-        Boss _boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
-
-        if (_boss != null)
+        if (GameObject.FindGameObjectWithTag("Boss") != null)
         {
+            Boss _boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
             _boss.Clear();
         }
     }
@@ -264,5 +263,10 @@ public class SpawnManager : MonoBehaviour
 
         ClearEnemies();
         StopBoss();
+    }
+
+    public void OnWin()
+    {
+        _stopSpawn = true;
     }
 }
