@@ -78,7 +78,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateWaveID(int _waveID)
     {
-        Debug.Log(_waveID);
         if (_waveID >= 11)
         {
             _waveEnded = false;

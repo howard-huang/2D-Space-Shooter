@@ -50,6 +50,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         _laserContainer = GameObject.Find("LaserContainer").GetComponent<Transform>();
         _collider = GetComponent<PolygonCollider2D>();
@@ -57,6 +58,11 @@ public class Boss : MonoBehaviour
         if (_uiManager == null)
         {
             Debug.LogError("UI Manager is Null!");
+        }
+
+        if (_gameManager == null)
+        {
+            Debug.LogError("Game Manager is Null!");
         }
 
         if (_player == null)
@@ -338,8 +344,6 @@ public class Boss : MonoBehaviour
         {
             _turret.StopTurrets();
         }
-
-        Debug.Log("You Lose");
     }
 
     private IEnumerator DestructionRoutine()
