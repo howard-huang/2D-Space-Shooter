@@ -39,11 +39,11 @@ public class GameManager : MonoBehaviour
         _waveTime += 10;
 
         _uiManager.UpdateWaveID(_waveID);
+        _uiManager.UpdateWaveTime(_waveTime);
         _spawnManager.StartSpawning(_waveID);
 
         if (_waveID <= 10)
         {
-            _uiManager.UpdateWaveTime(_waveTime);
             StartCoroutine(WaveCountdown(_waveTime));
         }
     }
@@ -79,6 +79,14 @@ public class GameManager : MonoBehaviour
     public void GMGameOver()
     {
         StopAllCoroutines();
+        _isGameOver = true;
+    }
+
+    public void GMGameWon()
+    {
+        StopAllCoroutines();
+        _uiManager.UIGameWon();
+        _spawnManager.OnWin();
         _isGameOver = true;
     }
 }

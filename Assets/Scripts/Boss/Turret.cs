@@ -33,6 +33,9 @@ public class Turret : MonoBehaviour
     private float _yClamp;
 
     [SerializeField]
+    private AK.Wwise.Event _explosionAudio;
+
+    [SerializeField]
     private Boss _boss;
 
     private Player _player;
@@ -177,6 +180,7 @@ public class Turret : MonoBehaviour
             if (other.tag == "Laser" || other.tag == "Missile")
             {
                 Damage(10);
+                _explosionAudio.Post(this.gameObject);
                 Destroy(other.gameObject);
             }
             else if (other.tag == "Super Laser")

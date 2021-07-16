@@ -47,6 +47,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _gameOverText;
     [SerializeField]
+    private Text _winText;
+    [SerializeField]
     private Text _restartText;
 
     [SerializeField]
@@ -76,17 +78,22 @@ public class UIManager : MonoBehaviour
 
     public void UpdateWaveID(int _waveID)
     {
-        _waveIDText.text = "Wave " + _waveID.ToString();
-
-        if (_waveID == 11)
+        if (_waveID >= 11)
         {
-            _waveDisplay.SetActive(false);
+            _waveEnded = false;
+            _waveIDText.gameObject.SetActive(false);
+            _waveTimerText.gameObject.SetActive(false);
             _bossDisplay.SetActive(true);
+        }
+        else
+        {
+            _waveDisplay.SetActive(true);
+            _waveIDText.text = "Wave " + _waveID.ToString();
         }
     }
 
     public void UpdateWaveTime(float _seconds)
-    {
+    {       
         float _time = Mathf.RoundToInt(_seconds);
         _waveTimerText.text = _time.ToString();
 
@@ -205,6 +212,12 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(WaveFlickerRoutine());
         StartCoroutine(GameOverFlickerRoutine());
+        StartCoroutine(RestartGameDisplay());
+    }
+
+    public void UIGameWon()
+    {
+        _winText.gameObject.SetActive(true);
         StartCoroutine(RestartGameDisplay());
     }
 

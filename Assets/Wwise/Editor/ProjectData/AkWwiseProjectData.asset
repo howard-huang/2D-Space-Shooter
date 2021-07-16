@@ -77,7 +77,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f237a69b013c9f458109fb7f8a86bcad
     GuidInternal: 
-    m_lastTime: -8585782417007260344
+    m_lastTime: -8585759014401823309
     List:
     - name: BGM
       guid: 601a220418d82d40b2238df4c222e0d6
@@ -547,6 +547,5 @@ MonoBehaviour:
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/Music/BGM
   - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX
-  - /2D-Space-Shooter_WwiseProject/Events/Default Work Unit/SFX/Shields
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

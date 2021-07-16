@@ -7,6 +7,9 @@ public class Mine : MonoBehaviour
     [SerializeField]
     private float _speed = 1.5f;
 
+    [SerializeField]
+    private GameObject _explosionPrefab;
+
     private Boss _boss;
 
     private void Start()
@@ -41,6 +44,14 @@ public class Mine : MonoBehaviour
         {
             transform.Translate(Vector3.down * _speed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Laser" || other.tag == "Super Laser")
+        {
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         }
     }
 
