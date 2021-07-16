@@ -11,6 +11,13 @@ TagManager:
   - Enemy Laser
   - Super Laser
   - Missile
+  - Enemy Missile
+  - Rear Laser
+  - Boss
+  - Turret
+  - Mine
+  - Mine Holder
+  - LaserContainer
   layers:
   - Default
   - TransparentFX

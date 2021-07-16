@@ -298,6 +298,26 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{F841620E-E46F-4830-B487-EDAF26837BBF}" ShortID="1036883175">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SuperLaser_Stop" ID="{D5F84AA5-606C-4CE5-8E70-62749F00C2C5}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3B031C10-A4DE-4946-9FF2-2B5182C8EFC5}" ShortID="217313888">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Missile_Stop" ID="{01D41612-C8BA-461E-866C-E6F62B85B2D6}" WorkUnitID="{9BA637F2-3C01-459F-8109-FB7F8A86BCAD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="HealthPowerup_Play" ID="{ADF2C071-C082-4CD0-88FA-CBAA425278D5}">
@@ -306,6 +326,17 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="HealthPowerup" ID="{30DAD1A9-00C7-4B51-9F7B-D26DFF75FEED}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ClearEnemies_Play" ID="{5FF9B777-EEB5-40B7-9758-EC170D3BD3CA}">
+							<ChildrenList>
+								<Action Name="" ID="{2E924B64-C9C6-47F9-B793-3EE89902D90C}" ShortID="591339299">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Speed_Start" ID="{ADD92385-EA4F-4947-9BDA-0322AD6E6F2B}" WorkUnitID="{F64872F8-B65C-44C7-BF19-CEF792D87A99}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

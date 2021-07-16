@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID BGM_PLAY = 1093876158U;
         static const AkUniqueID BGM_STOP = 2090192256U;
+        static const AkUniqueID CLEARENEMIES_PLAY = 1028921873U;
         static const AkUniqueID ENEMYLASER_PLAY = 1194956557U;
         static const AkUniqueID EXPLOSION_PLAY = 2090513163U;
         static const AkUniqueID HEALTHPOWERUP_PLAY = 314250078U;

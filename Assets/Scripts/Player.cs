@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
     private float _speedBoostCooldown = 5.0f;
     [SerializeField]
     private GameObject _speedVisual;
+    private bool _hasStalled;
+    [SerializeField]
+    private float _stallTime = 5.0f;
 
     [SerializeField]
     private GameObject _thrusterVisual;
@@ -79,11 +82,9 @@ public class Player : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField]
-    private AK.Wwise.Event _laserAudio;
+    private AK.Wwise.Event _noAmmoAudio;
     [SerializeField]
     private AK.Wwise.Event _superLaserAudio, _stopSuperLaserAudio;
-    [SerializeField]
-    private AK.Wwise.Event _noAmmoAudio;
     [SerializeField]
     private AK.Wwise.Event _healthAudio;
     [SerializeField]
@@ -97,6 +98,13 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private AK.Wwise.Event _stopSFX;
+
+    [Header("Misc")]
+    [SerializeField]
+    private GameObject _powerupContainer;
+    private float _magnetLevel = 3.0f;
+    private float _magnetCooldown = 7.0f;
+    private bool _magnetOn;
 
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
@@ -128,18 +136,23 @@ public class Player : MonoBehaviour
         _uiManager.UpdateScoreUI(_score);
         _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
         _uiManager.UpdateThrusterUI(_thrusterLevel);
+        _uiManager.UpdateMagnetUI(_magnetLevel);
     }
 
     private void Update()
     {
-        Movement();
+        MagnetCheck();
+
+        if (_hasStalled == false)
+        {
+            Movement();
+            ThrusterCheck();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             WeaponSelect();
         }
-
-        ThrusterCheck();
     }
 
     private void Movement()
@@ -151,7 +164,7 @@ public class Player : MonoBehaviour
 
         transform.Translate(direction * _speed * Time.deltaTime);
 
-        float _yClamp = Mathf.Clamp(transform.position.y, -4.5f, 2);                               //vertical bounds
+        float _yClamp = Mathf.Clamp(transform.position.y, -3.0f, 2.5f);                               //vertical bounds
         transform.position = new Vector3(transform.position.x, _yClamp, 0);
         //horizontal wrapping
         if (transform.position.x >= 11.3f)
@@ -162,6 +175,20 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
+    }
+
+    public void Stall()
+    {
+        StartCoroutine(StallPowerDownRoutine());
+    }
+
+    private IEnumerator StallPowerDownRoutine()
+    {
+        _hasStalled = true;
+        _uiManager.EngineDisplayUI(_hasStalled);
+        yield return new WaitForSeconds(_stallTime);
+        _hasStalled = false;
+        _uiManager.EngineDisplayUI(_hasStalled);
     }
 
     private void ThrusterCheck()
@@ -197,16 +224,13 @@ public class Player : MonoBehaviour
         _stopThrusterAudio.Post(this.gameObject);
         _thrusterVisual.SetActive(false);
 
-        if (_thrusterOn == false)
-        {
-            yield return new WaitForSeconds(_thrusterCooldown);
+        yield return new WaitForSeconds(_thrusterCooldown);
             
-            while (_thrusterLevel < 5 && _thrusterOn == false)
-            {
-                yield return null;
-                _thrusterLevel += Time.deltaTime;
-                _uiManager.UpdateThrusterUI(_thrusterLevel);
-            }
+        while (_thrusterLevel < 5 && _thrusterOn == false)
+        {
+            yield return null;
+            _thrusterLevel += Time.deltaTime;
+            _uiManager.UpdateThrusterUI(_thrusterLevel);
         }
     }
 
@@ -232,9 +256,12 @@ public class Player : MonoBehaviour
     {
         foreach (GameObject _holder in _missileHolders)
         {
-            GameObject _missile = Instantiate(_missilePrefab, _holder.transform.position, Quaternion.identity);
-            _activeMissiles.Add(_missile);
-            _missile.transform.parent = _holder.transform;
+            if (_holder.GetComponentInChildren<Missile>() == null)
+            {
+                GameObject _missile = Instantiate(_missilePrefab, _holder.transform.position, Quaternion.identity);
+                _activeMissiles.Add(_missile);
+                _missile.transform.parent = _holder.transform;
+            }
         }
     }
 
@@ -269,7 +296,6 @@ public class Player : MonoBehaviour
 
             _ammoCount--;
             _uiManager.UpdateAmmoUI(_ammoCount, _maxAmmo);
-            _laserAudio.Post(this.gameObject);
         }
         else
         {
@@ -332,6 +358,61 @@ public class Player : MonoBehaviour
         _stopSpeedAudio.Post(this.gameObject);
     }
 
+    private void MagnetCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.C) && _magnetLevel > 0)
+        {
+            StopCoroutine(MagnetOff());
+            StartCoroutine(MagnetOn());
+        }
+    }
+
+    private IEnumerator MagnetOn()
+    {
+        _magnetOn = true;
+        
+        Powerup[] _powerups = _powerupContainer.GetComponentsInChildren<Powerup>();
+
+        while (Input.GetKey(KeyCode.C) && _magnetLevel > 0)
+        {
+            yield return null;
+            _magnetLevel -= Time.deltaTime;
+            _uiManager.UpdateMagnetUI(_magnetLevel);
+
+            foreach (Powerup _powerup in _powerups)
+            {
+                if (_powerup != null)
+                {
+                    _powerup.MagnetActive(true);
+                }
+            }
+        }
+
+        foreach (Powerup _powerup in _powerups)
+        {
+            if (_powerup != null)
+            {
+                _powerup.MagnetActive(false);
+            }
+        }
+
+        StartCoroutine(MagnetOff());
+    }
+
+    private IEnumerator MagnetOff()
+    {
+        _magnetOn = false;
+
+        yield return new WaitForSeconds(_magnetCooldown);
+
+        while (_magnetLevel < 3 && _magnetOn == false)
+        {
+            yield return null;
+            _magnetLevel += Time.deltaTime;
+            _uiManager.UpdateMagnetUI(_magnetLevel);
+        }
+    }
+
     public void ShieldStrength(int _strength)
     {        
         _shieldStrength += _strength;
@@ -366,6 +447,10 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+        else if (_shieldStrength > _maxShieldStrength)
+        {
+            _shieldStrength = _maxShieldStrength;
+        }
     }
 
     public void AddHealth(int _healthPowerupCount)
@@ -387,7 +472,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy Laser")
+        if (other.tag == "Enemy Laser" || other.tag == "Enemy Missile" || other.tag == "Rear Laser" || other.tag == "Mine")
         {
             Destroy(other.gameObject);
             _explosionAudio.Post(this.gameObject);

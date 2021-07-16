@@ -280,8 +280,10 @@ MonoBehaviour:
 
     Space - Fire
 
-    Esc
-    - Quit'
+    C
+    Key - Magnet
+
+    Esc - Quit'
 --- !u!222 &349839238
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -631,7 +633,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: V 1.1
+  m_Text: V 1.2
 --- !u!222 &1172105286
 CanvasRenderer:
   m_ObjectHideFlags: 0

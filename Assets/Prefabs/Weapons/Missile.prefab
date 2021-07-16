@@ -313,6 +313,11 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 96ab41c1260536c499e7c1cf82e61d71,
       type: 2}
+  _explosionAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 303864f356c39ae4ba1ce15545c1801a,
+      type: 2}
 --- !u!95 &4796081847636034200
 Animator:
   serializedVersion: 3

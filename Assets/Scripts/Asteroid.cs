@@ -10,15 +10,15 @@ public class Asteroid : MonoBehaviour
     [SerializeField]
     private GameObject _explosionPrefab;
 
-    private SpawnManager _spawnManager;
+    private GameManager _gameManager;
     private Collider2D _collider2D;
 
     private void Start()
     {
-        _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _collider2D = GetComponent<Collider2D>();
 
-        if (_spawnManager == null)
+        if (_gameManager == null)
         {
             Debug.Log("Spawn Manager is Null!");
         }
@@ -42,7 +42,7 @@ public class Asteroid : MonoBehaviour
             _collider2D.enabled = false;
             Destroy(other.gameObject);
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            _spawnManager.StartSpawning();
+            _gameManager.StartSpawning();
             Destroy(this.gameObject, 1.0f);
         }
     }
